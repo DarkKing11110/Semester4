@@ -4,34 +4,64 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("View")]
+    [Tooltip("Wenn aktiviert, nutzt der Spieler die Third-Person-Kamera.")]
+    public bool useThirdPerson = false; // Tickbox im Inspector
+    [Tooltip("Sanftes Nachziehen der Kamera (Third-Person). 0 = direkt.")]
+    public float cameraSmoothTime = 0.05f;
+
+    [Header("Third-Person Einstellungen")]
+    [Tooltip("Abstand der Kamera hinter dem Spieler (Third-Person).")]
+    public float thirdPersonDistance = 3.0f;
+    [Tooltip("Seitlicher Versatz der Kamera (positive Werte = rechte Schulter).")]
+    public float thirdPersonSideOffset = 0.5f;
+    [Tooltip("Minimaler Abstand bei Kollisionen.")]
+    public float thirdPersonMinDistance = 0.3f;
+    [Tooltip("Puffer bei Kollisionen, um Clipping zu vermeiden.")]
+    public float cameraCollisionBuffer = 0.1f;
+    [Tooltip("Radius für SphereCast bei Kamerakollision.")]
+    public float cameraCollisionRadius = 0.2f;
+    [Tooltip("Layer, die Kamera-Kollisionen blockieren.")]
+    public LayerMask cameraObstructionMask = ~0;
+
+    [Header("Look")]
     public float mouseSensitivityYaw = 2f;   // Drehgeschwindigkeit horizontal
     public float mouseSensitivityPitch = 2f; // Drehgeschwindigkeit vertikal
     private float cameraPitch = 0f;          // Aktueller Pitch-Winkel der Kamera
     public float maxPitch = 90f;             // Maximale Neigung nach oben/unten
     public float minPitch = -90f;            // Minimale Neigung nach unten
+
+    [Header("Movement")]
     public float moveSpeed = 5f; // Bewegungsgeschwindigkeit des Spielers
-    //public float sideMoveSpeed = 3f; // Seitliche Bewegungsgeschwindigkeit des Spielers
+    public float sprintMultiplier = 1.7f; // Sprint-Geschwindigkeit
+
+    [Header("Combat")]
     public float attackRange = 2f; // Angriffsreichweite des Spielers
     public int attackDamage = 10; // Angriffsschaden des Spielers
+
+    [Header("Camera")]
     public Transform cameraTransform; // Referenz zur Kamera
     public float CameraHeight = 1.7f; // Höhe der Kamera über dem Boden
-    public bool isRunning = false; // Flag, ob der Spieler rennt
 
+    [Header("Sprint/Stamina")]
+    public bool isRunning = false; // Flag, ob der Spieler rennt
     public float maxStamina = 100;
     public float currentStamina;
     public float staminaRegenRate = 15f; // Punkte pro Sekunde
-    public float sprintMultiplier = 1.7f; // Sprint-Geschwindigkeit
     public float staminaDrainRate = 30f; // Punkte pro Sekunde beim Sprinten
     private bool canSprint => currentStamina > 0;
 
+    [Header("Health")]
     public int maxHealth = 100;
     public int currentHealth;
-
 
     private Rigidbody rb;
     private bool isGrounded;
     private Texture2D healthTexture;
     private Texture2D staminaTexture;
+
+    // interne Kamera-Interpolation
+    private Vector3 cameraSmoothVelocity;
 
     void Start()
     {
@@ -47,7 +77,7 @@ public class PlayerBehaviour : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Erzeuge eine 1x1 Texture für die Health-Bar-Farbe
+        // Erzeuge eine 1x1 Texture für die Health-/Stamina-Bar-Farbe
         healthTexture = new Texture2D(1, 1);
         staminaTexture = new Texture2D(1, 1);
     }
@@ -62,7 +92,6 @@ public class PlayerBehaviour : MonoBehaviour
                 GameManager.Instance.PlayerDied();
         }
     }
-
 
     void Update()
     {
@@ -97,7 +126,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-
     void HandleMouseLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityYaw;
@@ -109,14 +137,18 @@ public class PlayerBehaviour : MonoBehaviour
         // Kamera vertikal drehen (Pitch)
         cameraPitch -= mouseY;
         cameraPitch = Mathf.Clamp(cameraPitch, minPitch, maxPitch);
+        
 
         if (cameraTransform != null)
         {
-            // Setze die Kamera-Rotation auf Pitch und Yaw
-            cameraTransform.rotation = Quaternion.Euler(cameraPitch, transform.eulerAngles.y, 0);
+            // In First-Person die Kamera-Rotation direkt setzen.
+            // In Third-Person wird die Rotation und Position in UpdateCameraPosition berechnet.
+            if (!useThirdPerson)
+            {
+                cameraTransform.rotation = Quaternion.Euler(cameraPitch, transform.eulerAngles.y, 0);
+            }
         }
     }
-
 
     void LateUpdate()
     {
@@ -148,7 +180,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1)) // Rechtsklick
         {
-
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
             {
@@ -163,12 +194,44 @@ public class PlayerBehaviour : MonoBehaviour
 
     void UpdateCameraPosition()
     {
-        if (cameraTransform != null)
+        if (cameraTransform == null) return;
+
+        Vector3 headOffset = new Vector3(0, CameraHeight, 0);
+        Vector3 pivot = transform.position + headOffset;
+
+        if (!useThirdPerson)
         {
-            Vector3 headOffset = new Vector3(0, CameraHeight, 0);
-            cameraTransform.position = transform.position + headOffset;
-            // Die Rotation wird in HandleMouseLook gesetzt
+            // First-Person: Kamera auf Kopfposition setzen, Rotation kommt aus HandleMouseLook
+            cameraTransform.position = pivot;
+            return;
         }
+
+        // Third-Person: gewünschte Kameraposition hinter/seitlich des Spielers
+        Quaternion camRot = Quaternion.Euler(cameraPitch, transform.eulerAngles.y, 0f);
+        Vector3 desiredOffset = camRot * new Vector3(thirdPersonSideOffset, 0f, -thirdPersonDistance);
+        Vector3 desiredPos = pivot + desiredOffset;
+
+        // Kollisionsvermeidung (SphereCast vom Pivot zur Zielposition)
+        Vector3 toCam = desiredPos - pivot;
+        float desiredDist = toCam.magnitude;
+        Vector3 dir = desiredDist > 0.0001f ? toCam / desiredDist : Vector3.back;
+
+        float targetDist = desiredDist;
+        if (Physics.SphereCast(pivot, cameraCollisionRadius, dir, out RaycastHit hit, desiredDist, cameraObstructionMask, QueryTriggerInteraction.Ignore))
+        {
+            targetDist = Mathf.Max(hit.distance - cameraCollisionBuffer, thirdPersonMinDistance);
+        }
+
+        Vector3 targetPos = pivot + dir * targetDist;
+
+        // Sanftes Nachziehen
+        if (cameraSmoothTime > 0f)
+            cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, targetPos, ref cameraSmoothVelocity, cameraSmoothTime);
+        else
+            cameraTransform.position = targetPos;
+
+        // Kamera-Rotation entsprechend Maus (Yaw/Pitch), konsistent mit First-Person
+        cameraTransform.rotation = camRot;
     }
 
     void OnGUI()
@@ -220,10 +283,6 @@ public class PlayerBehaviour : MonoBehaviour
         };
         GUI.Label(new Rect(staminaX, staminaY, staminaBarWidth, staminaBarHeight), "Stamina", staminaStyle);
     }
-
-
-
-
 }
 
 
