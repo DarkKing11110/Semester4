@@ -34,10 +34,15 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 5f; // Bewegungsgeschwindigkeit des Spielers
     public float sprintMultiplier = 1.7f; // Sprint-Geschwindigkeit
+    public bool isWalking;
+    public bool isJumping;
 
     [Header("Combat")]
     public float attackRange = 2f; // Angriffsreichweite des Spielers
     public int attackDamage = 10; // Angriffsschaden des Spielers
+    public bool isAttacking;
+    public bool isAttacked;
+    public bool isDead;
 
     [Header("Camera")]
     public Transform cameraTransform; // Referenz zur Kamera
@@ -55,8 +60,11 @@ public class PlayerBehaviour : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    [Header("Animation")]
+    [Tooltip("Animator am Spieler (wird automatisch gesucht, wenn leer).")]
+    public Animator animator;
+
     private Rigidbody rb;
-    private bool isGrounded;
     private Texture2D healthTexture;
     private Texture2D staminaTexture;
 
@@ -80,13 +88,19 @@ public class PlayerBehaviour : MonoBehaviour
         // Erzeuge eine 1x1 Texture für die Health-/Stamina-Bar-Farbe
         healthTexture = new Texture2D(1, 1);
         staminaTexture = new Texture2D(1, 1);
+
+        // Animator automatisch finden
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        isAttacked = true; // 1-Frame-Impulse; Reset erfolgt in HandleAnimations()
         if (currentHealth <= 0)
         {
+            isDead = true;
             currentHealth = 0;
             if (GameManager.Instance != null)
                 GameManager.Instance.PlayerDied();
@@ -100,6 +114,7 @@ public class PlayerBehaviour : MonoBehaviour
         Attack();
         HandleMouseLook();
         RegenerateStamina();
+        HandleAnimations(); // zentral wie der Sprint-Handler
     }
 
     void HandleSprint()
@@ -174,6 +189,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         Vector3 movement = (camForward * moveVertical + camRight * moveHorizontal).normalized * speed * Time.deltaTime;
         rb.MovePosition(transform.position + movement);
+
+        // isWalking wird zentral in HandleAnimations() abgeleitet
     }
 
     void Attack()
@@ -186,10 +203,51 @@ public class PlayerBehaviour : MonoBehaviour
                 EnemyBehaviour enemy = hit.collider.GetComponent<EnemyBehaviour>();
                 if (enemy != null)
                 {
+                    // Animation wird im Handler gesteuert; hier nur Gameplay
                     enemy.TakeDamage(attackDamage);
                 }
             }
         }
+    }
+
+    // Zentraler Animations-Handler (ohne Hashes, ohne Timer)
+    void HandleAnimations()
+    {
+        // Bewegung aus Input ableiten (wie Sprint-Handler: pro Frame auslesen)
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        bool hasMoveInput = new Vector2(h, v).sqrMagnitude > 0.0001f;
+
+        if (isDead)
+        {
+            isRunning = false;
+            isWalking = false;
+            isJumping = false;
+            isAttacking = false;
+            isAttacked = false;
+        }
+        else
+        {
+            isWalking = hasMoveInput && !isRunning;
+            isAttacking = Input.GetMouseButton(1); // solange gehalten wird
+
+            // „getroffen“ als 1-Frame-Impuls behandeln
+            // (TakeDamage setzt isAttacked = true; hier wird sie nach einem Frame wieder gelöscht)
+        }
+
+        if (animator != null)
+        {
+            animator.SetBool("IsWalking", isWalking);
+            animator.SetBool("IsRunning", isRunning);
+            animator.SetBool("IsJumping", isJumping);
+            animator.SetBool("IsAttacking", isAttacking);
+            animator.SetBool("IsAttacked", isAttacked);
+            animator.SetBool("IsDead", isDead);
+        }
+
+        // Einmal-Flag am Ende zurücksetzen, damit der Animator exakt 1 Frame „IsAttacked“ erhält
+        if (isAttacked && !isDead)
+            isAttacked = false;
     }
 
     void UpdateCameraPosition()
