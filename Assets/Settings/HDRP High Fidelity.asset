@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: HDRP High Fidelity
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
-    supportShadowMask: 0
-    supportSSR: 0
-    supportSSRTransparent: 0
+    supportShadowMask: 1
+    supportSSR: 1
+    supportSSRTransparent: 1
     supportSSAO: 1
     supportSSGI: 1
     supportSubsurfaceScattering: 1
@@ -103,7 +103,7 @@ MonoBehaviour:
       skyReflectionSize: 1024
       skyLightingOverrideLayerMask:
         serializedVersion: 2
-        m_Bits: 0
+        m_Bits: 1
       supportFabricConvolution: 0
       maxDirectionalLightsOnScreen: 16
       maxPunctualLightsOnScreen: 512
