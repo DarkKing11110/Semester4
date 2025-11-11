@@ -490,6 +490,8 @@ GameObject:
   - component: {fileID: 757533659}
   - component: {fileID: 757533658}
   - component: {fileID: 757533657}
+  - component: {fileID: 757533662}
+  - component: {fileID: 757533663}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -615,6 +617,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757533662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757533656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31be039ccc6522a41894ec5e78246c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useThirdPerson: 1
+  cameraSmoothTime: 0.05
+  thirdPersonDistance: 3
+  thirdPersonSideOffset: 0.5
+  thirdPersonMinDistance: 0.3
+  cameraCollisionBuffer: 0.1
+  cameraCollisionRadius: 0.2
+  cameraObstructionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  mouseSensitivityYaw: 2
+  mouseSensitivityPitch: 2
+  maxPitch: 90
+  minPitch: -90
+  moveSpeed: 5
+  sprintMultiplier: 1.7
+  isWalking: 0
+  isJumping: 0
+  attackRange: 2
+  attackDamage: 10
+  isAttacking: 0
+  isAttacked: 0
+  isDead: 0
+  cameraTransform: {fileID: 1823688467}
+  CameraHeight: 1.7
+  isRunning: 0
+  maxStamina: 100
+  currentStamina: 0
+  staminaRegenRate: 15
+  staminaDrainRate: 30
+  maxHealth: 100
+  currentHealth: 0
+  animator: {fileID: 0}
+--- !u!95 &757533663
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757533656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bd3fd330eb551b4da1a1bdc2a0bed8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1093265165
 GameObject:
   m_ObjectHideFlags: 0
