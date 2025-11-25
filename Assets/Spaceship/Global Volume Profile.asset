@@ -181,7 +181,7 @@ MonoBehaviour:
     m_Value: 0.408
   m_SmoothnessFadeStart:
     m_OverrideState: 1
-    m_Value: 0.831
+    m_Value: 1
   reflectSky:
     m_OverrideState: 1
     m_Value: 1
@@ -190,10 +190,10 @@ MonoBehaviour:
     m_Value: 0
   depthBufferThickness:
     m_OverrideState: 1
-    m_Value: 0.317
+    m_Value: 0.271
   screenFadeDistance:
     m_OverrideState: 1
-    m_Value: 0.353
+    m_Value: 0.74
   accumulationFactor:
     m_OverrideState: 0
     m_Value: 0.75
