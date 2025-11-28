@@ -237,12 +237,12 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (animator != null)
         {
-            animator.SetBool("IsWalking", isWalking);
-            animator.SetBool("IsRunning", isRunning);
-            animator.SetBool("IsJumping", isJumping);
-            animator.SetBool("IsAttacking", isAttacking);
-            animator.SetBool("IsAttacked", isAttacked);
-            animator.SetBool("IsDead", isDead);
+            animator.SetBool("isWalking", isWalking);
+            animator.SetBool("isRunning", isRunning);
+            animator.SetBool("isJumping", isJumping);
+            animator.SetBool("isAttacking", isAttacking);
+            animator.SetBool("isAttacked", isAttacked);
+            animator.SetBool("isDead", isDead);
         }
 
         // Einmal-Flag am Ende zurücksetzen, damit der Animator exakt 1 Frame „IsAttacked“ erhält
