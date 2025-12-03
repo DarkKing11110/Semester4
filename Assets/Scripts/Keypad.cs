@@ -1,100 +1,105 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
-public class MainKeypad : MonoBehaviour
+public class Keypad : MonoBehaviour
 {
     private int Digit1;
     private int Digit2;
     private int Digit3;
     private int Digit4;
 
-    [SerializeField] int RealPin;
-    private string TypedPin;
+    [SerializeField] string RealPin;
+    public string TypedPin;
 
-    [SerializeField] Button one;
-    [SerializeField] Button two;
-    [SerializeField] Button three;
-    [SerializeField] Button four;
-    [SerializeField] Button five;
-    [SerializeField] Button six;
-    [SerializeField] Button seven;
-    [SerializeField] Button eight;
-    [SerializeField] Button nine;
-    [SerializeField] Button zero;
-    [SerializeField] Button Clear;
-    [SerializeField] Button Enter;
+    [SerializeField] Button ButtonOne;
+    [SerializeField] Button ButtonTwo;
+    [SerializeField] Button ButtonThree;
+    [SerializeField] Button ButtonFour;
+    [SerializeField] Button ButtonFive;
+    [SerializeField] Button ButtonSix;
+    [SerializeField] Button ButtonSeven;
+    [SerializeField] Button ButtonEight;
+    [SerializeField] Button ButtonNine;
+    [SerializeField] Button ButtonZero;
+    [SerializeField] Button ButtonClear;
+    [SerializeField] Button ButtonEnter;
 
     //Visuals
-    public TMP_Text ShowPin;
-    public TMP_Text ErrorMessage;
-    public TMP_Text AccessGrantedMessage;
+    [SerializeField] TMP_Text ShowPin;
+    [SerializeField] TMP_Text ErrorMessage;
+    [SerializeField] TMP_Text AccessGrantedMessage;
    
     void Start()
     {
-       Digit1 = Random.range(0, 10);
-       Digit2 = Random.range(0, 10);
-       Digit3 = Random.range(0, 10);
-       Digit4 = Random.range(0, 10);
+        Digit1 = Random.Range(0, 10);
+        Digit2 = Random.Range(0, 10);
+        Digit3 = Random.Range(0, 10);
+        Digit4 = Random.Range(0, 10);
 
-       
+        RealPin += Digit1;
+        RealPin += Digit2;
+        RealPin += Digit3;
+        RealPin += Digit4;
     }
 
-    public void one()
+    public void Buttonone()
     {
         TypedPin = TypedPin + 1;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
 
-    public void two()
+    public void Buttontwo()
     {
         TypedPin = TypedPin + 2;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void three()
+    public void Buttonthree()
     {
         TypedPin = TypedPin + 3;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void four()
+    public void Buttonfour()
     {
         TypedPin = TypedPin + 4;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void five()
+    public void Buttonfive()
     {
         TypedPin = TypedPin + 5;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void six()
+    public void Buttonsix()
     {
         TypedPin = TypedPin + 6;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void seven()
+    public void Buttonseven()
     {
         TypedPin = TypedPin + 7;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void eight()
+    public void Buttoneight()
     {
         TypedPin = TypedPin + 8;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void nine()
+    public void Buttonnine()
     {
         TypedPin = TypedPin + 9;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void zero()
+    public void Buttonzero()
     {
         TypedPin = TypedPin + 0;
-        ShowPin.text;
+        ShowPin.text = TypedPin;
     }
-    public void clear()
+    public void Buttonclear()
     {
-        TypedPin = string.empty;
+        TypedPin = string.Empty;
+        ShowPin.text = TypedPin;
     }
-    public void enter()
+    public void Buttonenter()
     {
         NumberChecker();
     }
@@ -103,13 +108,14 @@ public class MainKeypad : MonoBehaviour
     {
         if (TypedPin == RealPin)
         {
-            AccessGrantedMessage.text;
+            ShowPin.text = "     ";
+            AccessGrantedMessage.text = "Access Granted";
         }
         else
         {
-            ErrorMessage.text;
-            TypedPin = string.empty;
-            ShowPin.text;
-        }
+            ErrorMessage.text = "Incorrect Pin";
+            TypedPin = string.Empty;
+            ShowPin.text = TypedPin;            
+        }
     }
 }
