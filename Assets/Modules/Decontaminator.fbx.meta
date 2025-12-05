@@ -7,17 +7,27 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Door
+      name: Celling
+    second: {fileID: 2100000, guid: 4edd64834a4f2ec488199e90b1678262, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door.001
     second: {fileID: 2100000, guid: 51b4b035651e82640b7aea28309c3435, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Floor
+      name: Floor.001
     second: {fileID: 2100000, guid: 6a0f9b3d8a6d02e4aa4a56a8c91bd648, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wall
+    second: {fileID: 2100000, guid: cbd819984ea5b5245b64e493f58f57b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall.001
     second: {fileID: 2100000, guid: cbd819984ea5b5245b64e493f58f57b5, type: 2}
   materials:
     materialImportMode: 2
