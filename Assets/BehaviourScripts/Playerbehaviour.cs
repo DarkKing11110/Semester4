@@ -36,6 +36,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float sprintMultiplier = 1.7f; // Sprint-Geschwindigkeit
     public bool isWalking;
     public bool isJumping;
+    public bool isCrouching;              // NEU: Crouch-Status
+    public bool isWalkingBackwards;       // NEU: Rückwärtslauf-Status
 
     [Header("Combat")]
     public float attackRange = 2f; // Angriffsreichweite des Spielers
@@ -187,6 +189,9 @@ public class PlayerBehaviour : MonoBehaviour
         if (isRunning && canSprint && (moveVertical != 0 || moveHorizontal != 0))
             speed *= sprintMultiplier;
 
+        // Optional: Geschwindigkeit im Crouch reduzieren (nicht gefordert, daher auskommentiert)
+        // if (isCrouching) speed *= 0.5f;
+
         Vector3 movement = (camForward * moveVertical + camRight * moveHorizontal).normalized * speed * Time.deltaTime;
         rb.MovePosition(transform.position + movement);
 
@@ -218,6 +223,12 @@ public class PlayerBehaviour : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         bool hasMoveInput = new Vector2(h, v).sqrMagnitude > 0.0001f;
 
+        // NEU: Crouch mit Taste 'C' (gedrückt halten)
+        isCrouching = Input.GetKey(KeyCode.C);
+
+        // NEU: Rückwärtslaufen (v < 0 bedeutet Input nach hinten relativ zur Kameraausrichtung)
+        isWalkingBackwards = v < -0.01f && hasMoveInput;
+
         if (isDead)
         {
             isRunning = false;
@@ -225,11 +236,16 @@ public class PlayerBehaviour : MonoBehaviour
             isJumping = false;
             isAttacking = false;
             isAttacked = false;
+            isCrouching = false;
+            isWalkingBackwards = false;
         }
         else
         {
+            // „Gehen“: Bewegung vorhanden, nicht rennen
             isWalking = hasMoveInput && !isRunning;
-            isAttacking = Input.GetMouseButton(1); // solange gehalten wird
+
+            // Angriff so lange wie Maustaste gehalten wird
+            isAttacking = Input.GetMouseButton(1);
 
             // „getroffen“ als 1-Frame-Impuls behandeln
             // (TakeDamage setzt isAttacked = true; hier wird sie nach einem Frame wieder gelöscht)
@@ -237,12 +253,16 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (animator != null)
         {
-            animator.SetBool("IsWalking", isWalking);
-            animator.SetBool("IsRunning", isRunning);
-            animator.SetBool("IsJumping", isJumping);
-            animator.SetBool("IsAttacking", isAttacking);
-            animator.SetBool("IsAttacked", isAttacked);
-            animator.SetBool("IsDead", isDead);
+            animator.SetBool("isWalking", isWalking);
+            animator.SetBool("isRunning", isRunning);
+            animator.SetBool("isJumping", isJumping);
+            animator.SetBool("isAttacking", isAttacking);
+            animator.SetBool("isAttacked", isAttacked);
+            animator.SetBool("isDead", isDead);
+
+            // NEU: zusätzliche Animations-Flags
+            animator.SetBool("isCrouching", isCrouching);
+            animator.SetBool("isWalkingBackwards", isWalkingBackwards);
         }
 
         // Einmal-Flag am Ende zurücksetzen, damit der Animator exakt 1 Frame „IsAttacked“ erhält
