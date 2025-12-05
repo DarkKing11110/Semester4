@@ -66,12 +66,26 @@ public class PlayerBehaviour : MonoBehaviour
     [Tooltip("Animator am Spieler (wird automatisch gesucht, wenn leer).")]
     public Animator animator;
 
+    [Header("Crouch (Collider)")]
+    [Tooltip("Zielhöhe des CapsuleColliders im Ducken (lokale Einheiten).")]
+    public float crouchColliderHeight = 1.0f;
+    [Tooltip("Aufstehen verhindern, wenn oben kein Platz ist.")]
+    public bool preventStandUpIfObstructed = true;
+    [Tooltip("Layer, die das Aufstehen blockieren (z. B. Decken/Umgebung).")]
+    public LayerMask standUpObstructionMask = ~0;
+
     private Rigidbody rb;
     private Texture2D healthTexture;
     private Texture2D staminaTexture;
 
     // interne Kamera-Interpolation
     private Vector3 cameraSmoothVelocity;
+
+    // Collider/Crouch Caching
+    private CapsuleCollider capsule;
+    private float standColliderHeight;
+    private Vector3 standColliderCenter;
+    private bool capsuleCached;
 
     void Start()
     {
@@ -94,6 +108,22 @@ public class PlayerBehaviour : MonoBehaviour
         // Animator automatisch finden
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
+
+        // CapsuleCollider cachen (für Crouch)
+        capsule = GetComponent<CapsuleCollider>();
+        if (capsule != null)
+        {
+            standColliderHeight = capsule.height;
+            standColliderCenter = capsule.center;
+            capsuleCached = true;
+            // Sicherheitsklausel: crouch-Höhe nicht kleiner als 2*Radius
+            float minHeight = Mathf.Max(0.01f, capsule.radius * 2f + 0.01f);
+            if (crouchColliderHeight < minHeight) crouchColliderHeight = minHeight;
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerBehaviour] Kein CapsuleCollider gefunden. Crouch-Kollisionsanpassung ist deaktiviert.");
+        }
     }
 
     public void TakeDamage(int damage)
@@ -112,11 +142,12 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         HandleSprint();
+        HandleCrouch();       // <--- Crouch + Collider-Handling
         Move();
         Attack();
         HandleMouseLook();
         RegenerateStamina();
-        HandleAnimations(); // zentral wie der Sprint-Handler
+        HandleAnimations();   // zentral wie der Sprint-Handler
     }
 
     void HandleSprint()
@@ -131,6 +162,85 @@ public class PlayerBehaviour : MonoBehaviour
         else
         {
             isRunning = false;
+        }
+    }
+
+    // Eingabe, Collider-Resize und Headroom-Check
+    void HandleCrouch()
+    {
+        if (isDead) { SetCrouch(false); return; }
+
+        bool desiredCrouch = Input.GetKey(KeyCode.C);
+
+        // Versuche aufzustehen? Platz prüfen
+        if (isCrouching && !desiredCrouch && preventStandUpIfObstructed)
+        {
+            if (!HasHeadroomToStand())
+            {
+                desiredCrouch = true; // oben blockiert -> geduckt bleiben
+            }
+        }
+
+        if (desiredCrouch != isCrouching)
+        {
+            SetCrouch(desiredCrouch);
+        }
+    }
+
+    void SetCrouch(bool crouched)
+    {
+        isCrouching = crouched;
+
+        if (!capsuleCached || capsule == null) return;
+
+        float targetHeight = crouched ? crouchColliderHeight : standColliderHeight;
+        // Mindesthöhe absichern
+        float minHeight = Mathf.Max(0.01f, capsule.radius * 2f + 0.01f);
+        targetHeight = Mathf.Max(targetHeight, minHeight);
+
+        // Center so verschieben, dass die "Füße" am Boden bleiben.
+        Vector3 localAxis = GetLocalAxisFromDirection(capsule.direction);
+        Vector3 targetCenter = standColliderCenter + localAxis * ((targetHeight - standColliderHeight) * 0.5f);
+
+        capsule.height = targetHeight;
+        capsule.center = targetCenter;
+    }
+
+    bool HasHeadroomToStand()
+    {
+        if (!capsuleCached || capsule == null) return true;
+
+        // Prüfe geplante Stand-Konfiguration im Raum
+        Vector3 localAxis = GetLocalAxisFromDirection(capsule.direction);
+
+        // Stand-Center lokal/welt
+        Vector3 standCenterLocal = standColliderCenter;
+        Vector3 standCenterWorld = transform.TransformPoint(standCenterLocal);
+
+        Vector3 axisWorld = transform.TransformDirection(localAxis).normalized;
+
+        float standHeight = standColliderHeight;
+        float radius = capsule.radius;
+
+        // Endkappen-Mittelpunkte
+        float halfLine = Mathf.Max(0f, (standHeight * 0.5f) - radius);
+        Vector3 p1 = standCenterWorld + axisWorld * halfLine;
+        Vector3 p2 = standCenterWorld - axisWorld * halfLine;
+
+        // Prüfen, ob diese Kapsel kollidiert
+        bool blocked = Physics.CheckCapsule(p1, p2, radius, standUpObstructionMask, QueryTriggerInteraction.Ignore);
+        return !blocked;
+    }
+
+    // Hilfsfunktion: lokale Achse aus CapsuleCollider.direction
+    static Vector3 GetLocalAxisFromDirection(int direction)
+    {
+        switch (direction)
+        {
+            case 0: return Vector3.right;   // X
+            case 1: return Vector3.up;      // Y
+            case 2: return Vector3.forward; // Z
+            default: return Vector3.up;
         }
     }
 
@@ -155,7 +265,6 @@ public class PlayerBehaviour : MonoBehaviour
         cameraPitch -= mouseY;
         cameraPitch = Mathf.Clamp(cameraPitch, minPitch, maxPitch);
         
-
         if (cameraTransform != null)
         {
             // In First-Person die Kamera-Rotation direkt setzen.
@@ -189,8 +298,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (isRunning && canSprint && (moveVertical != 0 || moveHorizontal != 0))
             speed *= sprintMultiplier;
 
-        // Optional: Geschwindigkeit im Crouch reduzieren (nicht gefordert, daher auskommentiert)
-        // if (isCrouching) speed *= 0.5f;
+        // Optional: Geschwindigkeit im Crouch reduzieren (bei Bedarf aktivieren)
+        // if (isCrouching) speed *= 0.6f;
 
         Vector3 movement = (camForward * moveVertical + camRight * moveHorizontal).normalized * speed * Time.deltaTime;
         rb.MovePosition(transform.position + movement);
@@ -359,7 +468,7 @@ public class PlayerBehaviour : MonoBehaviour
             alignment = TextAnchor.MiddleCenter,
             normal = { textColor = Color.white }
         };
-        GUI.Label(new Rect(staminaX, staminaY, staminaBarWidth, staminaBarHeight), "Stamina", staminaStyle);
+        GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
     }
 }
 
