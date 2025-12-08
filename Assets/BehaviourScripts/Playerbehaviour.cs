@@ -87,6 +87,11 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 standColliderCenter;
     private bool capsuleCached;
 
+
+    //Visual
+    [SerializeField] private Transform visualTransform;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -307,7 +312,24 @@ public class PlayerBehaviour : MonoBehaviour
         // if (isCrouching) speed *= 0.6f;
 
         Vector3 movement = (camForward * moveVertical + camRight * moveHorizontal).normalized * speed * Time.deltaTime;
+      
         rb.MovePosition(transform.position + movement);
+
+
+        if (moveHorizontal > 0)
+        {
+            visualTransform.localRotation = Quaternion.Euler(0, 45, 0);
+        }
+        else if (moveHorizontal < 0) 
+        {
+            visualTransform.localRotation = Quaternion.Euler(0, -45, 0);
+
+        }
+        else
+        {
+            visualTransform.localRotation = new Quaternion(0,0,0,0);
+
+        }
 
         // isWalking wird zentral in HandleAnimations() abgeleitet
     }
