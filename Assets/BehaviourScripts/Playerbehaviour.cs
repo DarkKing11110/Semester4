@@ -152,8 +152,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     void HandleSprint()
     {
-        // Sprinten mit linker Shift-Taste
-        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
+        // Bewegungseingabe abfragen (rohe Achsen, kein Smoothing)
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        bool hasMoveInput = (new Vector2(h, v).sqrMagnitude > 0.0001f);
+
+        // Sprinten nur, wenn Shift gedrückt, Bewegungseingabe vorhanden und Stamina > 0
+        if (Input.GetKey(KeyCode.LeftShift) && hasMoveInput && canSprint)
         {
             isRunning = true;
             currentStamina -= staminaDrainRate * Time.deltaTime;
@@ -471,6 +476,12 @@ public class PlayerBehaviour : MonoBehaviour
         GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
     }
 }
+
+
+
+
+
+
 
 
 
