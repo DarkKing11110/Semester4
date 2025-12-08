@@ -240,7 +240,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1998179083}
   m_SourcePrefab: {fileID: 100100000, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
 --- !u!1 &18664409
 GameObject:
@@ -547,6 +550,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81f9e57db3a4a3a45812ec0000832421, type: 3}
   m_PrefabInstance: {fileID: 19312193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &32699967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
+  m_PrefabInstance: {fileID: 5267822}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &54121074 stripped
 Transform:
@@ -2398,15 +2406,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.124
+      value: -66.06
       objectReference: {fileID: 0}
     - target: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0035409927
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.166
+      value: -56.8
       objectReference: {fileID: 0}
     - target: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2440,6 +2448,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 8669263086909493573, guid: 452f973868357e544897106ec791203f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8815273419971456304, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_Name
       value: KaiRig_Base 1
@@ -2447,7 +2459,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8196022893448053096, guid: 452f973868357e544897106ec791203f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1906954640}
   m_SourcePrefab: {fileID: 100100000, guid: 452f973868357e544897106ec791203f, type: 3}
 --- !u!4 &285200142 stripped
 Transform:
@@ -8929,6 +8944,42 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
+--- !u!1 &1267966064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+  m_PrefabInstance: {fileID: 1561887390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1267966065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267966064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -136742528
+      Data2: 1280461385
+      Data3: 770077607
+      Data4: 102027301
+    Path: event:/Generator SmallOne 1.0
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1.6177943
+  OverrideMaxDistance: 20
 --- !u!4 &1272358601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
@@ -10366,7 +10417,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1267966065}
   m_SourcePrefab: {fileID: 100100000, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
 --- !u!1001 &1569793908
 PrefabInstance:
@@ -12935,6 +12989,25 @@ Transform:
   - {fileID: 982607690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1906954635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8196022893448053096, guid: 452f973868357e544897106ec791203f, type: 3}
+  m_PrefabInstance: {fileID: 282144176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1906954640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906954635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1001 &1911999628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13463,6 +13536,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
   m_PrefabInstance: {fileID: 5267822}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1998179083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32699967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -791464063
+      Data2: 1260863257
+      Data3: -1444828750
+      Data4: -34668728
+    Path: event:/genereator big one 1.0 for fmod
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 0
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 3.8610115
+  OverrideMaxDistance: 20
 --- !u!1001 &2004747236
 PrefabInstance:
   m_ObjectHideFlags: 0
