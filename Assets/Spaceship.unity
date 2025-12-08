@@ -5017,7 +5017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useThirdPerson: 1
   cameraSmoothTime: 0.05
-  thirdPersonDistance: 2
+  thirdPersonDistance: 4
   thirdPersonSideOffset: 0.5
   thirdPersonMinDistance: 0.3
   cameraCollisionBuffer: 0.1
@@ -5029,10 +5029,12 @@ MonoBehaviour:
   mouseSensitivityPitch: 2
   maxPitch: 90
   minPitch: -90
-  moveSpeed: 15
-  sprintMultiplier: 2
+  moveSpeed: 5
+  sprintMultiplier: 3
   isWalking: 0
   isJumping: 0
+  isCrouching: 0
+  isWalkingBackwards: 0
   attackRange: 2
   attackDamage: 10
   isAttacking: 0
@@ -5048,6 +5050,11 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   animator: {fileID: 1845451825}
+  crouchColliderHeight: 1
+  preventStandUpIfObstructed: 1
+  standUpObstructionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!54 &1845451827
 Rigidbody:
   m_ObjectHideFlags: 0
