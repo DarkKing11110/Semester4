@@ -2396,6 +2396,18 @@ PrefabInstance:
       propertyPath: m_AllowDynamicResolution
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7283798788336987775, guid: 452f973868357e544897106ec791203f, type: 3}
+      propertyPath: CameraHeight
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283798788336987775, guid: 452f973868357e544897106ec791203f, type: 3}
+      propertyPath: sprintMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283798788336987775, guid: 452f973868357e544897106ec791203f, type: 3}
+      propertyPath: thirdPersonDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.124
