@@ -2463,6 +2463,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8196022893448053096, guid: 452f973868357e544897106ec791203f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1906954640}
+    - targetCorrespondingSourceObject: {fileID: 8196022893448053096, guid: 452f973868357e544897106ec791203f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1906954642}
   m_SourcePrefab: {fileID: 100100000, guid: 452f973868357e544897106ec791203f, type: 3}
 --- !u!4 &285200142 stripped
 Transform:
@@ -13008,6 +13011,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 0}
+--- !u!114 &1906954642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906954635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1026522533
+      Data2: 1319366270
+      Data3: 78890121
+      Data4: 1620613369
+    Path: event:/Ambiences#/Base Ambience
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1911999628
 PrefabInstance:
   m_ObjectHideFlags: 0

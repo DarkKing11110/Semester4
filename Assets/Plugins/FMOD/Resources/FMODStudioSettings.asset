@@ -625,6 +625,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Ambiences
   - Bank A
   - Generator
   BanksToLoad: []
@@ -639,7 +640,7 @@ MonoBehaviour:
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131857
-  HideSetupWizard: 0
+  HideSetupWizard: 1
   LastEventReferenceScanVersion: 131857
   Platforms:
   - {fileID: -8003400334242565249}
