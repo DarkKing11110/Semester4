@@ -23,7 +23,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 8693838281143836379}
   MinDistance: 1
   MaxDistance: 20
   Length: 240000
@@ -82,7 +83,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 596126568392071221}
   cacheVersion: 131857
-  cacheTime: 639008788237978600
+  cacheTime: 639009885562489961
   SerializableEventsDict:
   - key: event:/Ambiences#/Base Ambience
     index: 0
@@ -105,10 +106,10 @@ MonoBehaviour:
   Path: ../../Fmod For N.E.S.T/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639008788217298263
+  lastModified: 639009844045107201
   FileSizes:
   - Name: Desktop
-    Value: 1058
+    Value: 1126
   Exists: 1
 --- !u!114 &3051574470773681237
 MonoBehaviour:
@@ -125,7 +126,7 @@ MonoBehaviour:
   Path: ../../Fmod For N.E.S.T/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639008788217294184
+  lastModified: 639009844045100450
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -165,10 +166,10 @@ MonoBehaviour:
   Path: ../../Fmod For N.E.S.T/Build/Desktop/Ambiences.bank
   Name: Ambiences
   StudioPath: bank:/Ambiences
-  lastModified: 639008788237978600
+  lastModified: 639009885562489961
   FileSizes:
   - Name: Desktop
-    Value: 2712064
+    Value: 8057568
   Exists: 1
 --- !u!114 &6871493165283001325
 MonoBehaviour:
@@ -216,4 +217,28 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 529760
+  Exists: 1
+--- !u!114 &8693838281143836379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 'parameter:/Base Ambience/Activate Generator add on '
+  m_EditorClassIdentifier: 
+  Name: 'Activate Generator add on '
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3407705599
+    data2: 1905814442
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
