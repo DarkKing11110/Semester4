@@ -28,6 +28,113 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 240000
+--- !u!114 &-6514352888526261427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Fmod Session/Fmod For N.E.S.T/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639010968098979868
+  FileSizes:
+  - Name: Desktop
+    Value: 1058
+  Exists: 1
+--- !u!114 &-3893565124943983976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Fmod Session/Fmod For N.E.S.T/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639010900242512523
+  FileSizes:
+  - Name: Desktop
+    Value: 1074
+  Exists: 1
+--- !u!114 &-3758873473757473758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Generator.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Fmod Session/Fmod For N.E.S.T/Build/Desktop/Generator.bank
+  Name: Generator
+  StudioPath: bank:/Generator
+  lastModified: 639010968098979868
+  FileSizes:
+  - Name: Desktop
+    Value: 529760
+  Exists: 1
+--- !u!114 &-2066607494882268418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences#/Base Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences#/Base Ambience
+  Guid:
+    Data1: -1026522533
+    Data2: 1319366270
+    Data3: 78890121
+    Data4: 1620613369
+  Banks:
+  - {fileID: 4448139485411731586}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 240000
+--- !u!114 &-2052761472300494974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Bank A.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Fmod Session/Fmod For N.E.S.T/Build/Desktop/Bank A.bank
+  Name: Bank A
+  StudioPath: bank:/Bank A
+  lastModified: 639010900238497735
+  FileSizes:
+  - Name: Desktop
+    Value: 506
+  Exists: 1
 --- !u!114 &-1570900121089430713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,22 +175,22 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 596126568392071221}
-  - {fileID: 3051574470773681237}
-  - {fileID: 4350534755006328360}
-  - {fileID: 6988851739248516093}
-  - {fileID: 4574368931239628340}
+  - {fileID: -6514352888526261427}
+  - {fileID: 4448139485411731586}
+  - {fileID: -2052761472300494974}
+  - {fileID: -3758873473757473758}
+  - {fileID: -3893565124943983976}
   EditorEvents:
-  - {fileID: -8626162585091400478}
-  - {fileID: -1570900121089430713}
-  - {fileID: 6871493165283001325}
+  - {fileID: -2066607494882268418}
+  - {fileID: 5221204367738826062}
+  - {fileID: 8053136131039504021}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 3051574470773681237}
+  - {fileID: -3893565124943983976}
   StringsBanks:
-  - {fileID: 596126568392071221}
+  - {fileID: -6514352888526261427}
   cacheVersion: 131857
-  cacheTime: 639009885562489961
+  cacheTime: 639010968098979868
   SerializableEventsDict:
   - key: event:/Ambiences#/Base Ambience
     index: 0
@@ -151,6 +258,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 506
   Exists: 1
+--- !u!114 &4448139485411731586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambiences.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Fmod Session/Fmod For N.E.S.T/Build/Desktop/Ambiences.bank
+  Name: Ambiences
+  StudioPath: bank:/Ambiences
+  lastModified: 639010968098945966
+  FileSizes:
+  - Name: Desktop
+    Value: 2712064
+  Exists: 1
 --- !u!114 &4574368931239628340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +298,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 8057568
   Exists: 1
+--- !u!114 &5221204367738826062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Generator/Generator SmallOne 1.0
+  m_EditorClassIdentifier: 
+  Path: event:/Generator/Generator SmallOne 1.0
+  Guid:
+    Data1: -136742528
+    Data2: 1280461385
+    Data3: 770077607
+    Data4: 102027301
+  Banks:
+  - {fileID: -3758873473757473758}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14000
 --- !u!114 &6871493165283001325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +372,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 529760
   Exists: 1
+--- !u!114 &8053136131039504021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Generator/Genereator big one 1.0 for fmod
+  m_EditorClassIdentifier: 
+  Path: event:/Generator/Genereator big one 1.0 for fmod
+  Guid:
+    Data1: -791464063
+    Data2: 1260863257
+    Data3: -1444828750
+    Data4: -34668728
+  Banks:
+  - {fileID: -3758873473757473758}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 29484
 --- !u!114 &8693838281143836379
 MonoBehaviour:
   m_ObjectHideFlags: 0
