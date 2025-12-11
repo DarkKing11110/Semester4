@@ -1381,180 +1381,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
   m_PrefabInstance: {fileID: 1561887390}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &173966862
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 173966865}
-  - component: {fileID: 173966864}
-  - component: {fileID: 173966863}
-  - component: {fileID: 173966867}
-  - component: {fileID: 173966866}
-  - component: {fileID: 173966868}
-  - component: {fileID: 173966869}
-  - component: {fileID: 173966870}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &173966863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 109966b9e291852439c9c8a02251ccb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &173966864
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 17.414658, y: 5.1886673, z: 11.643669}
-  m_Center: {x: -0.12414551, y: 2.0943336, z: -5.3218346}
---- !u!4 &173966865
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59, y: 0, z: -51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &173966866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: Player
-  Emitters:
-  - Target: {fileID: 1906954647}
-    Params:
-    - Name: 'ambience parameter '
-      Value: 0
-  - Target: {fileID: 1906954642}
-    Params:
-    - Name: 'Activate Generator add on '
-      Value: 0
-    - Name: 'ambience parameter '
-      Value: 0
-  TriggerEvent: 4
---- !u!114 &173966867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: Player
-  Emitters:
-  - Target: {fileID: 1906954647}
-    Params:
-    - Name: 'ambience parameter '
-      Value: 1
-  - Target: {fileID: 1906954642}
-    Params:
-    - Name: 'Activate Generator add on '
-      Value: 0.833
-    - Name: 'ambience parameter '
-      Value: 0.14
-  TriggerEvent: 3
---- !u!114 &173966868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11f23b04f53aa4f1caf56bfd818a57be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameterName: Activate Generator add on
-  insideValue: 0.863
-  outsideValue: 0
-  applyOnExit: 1
-  useEventEmitter: 1
-  emitter: {fileID: 1906954642}
-  playerTag: Player
-  debugLogs: 1
---- !u!114 &173966869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c47f2955caa147a0a37d90a67ca1689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameterName: Activate Generator add on
-  targetValue: 1
-  useEventEmitter: 1
-  emitter: {fileID: 1906954642}
-  playerTag: Player
---- !u!114 &173966870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173966862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51d7817e89ad1794191c1b226b94e8ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 1906954649}
-  playerTag: Player
-  enterValue: 0.862
-  resetOnExit: 1
 --- !u!1001 &183845521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2277,14 +2103,17 @@ GameObject:
   - component: {fileID: 260887050}
   - component: {fileID: 260887049}
   - component: {fileID: 260887048}
-  - component: {fileID: 260887056}
+  - component: {fileID: 260887052}
+  - component: {fileID: 260887053}
+  - component: {fileID: 260887054}
+  - component: {fileID: 260887055}
   m_Layer: 0
   m_Name: Generator event triggerer
   m_TagString: ambience collider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &260887048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2374,7 +2203,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &260887056
+--- !u!114 &260887052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2383,9 +2212,84 @@ MonoBehaviour:
   m_GameObject: {fileID: 260887047}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 109966b9e291852439c9c8a02251ccb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollisionTag: Player
+  Emitters:
+  - Target: {fileID: 1906954647}
+    Params:
+    - Name: 'ambience parameter '
+      Value: 1
+  - Target: {fileID: 1906954642}
+    Params:
+    - Name: 'Activate Generator add on '
+      Value: 0.833
+    - Name: 'ambience parameter '
+      Value: 0.14
+  TriggerEvent: 3
+--- !u!114 &260887053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260887047}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  Emitters:
+  - Target: {fileID: 1906954647}
+    Params:
+    - Name: 'ambience parameter '
+      Value: 0
+  - Target: {fileID: 1906954642}
+    Params:
+    - Name: 'Activate Generator add on '
+      Value: 0
+    - Name: 'ambience parameter '
+      Value: 0
+  TriggerEvent: 4
+--- !u!114 &260887054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260887047}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c47f2955caa147a0a37d90a67ca1689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterName: Activate Generator add on
+  targetValue: 1
+  useEventEmitter: 1
+  emitter: {fileID: 1906954642}
+  playerTag: Player
+--- !u!114 &260887055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260887047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f23b04f53aa4f1caf56bfd818a57be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterName: Activate Generator add on
+  insideValue: 0.863
+  outsideValue: 0
+  applyOnExit: 1
+  useEventEmitter: 0
+  emitter: {fileID: 1906954642}
+  playerTag: Player
+  debugLogs: 1
 --- !u!4 &264317885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
@@ -2705,7 +2609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -64.43
+      value: -66.06
       objectReference: {fileID: 0}
     - target: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2763,8 +2667,7 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ambience collider
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8669263086909493573, guid: 452f973868357e544897106ec791203f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2789,9 +2692,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8196022893448053096, guid: 452f973868357e544897106ec791203f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1906954647}
-    - targetCorrespondingSourceObject: {fileID: 8196022893448053096, guid: 452f973868357e544897106ec791203f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1906954649}
   m_SourcePrefab: {fileID: 100100000, guid: 452f973868357e544897106ec791203f, type: 3}
 --- !u!4 &285200142 stripped
 Transform:
@@ -9285,7 +9185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267966064}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
@@ -13420,11 +13320,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 112352941
-      Data2: 1334223704
-      Data3: 225640378
-      Data4: 1845999098
-    Path: event:/Ambiences#/Basics
+      Data1: -1026522533
+      Data2: 1319366270
+      Data3: 78890121
+      Data4: 1620613369
+    Path: event:/Ambiences#/Base Ambience
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 0
@@ -13432,7 +13332,9 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
-  Params: []
+  Params:
+  - Name: 'ambience parameter '
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
@@ -13481,8 +13383,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: generator poi
   Emitters:
-  - Target: {fileID: 0}
-    Params: []
   - Target: {fileID: 1906954647}
     Params: []
   - Target: {fileID: 1906954642}
@@ -13492,22 +13392,6 @@ MonoBehaviour:
     - Name: 'ambience parameter '
       Value: 0.138
   TriggerEvent: 3
---- !u!114 &1906954649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906954635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebc35ea4a6d15d4380c603f1f4ed8d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundEmitter: {fileID: 1906954642}
-  roomParameterName: Activate Generator add on
-  defaultRoomValue: 0
-  debugLogs: 1
 --- !u!1001 &1911999628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14043,7 +13927,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32699967}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
@@ -15126,4 +15010,3 @@ SceneRoots:
   - {fileID: 1226762394}
   - {fileID: 282144176}
   - {fileID: 260887051}
-  - {fileID: 173966865}

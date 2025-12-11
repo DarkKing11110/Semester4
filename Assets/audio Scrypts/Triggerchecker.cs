@@ -64,7 +64,7 @@ public class Triggerchecker : MonoBehaviour
             {
                 instance.setParameterByName(parameterName, value);
                 if (debugLogs) Debug.Log($"Triggerchecker: Set instance parameter {parameterName}={value} on {name}");
-                //return;
+                return;
             }
 
             Debug.LogWarning($"Triggerchecker: Emitter instance still not valid on {name}. Falling back to global parameter.");
