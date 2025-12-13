@@ -32,12 +32,21 @@ public class PlayerBehaviour : MonoBehaviour
     public float minPitch = -90f;            // Minimale Neigung nach unten
 
     [Header("Movement")]
-    public float moveSpeed = 5f; // Bewegungsgeschwindigkeit des Spielers
-    public float sprintMultiplier = 1.7f; // Sprint-Geschwindigkeit
+    public float moveSpeed = 5f;
+    public float sprintMultiplier = 1.7f;
+    [Tooltip("Multiplikator für die Bewegungsgeschwindigkeit im Crouch (z.B. 0.6 = 60%).")]
+    public float crouchSpeedMultiplier = 0.6f;
     public bool isWalking;
     public bool isJumping;
-    public bool isCrouching;              // NEU: Crouch-Status
-    public bool isWalkingBackwards;       // NEU: Rückwärtslauf-Status
+    public bool isCrouching;
+    public bool isWalkingBackwards;
+
+    // NEU: Strafe-Flags
+    [Header("Strafing")]
+    public bool isStrafeForward;
+    public bool isStrafeBackward;
+    public bool isStrafeLeft;
+    public bool isStrafeRight;
 
     [Header("Combat")]
     public float attackRange = 2f; // Angriffsreichweite des Spielers
@@ -142,7 +151,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         HandleSprint();
-        HandleCrouch();       // <--- Crouch + Collider-Handling
+        HandleCrouch();       // Crouch (Toggle) + Collider-Handling
         Move();
         Attack();
         HandleMouseLook();
@@ -157,8 +166,12 @@ public class PlayerBehaviour : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         bool hasMoveInput = (new Vector2(h, v).sqrMagnitude > 0.0001f);
 
-        // Sprinten nur, wenn Shift gedrückt, Bewegungseingabe vorhanden und Stamina > 0
-        if (Input.GetKey(KeyCode.LeftShift) && hasMoveInput && canSprint)
+        // Sprinten nur, wenn:
+        // - Shift gedrückt
+        // - Bewegungseingabe vorhanden
+        // - Stamina > 0
+        // - NICHT crouching
+        if (!isCrouching && Input.GetKey(KeyCode.LeftShift) && hasMoveInput && canSprint)
         {
             isRunning = true;
             currentStamina -= staminaDrainRate * Time.deltaTime;
@@ -170,25 +183,29 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    // Eingabe, Collider-Resize und Headroom-Check
+    // Toggle-Eingabe, Collider-Resize und Headroom-Check
     void HandleCrouch()
     {
         if (isDead) { SetCrouch(false); return; }
 
-        bool desiredCrouch = Input.GetKey(KeyCode.C);
-
-        // Versuche aufzustehen? Platz prüfen
-        if (isCrouching && !desiredCrouch && preventStandUpIfObstructed)
+        // Umschalten bei Tastendruck (nicht halten)
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (!HasHeadroomToStand())
+            bool wantCrouch = !isCrouching;
+
+            // Wenn wir aufstehen möchten, optional Headroom prüfen
+            if (!wantCrouch && preventStandUpIfObstructed)
             {
-                desiredCrouch = true; // oben blockiert -> geduckt bleiben
+                if (!HasHeadroomToStand())
+                {
+                    wantCrouch = true; // oben blockiert -> geduckt bleiben
+                }
             }
-        }
 
-        if (desiredCrouch != isCrouching)
-        {
-            SetCrouch(desiredCrouch);
+            if (wantCrouch != isCrouching)
+            {
+                SetCrouch(wantCrouch);
+            }
         }
     }
 
@@ -300,11 +317,14 @@ public class PlayerBehaviour : MonoBehaviour
         camRight.Normalize();
 
         float speed = moveSpeed;
+
+        // Sprint nur bei tatsächlichem Input (bereits in HandleSprint geprüft), hier reicht Status
         if (isRunning && canSprint && (moveVertical != 0 || moveHorizontal != 0))
             speed *= sprintMultiplier;
 
-        // Optional: Geschwindigkeit im Crouch reduzieren (bei Bedarf aktivieren)
-        // if (isCrouching) speed *= 0.6f;
+        // Geschwindigkeit im Crouch reduzieren (Editor-Wert)
+        if (isCrouching)
+            speed *= Mathf.Clamp(crouchSpeedMultiplier, 0.1f, 1f);
 
         Vector3 movement = (camForward * moveVertical + camRight * moveHorizontal).normalized * speed * Time.deltaTime;
         rb.MovePosition(transform.position + movement);
@@ -332,15 +352,31 @@ public class PlayerBehaviour : MonoBehaviour
     // Zentraler Animations-Handler (ohne Hashes, ohne Timer)
     void HandleAnimations()
     {
-        // Bewegung aus Input ableiten (wie Sprint-Handler: pro Frame auslesen)
+        // Bewegung aus Input ableiten relativ zur Kamera (wie Move()-Logik)
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         bool hasMoveInput = new Vector2(h, v).sqrMagnitude > 0.0001f;
 
-        // NEU: Crouch mit Taste 'C' (gedrückt halten)
-        isCrouching = Input.GetKey(KeyCode.C);
+        // Basis-Vektoren (flach, Y=0)
+        Vector3 camFwd = cameraTransform != null ? cameraTransform.forward : transform.forward;
+        Vector3 camRight = cameraTransform != null ? cameraTransform.right : transform.right;
+        camFwd.y = 0f; camRight.y = 0f;
+        camFwd.Normalize(); camRight.Normalize();
 
-        // NEU: Rückwärtslaufen (v < 0 bedeutet Input nach hinten relativ zur Kameraausrichtung)
+        // Eingaberichtung im Welt-Raum (entspricht Move()) – nur für Richtungsermittlung
+        Vector3 inputDir = (camFwd * v + camRight * h);
+        inputDir.y = 0f;
+        Vector3 fwd = transform.forward; fwd.y = 0f; fwd.Normalize();
+        Vector3 right = transform.right; right.y = 0f; right.Normalize();
+
+        // Komponenten entlang Spieler-Achsen
+        float forwardComp = Vector3.Dot(inputDir.normalized, fwd);   // >0 vorwärts, <0 rückwärts
+        float rightComp   = Vector3.Dot(inputDir.normalized, right); // >0 rechts, <0 links
+
+        // Toleranzen, um kleine Inputs zu ignorieren
+        const float dirThreshold = 0.35f;
+
+        // Rückwärtslauf-Flag wie bisher (zusätzlich zu StrafeBackward)
         isWalkingBackwards = v < -0.01f && hasMoveInput;
 
         if (isDead)
@@ -352,17 +388,31 @@ public class PlayerBehaviour : MonoBehaviour
             isAttacked = false;
             isCrouching = false;
             isWalkingBackwards = false;
+
+            // Strafe-Flags und Idle zurücksetzen
+            SetIdleFlags(false, false);
+            SetStrafeFlags(false, false, false, false);
         }
         else
         {
-            // „Gehen“: Bewegung vorhanden, nicht rennen
-            isWalking = hasMoveInput && !isRunning;
+            // „Gehen“: Bewegung vorhanden, nicht rennen und nicht rückwärts laufen
+            isWalking = hasMoveInput && !isRunning && !isWalkingBackwards;
 
             // Angriff so lange wie Maustaste gehalten wird
             isAttacking = Input.GetMouseButton(1);
 
-            // „getroffen“ als 1-Frame-Impuls behandeln
-            // (TakeDamage setzt isAttacked = true; hier wird sie nach einem Frame wieder gelöscht)
+            // Idle-Flags
+            bool idleStanding = !hasMoveInput && !isCrouching;
+            bool idleCrouching = !hasMoveInput && isCrouching;
+            SetIdleFlags(idleStanding, idleCrouching);
+
+            // Strafe-Flags (exklusiv pro Achse, Kombinationen sind möglich: z.B. vorwärts+links)
+            bool forward = hasMoveInput && forwardComp >  dirThreshold;
+            bool backward= hasMoveInput && forwardComp < -dirThreshold;
+            bool rightStrafe = hasMoveInput && rightComp   >  dirThreshold;
+            bool leftStrafe  = hasMoveInput && rightComp   < -dirThreshold;
+
+            SetStrafeFlags(forward, backward, leftStrafe, rightStrafe);
         }
 
         if (animator != null)
@@ -373,15 +423,35 @@ public class PlayerBehaviour : MonoBehaviour
             animator.SetBool("isAttacking", isAttacking);
             animator.SetBool("isAttacked", isAttacked);
             animator.SetBool("isDead", isDead);
-
-            // NEU: zusätzliche Animations-Flags
             animator.SetBool("isCrouching", isCrouching);
             animator.SetBool("isWalkingBackwards", isWalkingBackwards);
+
+            // Strafe-Parameter
+            animator.SetBool("isStrafeForward",   isStrafeForward);
+            animator.SetBool("isStrafeBackward",  isStrafeBackward);
+            animator.SetBool("isStrafeLeft",      isStrafeLeft);
+            animator.SetBool("isStrafeRight",     isStrafeRight);
         }
 
-        // Einmal-Flag am Ende zurücksetzen, damit der Animator exakt 1 Frame „IsAttacked“ erhält
+        // Einmal-Flag am Ende zurücksetzen, damit der Animator exakt 1 Frame „isAttacked“ erhält
         if (isAttacked && !isDead)
             isAttacked = false;
+    }
+
+    private void SetIdleFlags(bool idleStanding, bool idleCrouching)
+    {
+        if (animator == null) return;
+        animator.SetBool("isIdleStanding", idleStanding);
+        animator.SetBool("isIdleCrouching", idleCrouching);
+    }
+
+    // NEU: Hilfsmethode für Strafe-Flags
+    private void SetStrafeFlags(bool forward, bool backward, bool left, bool right)
+    {
+        isStrafeForward  = forward;
+        isStrafeBackward = backward;
+        isStrafeLeft     = left;
+        isStrafeRight    = right;
     }
 
     void UpdateCameraPosition()
@@ -476,6 +546,48 @@ public class PlayerBehaviour : MonoBehaviour
         GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
