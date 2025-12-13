@@ -32,14 +32,21 @@ public class PlayerBehaviour : MonoBehaviour
     public float minPitch = -90f;            // Minimale Neigung nach unten
 
     [Header("Movement")]
-    public float moveSpeed = 5f; // Bewegungsgeschwindigkeit des Spielers
-    public float sprintMultiplier = 1.7f; // Sprint-Geschwindigkeit
+    public float moveSpeed = 5f;
+    public float sprintMultiplier = 1.7f;
     [Tooltip("Multiplikator für die Bewegungsgeschwindigkeit im Crouch (z.B. 0.6 = 60%).")]
     public float crouchSpeedMultiplier = 0.6f;
     public bool isWalking;
     public bool isJumping;
-    public bool isCrouching;              // Crouch-Status (Toggle)
-    public bool isWalkingBackwards;       // Rückwärtslauf-Status
+    public bool isCrouching;
+    public bool isWalkingBackwards;
+
+    // NEU: Strafe-Flags
+    [Header("Strafing")]
+    public bool isStrafeForward;
+    public bool isStrafeBackward;
+    public bool isStrafeLeft;
+    public bool isStrafeRight;
 
     [Header("Combat")]
     public float attackRange = 2f; // Angriffsreichweite des Spielers
@@ -345,12 +352,31 @@ public class PlayerBehaviour : MonoBehaviour
     // Zentraler Animations-Handler (ohne Hashes, ohne Timer)
     void HandleAnimations()
     {
-        // Bewegung aus Input ableiten (wie Sprint-Handler: pro Frame auslesen)
+        // Bewegung aus Input ableiten relativ zur Kamera (wie Move()-Logik)
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         bool hasMoveInput = new Vector2(h, v).sqrMagnitude > 0.0001f;
 
-        // Rückwärtslaufen (v < 0 bedeutet Input nach hinten relativ zur Kameraausrichtung)
+        // Basis-Vektoren (flach, Y=0)
+        Vector3 camFwd = cameraTransform != null ? cameraTransform.forward : transform.forward;
+        Vector3 camRight = cameraTransform != null ? cameraTransform.right : transform.right;
+        camFwd.y = 0f; camRight.y = 0f;
+        camFwd.Normalize(); camRight.Normalize();
+
+        // Eingaberichtung im Welt-Raum (entspricht Move()) – nur für Richtungsermittlung
+        Vector3 inputDir = (camFwd * v + camRight * h);
+        inputDir.y = 0f;
+        Vector3 fwd = transform.forward; fwd.y = 0f; fwd.Normalize();
+        Vector3 right = transform.right; right.y = 0f; right.Normalize();
+
+        // Komponenten entlang Spieler-Achsen
+        float forwardComp = Vector3.Dot(inputDir.normalized, fwd);   // >0 vorwärts, <0 rückwärts
+        float rightComp   = Vector3.Dot(inputDir.normalized, right); // >0 rechts, <0 links
+
+        // Toleranzen, um kleine Inputs zu ignorieren
+        const float dirThreshold = 0.35f;
+
+        // Rückwärtslauf-Flag wie bisher (zusätzlich zu StrafeBackward)
         isWalkingBackwards = v < -0.01f && hasMoveInput;
 
         if (isDead)
@@ -363,21 +389,30 @@ public class PlayerBehaviour : MonoBehaviour
             isCrouching = false;
             isWalkingBackwards = false;
 
-            // Idle-States bei Tod deaktivieren
+            // Strafe-Flags und Idle zurücksetzen
             SetIdleFlags(false, false);
+            SetStrafeFlags(false, false, false, false);
         }
         else
         {
-            // „Gehen“: Bewegung vorhanden, nicht rennen
-            isWalking = hasMoveInput && !isRunning;
+            // „Gehen“: Bewegung vorhanden, nicht rennen und nicht rückwärts laufen
+            isWalking = hasMoveInput && !isRunning && !isWalkingBackwards;
 
             // Angriff so lange wie Maustaste gehalten wird
             isAttacking = Input.GetMouseButton(1);
 
-            // Idle: keine Bewegungseingabe
+            // Idle-Flags
             bool idleStanding = !hasMoveInput && !isCrouching;
             bool idleCrouching = !hasMoveInput && isCrouching;
             SetIdleFlags(idleStanding, idleCrouching);
+
+            // Strafe-Flags (exklusiv pro Achse, Kombinationen sind möglich: z.B. vorwärts+links)
+            bool forward = hasMoveInput && forwardComp >  dirThreshold;
+            bool backward= hasMoveInput && forwardComp < -dirThreshold;
+            bool rightStrafe = hasMoveInput && rightComp   >  dirThreshold;
+            bool leftStrafe  = hasMoveInput && rightComp   < -dirThreshold;
+
+            SetStrafeFlags(forward, backward, leftStrafe, rightStrafe);
         }
 
         if (animator != null)
@@ -388,11 +423,14 @@ public class PlayerBehaviour : MonoBehaviour
             animator.SetBool("isAttacking", isAttacking);
             animator.SetBool("isAttacked", isAttacked);
             animator.SetBool("isDead", isDead);
-
-            // zusätzliche Animations-Flags
             animator.SetBool("isCrouching", isCrouching);
             animator.SetBool("isWalkingBackwards", isWalkingBackwards);
-            // Idle-Flags werden in SetIdleFlags gesetzt
+
+            // Strafe-Parameter
+            animator.SetBool("isStrafeForward",   isStrafeForward);
+            animator.SetBool("isStrafeBackward",  isStrafeBackward);
+            animator.SetBool("isStrafeLeft",      isStrafeLeft);
+            animator.SetBool("isStrafeRight",     isStrafeRight);
         }
 
         // Einmal-Flag am Ende zurücksetzen, damit der Animator exakt 1 Frame „isAttacked“ erhält
@@ -400,14 +438,20 @@ public class PlayerBehaviour : MonoBehaviour
             isAttacked = false;
     }
 
-    // Hilfsmethode: setzt Idle-Flags konsistent und exklusiv
     private void SetIdleFlags(bool idleStanding, bool idleCrouching)
     {
         if (animator == null) return;
-
-        // Exklusivität: nur einer der Idle-States aktiv
         animator.SetBool("isIdleStanding", idleStanding);
         animator.SetBool("isIdleCrouching", idleCrouching);
+    }
+
+    // NEU: Hilfsmethode für Strafe-Flags
+    private void SetStrafeFlags(bool forward, bool backward, bool left, bool right)
+    {
+        isStrafeForward  = forward;
+        isStrafeBackward = backward;
+        isStrafeLeft     = left;
+        isStrafeRight    = right;
     }
 
     void UpdateCameraPosition()
@@ -502,6 +546,30 @@ public class PlayerBehaviour : MonoBehaviour
         GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
