@@ -138,7 +138,7 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
-    - _sheenintensity: 1
+    - _sheenintensity: 0.416
     m_Colors:
     - _DetailMap_Color: {r: 0.27672946, g: 0.03567895, b: 0.03567895, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
