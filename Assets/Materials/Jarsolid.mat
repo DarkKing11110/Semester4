@@ -97,7 +97,7 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
     - _DstBlend2: 0
-    - _Emission_Strength: 10
+    - _Emission_Strength: 100000
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
@@ -142,6 +142,6 @@ Material:
     - _DetailMap_Color: {r: 0.27672946, g: 0.03567895, b: 0.03567895, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Emission_Color: {r: 0.0674172, g: 0.9062284, b: 0.95283014, a: 0}
+    - _Emission_Color: {r: 0.52587163, g: 0.9529412, b: 0.066666685, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
