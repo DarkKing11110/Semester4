@@ -14,6 +14,7 @@ Material:
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _ENABLE_FOG_ON_TRANSPARENT
+  - _MATERIAL_FEATURE_CLEAR_COAT
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -33,6 +34,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _ParallaxMapping_d8f0a1be49854363821a220d87a30e28_Heightmap_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: ee2116f28d94b3e4089f1ffefe569e30, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_498e334be9cb4db48a917cfc7c259d8c_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3ab97a93ba3f2a74bb68401efecf9c64, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_d9c15f7464d544f6b7022b86faaa6ba7_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: ee2116f28d94b3e4089f1ffefe569e30, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_fe6ba95d37e54c05b515c026c0cca909_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 429761da08477344a8525eba39c49a07, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -56,10 +69,13 @@ Material:
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
     - _BlendMode: 0
+    - _BoubleTile: 6.27
+    - _Bublespeed: -2.26
+    - _ClearCoatEnabled: 1
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
-    - _Depth: 241
+    - _Depth: 80
     - _DepthOffsetEnable: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
@@ -73,6 +89,7 @@ Material:
     - _MaterialTypeMask: 2
     - _Midpoint: 0
     - _OpaqueCullMode: 2
+    - _Paralax: 24.9
     - _PerPixelSorting: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -109,6 +126,7 @@ Material:
     - _ZWrite: 0
     - _test: 0
     m_Colors:
+    - _Bublecolor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
