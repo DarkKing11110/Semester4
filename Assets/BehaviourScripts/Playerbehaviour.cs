@@ -23,12 +23,17 @@ public class PlayerBehaviour : MonoBehaviour
     public float cameraCollisionRadius = 0.2f;
     [Tooltip("Layer, die Kamera-Kollisionen blockieren.")]
     public LayerMask cameraObstructionMask = ~0;
+    [Tooltip("Glättung der Kameradrehung (Yaw) in Third-Person.")]
+    public float thirdPersonYawSmoothTime = 0.12f;
 
     [Header("Look")]
-    public float mouseSensitivityYaw = 2f;   // Drehgeschwindigkeit horizontal
-    public float mouseSensitivityPitch = 2f; // Drehgeschwindigkeit vertikal
-    private float cameraPitch = 0f;          // Aktueller Pitch-Winkel der Kamera
-    public float maxPitch = 90f;             // Maximale Neigung nach oben/unten
+    public float mouseSensitivityYaw = 2f;
+    public float mouseSensitivityPitch = 2f;
+    private float cameraPitch = 0f;
+    private float cameraYaw = 0f; // Entkoppelter Kamera-Yaw (Ziel)
+    private float cameraYawSmoothed = 0f; // Tatsächlich verwendeter geglätteter Yaw
+    private float cameraYawVelocity = 0f; // interne Yaw-Geschwindigkeit für SmoothDampAngle
+    public float maxPitch = 90f;
     public float minPitch = -90f;            // Minimale Neigung nach unten
 
     [Header("Movement")]
@@ -36,6 +41,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float sprintMultiplier = 1.7f;
     [Tooltip("Multiplikator für die Bewegungsgeschwindigkeit im Crouch (z.B. 0.6 = 60%).")]
     public float crouchSpeedMultiplier = 0.6f;
+    [Tooltip("Wie schnell der Charakter zur Bewegungsrichtung dreht (Grad/Sekunde).")]
+    public float turnSpeed = 540f;
     public bool isWalking;
     public bool isJumping;
     public bool isCrouching;
@@ -50,7 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("Combat")]
     public float attackRange = 2f; // Angriffsreichweite des Spielers
-    public int attackDamage = 10; // Angriffsschaden des Spielers
+    public int attackDamage = 10; // Angriffsschaden des Spiels
     public bool isAttacking;
     public bool isAttacked;
     public bool isDead;
@@ -96,42 +103,50 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 standColliderCenter;
     private bool capsuleCached;
 
+    // Felder
+    [Tooltip("Dreht die Figur automatisch in die Bewegungsrichtung (Third-Person).")]
+    public bool autoRotateToMoveDirection = false;
+
+    [Tooltip("Max. Rotationswinkel pro Schritt in den Rückwärtsgang relativ zur aktuellen Blickrichtung (Grad).")]
+    public float backwardRotateClamp = 45f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-        // Sperrt die Rotation um die X- und Z-Achse, um das Umkippen zu verhindern
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        // Nur X/Z Rotation sperren (Umkippen verhindern), Y erlauben für sauberes Drehen
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         currentHealth = maxHealth;
         currentStamina = maxStamina;
 
-        // Mauszeiger verstecken und zentrieren
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Erzeuge eine 1x1 Texture für die Health-/Stamina-Bar-Farbe
         healthTexture = new Texture2D(1, 1);
         staminaTexture = new Texture2D(1, 1);
 
-        // Animator automatisch finden
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
 
-        // CapsuleCollider cachen (für Crouch)
         capsule = GetComponent<CapsuleCollider>();
         if (capsule != null)
         {
             standColliderHeight = capsule.height;
             standColliderCenter = capsule.center;
             capsuleCached = true;
-            // Sicherheitsklausel: crouch-Höhe nicht kleiner als 2*Radius
             float minHeight = Mathf.Max(0.01f, capsule.radius * 2f + 0.01f);
             if (crouchColliderHeight < minHeight) crouchColliderHeight = minHeight;
         }
         else
         {
             Debug.LogWarning("[PlayerBehaviour] Kein CapsuleCollider gefunden. Crouch-Kollisionsanpassung ist deaktiviert.");
+        }
+
+        if (useThirdPerson)
+        {
+            cameraYaw = transform.eulerAngles.y;
+            cameraYawSmoothed = cameraYaw;
         }
     }
 
@@ -159,28 +174,93 @@ public class PlayerBehaviour : MonoBehaviour
         HandleAnimations();   // zentral wie der Sprint-Handler
     }
 
-    void HandleSprint()
+    void Move()
     {
-        // Bewegungseingabe abfragen (rohe Achsen, kein Smoothing)
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        bool hasMoveInput = (new Vector2(h, v).sqrMagnitude > 0.0001f);
+        float hRaw = Input.GetAxis("Horizontal");
+        float vRaw = Input.GetAxis("Vertical");
 
-        // Sprinten nur, wenn:
-        // - Shift gedrückt
-        // - Bewegungseingabe vorhanden
-        // - Stamina > 0
-        // - NICHT crouching
-        if (!isCrouching && Input.GetKey(KeyCode.LeftShift) && hasMoveInput && canSprint)
+        float vPreferred = (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) ? 1f : vRaw;
+
+        // Ungeglättete Kamera-Yaw als Basis
+        Quaternion camYawRotInstant = Quaternion.Euler(0f, cameraYaw, 0f);
+        Vector3 camForward = camYawRotInstant * Vector3.forward; camForward.y = 0f; camForward.Normalize();
+        Vector3 camRight   = camYawRotInstant * Vector3.right;   camRight.y   = 0f; camRight.Normalize();
+
+        // Bewegungsrichtung
+        Vector3 inputDir;
+        bool isBackward = vPreferred < -0.01f;
+        if (isBackward)
         {
-            isRunning = true;
-            currentStamina -= staminaDrainRate * Time.deltaTime;
-            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+            inputDir = -camForward; // exakt entgegen Kamerablick (auf Ebene)
         }
         else
         {
-            isRunning = false;
+            inputDir = (camForward * vPreferred + camRight * hRaw);
+            inputDir.y = 0f;
         }
+
+        // Auto-Rotate (auch rückwärts), aber Rückwärts-Winkel begrenzen
+        if (useThirdPerson && autoRotateToMoveDirection && inputDir.sqrMagnitude > 0.0001f)
+        {
+            Vector3 currentFwd = transform.forward; currentFwd.y = 0f; currentFwd.Normalize();
+            Vector3 desiredFwd = inputDir.normalized;
+
+            if (isBackward)
+            {
+                // Signierten Winkel zwischen aktueller Vorwärtsrichtung und gewünschter Rückwärtsrichtung
+                float angleDelta = Vector3.SignedAngle(currentFwd, desiredFwd, Vector3.up);
+                // Winkel auf einstellbare Grenze begrenzen
+                float clampedDelta = Mathf.Clamp(angleDelta, -backwardRotateClamp, backwardRotateClamp);
+                // Begrenzte Zielrichtung berechnen
+                desiredFwd = Quaternion.AngleAxis(clampedDelta, Vector3.up) * currentFwd;
+            }
+
+            Quaternion targetRot = Quaternion.LookRotation(desiredFwd, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
+        }
+
+        float speed = moveSpeed;
+        if (isRunning && canSprint) speed *= sprintMultiplier;
+        if (isCrouching) speed *= Mathf.Clamp(crouchSpeedMultiplier, 0.1f, 1f);
+
+        rb.MovePosition(transform.position + inputDir.normalized * speed * Time.deltaTime);
+    }
+
+    void HandleSprint()
+    {
+        float hRaw = Input.GetAxisRaw("Horizontal");
+        float vRaw = Input.GetAxisRaw("Vertical");
+
+        float vPreferred = vRaw;
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
+            vPreferred = 1f;
+
+        bool shiftHeld = Input.GetKey(KeyCode.LeftShift);
+
+        Quaternion camYawRotInstant = Quaternion.Euler(0f, cameraYaw, 0f);
+        Vector3 camFwd = camYawRotInstant * Vector3.forward; camFwd.y = 0f; camFwd.Normalize();
+        Vector3 camRight = camYawRotInstant * Vector3.right;  camRight.y = 0f; camRight.Normalize();
+
+        // Rückwärts: strikt entlang Kamera-Rückwärts (A/D ignorieren)
+        Vector3 inputDir = (vPreferred < -0.01f) ? (-camFwd) : (camFwd * vPreferred + camRight * hRaw);
+        inputDir.y = 0f;
+
+        // Nur Vorwärts darf Sprint aktivieren
+        Vector3 fwd = transform.forward; fwd.y = 0f; fwd.Normalize();
+        float forwardComp = inputDir.sqrMagnitude > 0.0001f ? Vector3.Dot(inputDir.normalized, fwd) : 0f;
+
+        const float sprintDirThreshold = 0.45f;
+        bool wantsDirectionalRun = shiftHeld && forwardComp > sprintDirThreshold && canSprint;
+
+        if (isCrouching && wantsDirectionalRun)
+        {
+            if (!preventStandUpIfObstructed || HasHeadroomToStand())
+                SetCrouch(false);
+        }
+
+        isRunning = (!isCrouching && wantsDirectionalRun)
+            ? (currentStamina = Mathf.Clamp(currentStamina - staminaDrainRate * Time.deltaTime, 0f, maxStamina)) >= 0f
+            : false;
     }
 
     // Toggle-Eingabe, Collider-Resize und Headroom-Check
@@ -280,21 +360,22 @@ public class PlayerBehaviour : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityYaw;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivityPitch;
 
-        // Spieler horizontal drehen (Yaw)
-        transform.Rotate(Vector3.up * mouseX);
+        // Pitch nur über Maus
+        cameraPitch = Mathf.Clamp(cameraPitch - mouseY, minPitch, maxPitch);
 
-        // Kamera vertikal drehen (Pitch)
-        cameraPitch -= mouseY;
-        cameraPitch = Mathf.Clamp(cameraPitch, minPitch, maxPitch);
-        
-        if (cameraTransform != null)
+        if (useThirdPerson)
         {
-            // In First-Person die Kamera-Rotation direkt setzen.
-            // In Third-Person wird die Rotation und Position in UpdateCameraPosition berechnet.
-            if (!useThirdPerson)
-            {
+            // Third-Person: Kamera-Yaw nur über Maus; Spielerrotation NICHT hier verändern
+            cameraYaw += mouseX;
+        }
+        else
+        {
+            // First-Person: Spieler-Yaw über Maus
+            transform.Rotate(Vector3.up * mouseX);
+
+            // Kamera-Rotation direkt setzen (FP)
+            if (cameraTransform != null)
                 cameraTransform.rotation = Quaternion.Euler(cameraPitch, transform.eulerAngles.y, 0);
-            }
         }
     }
 
@@ -303,33 +384,48 @@ public class PlayerBehaviour : MonoBehaviour
         UpdateCameraPosition();
     }
 
-    void Move()
+    // Zentral: Kamera-Position/-Rotation berechnen
+    void UpdateCameraPosition()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        if (cameraTransform == null) return;
 
-        Vector3 camForward = cameraTransform.forward;
-        camForward.y = 0;
-        camForward.Normalize();
+        Vector3 headOffset = new Vector3(0, CameraHeight, 0);
+        Vector3 pivot = transform.position + headOffset;
 
-        Vector3 camRight = cameraTransform.right;
-        camRight.y = 0;
-        camRight.Normalize();
+        if (!useThirdPerson)
+        {
+            // First-Person: Kamera auf Kopfposition setzen, Rotation kommt aus HandleMouseLook
+            cameraTransform.position = pivot;
+            return;
+        }
 
-        float speed = moveSpeed;
+        // NEU: Yaw weich in Richtung des Ziel-Yaw bewegen, um seitliche Ausschläge zu dämpfen
+        cameraYawSmoothed = Mathf.SmoothDampAngle(cameraYawSmoothed, cameraYaw, ref cameraYawVelocity, thirdPersonYawSmoothTime);
 
-        // Sprint nur bei tatsächlichem Input (bereits in HandleSprint geprüft), hier reicht Status
-        if (isRunning && canSprint && (moveVertical != 0 || moveHorizontal != 0))
-            speed *= sprintMultiplier;
+        Quaternion camRot = Quaternion.Euler(cameraPitch, cameraYawSmoothed, 0f);
+        Vector3 desiredOffset = camRot * new Vector3(thirdPersonSideOffset, 0f, -thirdPersonDistance);
+        Vector3 desiredPos = pivot + desiredOffset;
 
-        // Geschwindigkeit im Crouch reduzieren (Editor-Wert)
-        if (isCrouching)
-            speed *= Mathf.Clamp(crouchSpeedMultiplier, 0.1f, 1f);
+        // Kollisionsvermeidung (SphereCast vom Pivot zur Zielposition)
+        Vector3 toCam = desiredPos - pivot;
+        float desiredDist = toCam.magnitude;
+        Vector3 dir = desiredDist > 0.0001f ? toCam / desiredDist : Vector3.back;
 
-        Vector3 movement = (camForward * moveVertical + camRight * moveHorizontal).normalized * speed * Time.deltaTime;
-        rb.MovePosition(transform.position + movement);
+        float targetDist = desiredDist;
+        if (Physics.SphereCast(pivot, cameraCollisionRadius, dir, out RaycastHit hit, desiredDist, cameraObstructionMask, QueryTriggerInteraction.Ignore))
+        {
+            targetDist = Mathf.Max(hit.distance - cameraCollisionBuffer, thirdPersonMinDistance);
+        }
 
-        // isWalking wird zentral in HandleAnimations() abgeleitet
+        Vector3 targetPos = pivot + dir * targetDist;
+
+        // Sanftes Nachziehen der Position (bereits vorhanden)
+        if (cameraSmoothTime > 0f)
+            cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, targetPos, ref cameraSmoothVelocity, cameraSmoothTime);
+        else
+            cameraTransform.position = targetPos;
+
+        cameraTransform.rotation = camRot;
     }
 
     void Attack()
@@ -352,32 +448,29 @@ public class PlayerBehaviour : MonoBehaviour
     // Zentraler Animations-Handler (ohne Hashes, ohne Timer)
     void HandleAnimations()
     {
-        // Bewegung aus Input ableiten relativ zur Kamera (wie Move()-Logik)
         float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        bool hasMoveInput = new Vector2(h, v).sqrMagnitude > 0.0001f;
+        float vRaw = Input.GetAxisRaw("Vertical");
+        float vPreferred = (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) ? 1f : vRaw;
 
-        // Basis-Vektoren (flach, Y=0)
-        Vector3 camFwd = cameraTransform != null ? cameraTransform.forward : transform.forward;
-        Vector3 camRight = cameraTransform != null ? cameraTransform.right : transform.right;
-        camFwd.y = 0f; camRight.y = 0f;
-        camFwd.Normalize(); camRight.Normalize();
+        bool hasMoveInput = new Vector2(h, vPreferred).sqrMagnitude > 0.0001f;
 
-        // Eingaberichtung im Welt-Raum (entspricht Move()) – nur für Richtungsermittlung
-        Vector3 inputDir = (camFwd * v + camRight * h);
+        Quaternion camYawRotInstant = Quaternion.Euler(0f, cameraYaw, 0f);
+        Vector3 camFwd = camYawRotInstant * Vector3.forward; camFwd.y = 0f; camFwd.Normalize();
+        Vector3 camRight = camYawRotInstant * Vector3.right;  camRight.y = 0f; camRight.Normalize();
+
+        // Rückwärts: strikt entlang Kamera-Rückwärts
+        Vector3 inputDir = (vPreferred < -0.01f) ? (-camFwd) : (camFwd * vPreferred + camRight * h);
         inputDir.y = 0f;
+
         Vector3 fwd = transform.forward; fwd.y = 0f; fwd.Normalize();
         Vector3 right = transform.right; right.y = 0f; right.Normalize();
 
-        // Komponenten entlang Spieler-Achsen
-        float forwardComp = Vector3.Dot(inputDir.normalized, fwd);   // >0 vorwärts, <0 rückwärts
-        float rightComp   = Vector3.Dot(inputDir.normalized, right); // >0 rechts, <0 links
+        float forwardComp = inputDir.sqrMagnitude > 0.0001f ? Vector3.Dot(inputDir.normalized, fwd) : 0f;
+        float rightComp   = inputDir.sqrMagnitude > 0.0001f ? Vector3.Dot(inputDir.normalized, right) : 0f;
 
-        // Toleranzen, um kleine Inputs zu ignorieren
         const float dirThreshold = 0.35f;
 
-        // Rückwärtslauf-Flag wie bisher (zusätzlich zu StrafeBackward)
-        isWalkingBackwards = v < -0.01f && hasMoveInput;
+        isWalkingBackwards = vPreferred < -0.01f && hasMoveInput;
 
         if (isDead)
         {
@@ -388,27 +481,20 @@ public class PlayerBehaviour : MonoBehaviour
             isAttacked = false;
             isCrouching = false;
             isWalkingBackwards = false;
-
-            // Strafe-Flags und Idle zurücksetzen
             SetIdleFlags(false, false);
             SetStrafeFlags(false, false, false, false);
         }
         else
         {
-            // „Gehen“: Bewegung vorhanden, nicht rennen und nicht rückwärts laufen
             isWalking = hasMoveInput && !isRunning && !isWalkingBackwards;
-
-            // Angriff so lange wie Maustaste gehalten wird
             isAttacking = Input.GetMouseButton(1);
 
-            // Idle-Flags
             bool idleStanding = !hasMoveInput && !isCrouching;
             bool idleCrouching = !hasMoveInput && isCrouching;
             SetIdleFlags(idleStanding, idleCrouching);
 
-            // Strafe-Flags (exklusiv pro Achse, Kombinationen sind möglich: z.B. vorwärts+links)
-            bool forward = hasMoveInput && forwardComp >  dirThreshold;
-            bool backward= hasMoveInput && forwardComp < -dirThreshold;
+            bool forward   = hasMoveInput && forwardComp >  dirThreshold;
+            bool backward  = hasMoveInput && forwardComp < -dirThreshold;
             bool rightStrafe = hasMoveInput && rightComp   >  dirThreshold;
             bool leftStrafe  = hasMoveInput && rightComp   < -dirThreshold;
 
@@ -425,15 +511,12 @@ public class PlayerBehaviour : MonoBehaviour
             animator.SetBool("isDead", isDead);
             animator.SetBool("isCrouching", isCrouching);
             animator.SetBool("isWalkingBackwards", isWalkingBackwards);
-
-            // Strafe-Parameter
             animator.SetBool("isStrafeForward",   isStrafeForward);
             animator.SetBool("isStrafeBackward",  isStrafeBackward);
             animator.SetBool("isStrafeLeft",      isStrafeLeft);
             animator.SetBool("isStrafeRight",     isStrafeRight);
         }
 
-        // Einmal-Flag am Ende zurücksetzen, damit der Animator exakt 1 Frame „isAttacked“ erhält
         if (isAttacked && !isDead)
             isAttacked = false;
     }
@@ -452,48 +535,6 @@ public class PlayerBehaviour : MonoBehaviour
         isStrafeBackward = backward;
         isStrafeLeft     = left;
         isStrafeRight    = right;
-    }
-
-    void UpdateCameraPosition()
-    {
-        if (cameraTransform == null) return;
-
-        Vector3 headOffset = new Vector3(0, CameraHeight, 0);
-        Vector3 pivot = transform.position + headOffset;
-
-        if (!useThirdPerson)
-        {
-            // First-Person: Kamera auf Kopfposition setzen, Rotation kommt aus HandleMouseLook
-            cameraTransform.position = pivot;
-            return;
-        }
-
-        // Third-Person: gewünschte Kameraposition hinter/seitlich des Spielers
-        Quaternion camRot = Quaternion.Euler(cameraPitch, transform.eulerAngles.y, 0f);
-        Vector3 desiredOffset = camRot * new Vector3(thirdPersonSideOffset, 0f, -thirdPersonDistance);
-        Vector3 desiredPos = pivot + desiredOffset;
-
-        // Kollisionsvermeidung (SphereCast vom Pivot zur Zielposition)
-        Vector3 toCam = desiredPos - pivot;
-        float desiredDist = toCam.magnitude;
-        Vector3 dir = desiredDist > 0.0001f ? toCam / desiredDist : Vector3.back;
-
-        float targetDist = desiredDist;
-        if (Physics.SphereCast(pivot, cameraCollisionRadius, dir, out RaycastHit hit, desiredDist, cameraObstructionMask, QueryTriggerInteraction.Ignore))
-        {
-            targetDist = Mathf.Max(hit.distance - cameraCollisionBuffer, thirdPersonMinDistance);
-        }
-
-        Vector3 targetPos = pivot + dir * targetDist;
-
-        // Sanftes Nachziehen
-        if (cameraSmoothTime > 0f)
-            cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, targetPos, ref cameraSmoothVelocity, cameraSmoothTime);
-        else
-            cameraTransform.position = targetPos;
-
-        // Kamera-Rotation entsprechend Maus (Yaw/Pitch), konsistent mit First-Person
-        cameraTransform.rotation = camRot;
     }
 
     void OnGUI()
@@ -546,58 +587,4 @@ public class PlayerBehaviour : MonoBehaviour
         GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
