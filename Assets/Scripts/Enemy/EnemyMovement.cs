@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Android;
+using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class EnemyMovement : MonoBehaviour
     public float EnemyChaseSpeed;
     public float HearingValue;
     public float ChaseTimer;
+    public float AttackRange;
+
+    public Animator animator;
 
     public Vector3 Point;
     public bool Pointset;
@@ -29,6 +33,11 @@ public class EnemyMovement : MonoBehaviour
     {
         Player = FindAnyObjectByType<PlayerBehaviour>().transform;
         MeshAgent = GetComponent<NavMeshAgent>();
+
+        if (animator != null)
+        {
+            GetComponentInChildren<Animator>();
+        }
     }
 
     void Update()
@@ -73,6 +82,15 @@ public class EnemyMovement : MonoBehaviour
         MeshAgent.speed = EnemyChaseSpeed;
         MeshAgent.destination = Player.position;
         ChaseTimer += Time.deltaTime;
+        
+        Distance = Vector3.Distance(transform.position, Player.position);
+
+        if (Distance < AttackRange)
+        {
+            //attack and player loses 1 heart. we havent decided how many hearts b4 player dies
+
+
+        }
 
         if (ChaseTimer > 45f)
         {
