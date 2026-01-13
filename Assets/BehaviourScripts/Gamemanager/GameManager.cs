@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.Playing;
 
         // Szene laden und Spielersteuerung nach dem Laden aktivieren
-        SceneManager.LoadScene("HH_Demo");
+        SceneManager.LoadScene("Spaceship_enviorment");
         StartCoroutine(EnablePlayerControlNextFrame());
     }
 
