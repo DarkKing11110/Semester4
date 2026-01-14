@@ -89,7 +89,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _MainTile: 2
+    - _MainTile: 4
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _OpaqueCullMode: 2
