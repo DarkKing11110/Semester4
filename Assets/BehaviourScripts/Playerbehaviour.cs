@@ -179,39 +179,43 @@ public class PlayerBehaviour : MonoBehaviour
         float hRaw = Input.GetAxis("Horizontal");
         float vRaw = Input.GetAxis("Vertical");
 
-        float vPreferred = (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) ? 1f : vRaw;
+        float vPreferred = vRaw;
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
+            vPreferred = 1f; // W+S -> vorwärts bevorzugen
 
-        // Ungeglättete Kamera-Yaw als Basis
+        // Kamera-Basis
         Quaternion camYawRotInstant = Quaternion.Euler(0f, cameraYaw, 0f);
         Vector3 camForward = camYawRotInstant * Vector3.forward; camForward.y = 0f; camForward.Normalize();
         Vector3 camRight   = camYawRotInstant * Vector3.right;   camRight.y   = 0f; camRight.Normalize();
 
-        // Bewegungsrichtung
-        Vector3 inputDir;
-        bool isBackward = vPreferred < -0.01f;
-        if (isBackward)
-        {
-            inputDir = -camForward; // exakt entgegen Kamerablick (auf Ebene)
-        }
-        else
-        {
-            inputDir = (camForward * vPreferred + camRight * hRaw);
-            inputDir.y = 0f;
-        }
+        // Exakte Diagonalen für S+A / S+D (unten links / unten rechts)
+        bool sComboLeft  = Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W);
+        bool sComboRight = Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W);
 
-        // Auto-Rotate (auch rückwärts), aber Rückwärts-Winkel begrenzen
+        Vector3 inputDir;
+        if (sComboLeft)
+            inputDir = (-camForward - camRight);
+        else if (sComboRight)
+            inputDir = (-camForward + camRight);
+        else
+            inputDir = (camForward * vPreferred + camRight * hRaw);
+
+        inputDir.y = 0f;
+
+        // Reiner Rückwärtsgang nur bei "S" ohne Diagonale
+        bool isBackwardPure = (vPreferred < -0.01f) && !sComboLeft && !sComboRight;
+
+        // Spieler in Bewegungsrichtung drehen
         if (useThirdPerson && autoRotateToMoveDirection && inputDir.sqrMagnitude > 0.0001f)
         {
             Vector3 currentFwd = transform.forward; currentFwd.y = 0f; currentFwd.Normalize();
             Vector3 desiredFwd = inputDir.normalized;
 
-            if (isBackward)
+            if (isBackwardPure)
             {
-                // Signierten Winkel zwischen aktueller Vorwärtsrichtung und gewünschter Rückwärtsrichtung
+                // Nur beim reinen Rückwärtsgang Winkel begrenzen
                 float angleDelta = Vector3.SignedAngle(currentFwd, desiredFwd, Vector3.up);
-                // Winkel auf einstellbare Grenze begrenzen
                 float clampedDelta = Mathf.Clamp(angleDelta, -backwardRotateClamp, backwardRotateClamp);
-                // Begrenzte Zielrichtung berechnen
                 desiredFwd = Quaternion.AngleAxis(clampedDelta, Vector3.up) * currentFwd;
             }
 
@@ -241,11 +245,19 @@ public class PlayerBehaviour : MonoBehaviour
         Vector3 camFwd = camYawRotInstant * Vector3.forward; camFwd.y = 0f; camFwd.Normalize();
         Vector3 camRight = camYawRotInstant * Vector3.right;  camRight.y = 0f; camRight.Normalize();
 
-        // Rückwärts: strikt entlang Kamera-Rückwärts (A/D ignorieren)
-        Vector3 inputDir = (vPreferred < -0.01f) ? (-camFwd) : (camFwd * vPreferred + camRight * hRaw);
+        bool sComboLeft  = Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W);
+        bool sComboRight = Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W);
+
+        Vector3 inputDir;
+        if (sComboLeft)
+            inputDir = (-camFwd - camRight);
+        else if (sComboRight)
+            inputDir = (-camFwd + camRight);
+        else
+            inputDir = (camFwd * vPreferred + camRight * hRaw);
+
         inputDir.y = 0f;
 
-        // Nur Vorwärts darf Sprint aktivieren
         Vector3 fwd = transform.forward; fwd.y = 0f; fwd.Normalize();
         float forwardComp = inputDir.sqrMagnitude > 0.0001f ? Vector3.Dot(inputDir.normalized, fwd) : 0f;
 
@@ -258,9 +270,15 @@ public class PlayerBehaviour : MonoBehaviour
                 SetCrouch(false);
         }
 
-        isRunning = (!isCrouching && wantsDirectionalRun)
-            ? (currentStamina = Mathf.Clamp(currentStamina - staminaDrainRate * Time.deltaTime, 0f, maxStamina)) >= 0f
-            : false;
+        if (!isCrouching && wantsDirectionalRun)
+        {
+            isRunning = true;
+            currentStamina = Mathf.Clamp(currentStamina - staminaDrainRate * Time.deltaTime, 0f, maxStamina);
+        }
+        else
+        {
+            isRunning = false;
+        }
     }
 
     // Toggle-Eingabe, Collider-Resize und Headroom-Check
@@ -450,7 +468,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float vRaw = Input.GetAxisRaw("Vertical");
-        float vPreferred = (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) ? 1f : vRaw;
+
+        float vPreferred = vRaw;
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
+            vPreferred = 1f;
 
         bool hasMoveInput = new Vector2(h, vPreferred).sqrMagnitude > 0.0001f;
 
@@ -458,8 +479,17 @@ public class PlayerBehaviour : MonoBehaviour
         Vector3 camFwd = camYawRotInstant * Vector3.forward; camFwd.y = 0f; camFwd.Normalize();
         Vector3 camRight = camYawRotInstant * Vector3.right;  camRight.y = 0f; camRight.Normalize();
 
-        // Rückwärts: strikt entlang Kamera-Rückwärts
-        Vector3 inputDir = (vPreferred < -0.01f) ? (-camFwd) : (camFwd * vPreferred + camRight * h);
+        bool sComboLeft  = Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W);
+        bool sComboRight = Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W);
+
+        Vector3 inputDir;
+        if (sComboLeft)
+            inputDir = (-camFwd - camRight);
+        else if (sComboRight)
+            inputDir = (-camFwd + camRight);
+        else
+            inputDir = (camFwd * vPreferred + camRight * h);
+
         inputDir.y = 0f;
 
         Vector3 fwd = transform.forward; fwd.y = 0f; fwd.Normalize();
@@ -470,7 +500,21 @@ public class PlayerBehaviour : MonoBehaviour
 
         const float dirThreshold = 0.35f;
 
-        isWalkingBackwards = vPreferred < -0.01f && hasMoveInput;
+        bool forwardFlag   = hasMoveInput && forwardComp >  dirThreshold;
+        bool backwardFlag  = hasMoveInput && forwardComp < -dirThreshold;
+        bool rightStrafe   = hasMoveInput && rightComp   >  dirThreshold;
+        bool leftStrafe    = hasMoveInput && rightComp   < -dirThreshold;
+
+        // S+A/S+D: Vorwärts-Anim + seitliche Strafe, Rückwärtsflag unterdrücken
+        if (sComboLeft || sComboRight)
+        {
+            forwardFlag  = true;
+            backwardFlag = false;
+            leftStrafe   = sComboLeft;
+            rightStrafe  = sComboRight;
+        }
+
+        isWalkingBackwards = (vPreferred < -0.01f) && hasMoveInput && !(sComboLeft || sComboRight);
 
         if (isDead)
         {
@@ -481,24 +525,21 @@ public class PlayerBehaviour : MonoBehaviour
             isAttacked = false;
             isCrouching = false;
             isWalkingBackwards = false;
+
             SetIdleFlags(false, false);
             SetStrafeFlags(false, false, false, false);
         }
         else
         {
             isWalking = hasMoveInput && !isRunning && !isWalkingBackwards;
+
             isAttacking = Input.GetMouseButton(1);
 
             bool idleStanding = !hasMoveInput && !isCrouching;
             bool idleCrouching = !hasMoveInput && isCrouching;
             SetIdleFlags(idleStanding, idleCrouching);
 
-            bool forward   = hasMoveInput && forwardComp >  dirThreshold;
-            bool backward  = hasMoveInput && forwardComp < -dirThreshold;
-            bool rightStrafe = hasMoveInput && rightComp   >  dirThreshold;
-            bool leftStrafe  = hasMoveInput && rightComp   < -dirThreshold;
-
-            SetStrafeFlags(forward, backward, leftStrafe, rightStrafe);
+            SetStrafeFlags(forwardFlag, backwardFlag, leftStrafe, rightStrafe);
         }
 
         if (animator != null)
@@ -511,6 +552,7 @@ public class PlayerBehaviour : MonoBehaviour
             animator.SetBool("isDead", isDead);
             animator.SetBool("isCrouching", isCrouching);
             animator.SetBool("isWalkingBackwards", isWalkingBackwards);
+
             animator.SetBool("isStrafeForward",   isStrafeForward);
             animator.SetBool("isStrafeBackward",  isStrafeBackward);
             animator.SetBool("isStrafeLeft",      isStrafeLeft);
