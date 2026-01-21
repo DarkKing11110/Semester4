@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TV_mat
+  m_Name: LivingQuaters_Security2
   m_Shader: {fileID: -6465566751694194690, guid: f87f60b6fc2ad9d40ad77dd1a4b2f2fd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -15,7 +15,7 @@ Material:
   - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2225
   stringTagMap:
@@ -31,11 +31,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Image:
-        m_Texture: {fileID: 2800000, guid: 1d6860872ce19984fbd26f0f17761d96, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_387acb8e640e4dcf8d34bf25aadf3ac6_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 1d6860872ce19984fbd26f0f17761d96, type: 3}
+        m_Texture: {fileID: 8400000, guid: 7286934c75a1ee84bb525fc0fc6ffbc5, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_ccc274be8ca94bdb9b39568ff6e1d92f_Texture_1_Texture2D:
@@ -70,13 +66,14 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
     - _DstBlend2: 0
-    - _Emission_Strength: 1000
+    - _Emission_Strength: 5000
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _Fate_Distance_Max: 0.087
-    - _Fate_Distance_Min: 0.08
-    - _Flicker_propability: 2
+    - _Fate_Distance_Max: 0
+    - _Fate_Distance_Min: 0
+    - _Flicker_Offset: 1338.9
+    - _Flicker_propability: 1
     - _Flicker_speed: 70
     - _MaterialID: 1
     - _MaterialTypeMask: 2
@@ -114,17 +111,15 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
-    - _help: 0.06
-    - _help2: 0.065
-    - _rgbbrigthner: 3
+    - _rgbbrigthner: 1
     - _scanlines_speed: 2
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _tile: {r: 800, g: 400, b: 0, a: 0}
+    - _tile: {r: 200, g: 400, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &8313343917763657357
+--- !u!114 &3516443425569965324
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
