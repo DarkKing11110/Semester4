@@ -9,11 +9,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Kai_Texture
     second: {fileID: 2100000, guid: 0ecc6f46b9e1ead429a60531934b577d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Kai_Texture.001
-    second: {fileID: 2100000, guid: 0ecc6f46b9e1ead429a60531934b577d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
