@@ -37,10 +37,10 @@ public class RiddlePuzzle : MonoBehaviour
     void Update()
     {
         // Tastatursteuerung: schiebe das Feld, das zum leeren Feld benachbart ist (Pfeile „ziehen“ das leere Feld)
-        if (Input.GetKeyDown(KeyCode.UpArrow)) TryMoveTile(empty + Vector2Int.down);     // oben = ziehe unten ins leere
-        if (Input.GetKeyDown(KeyCode.DownArrow)) TryMoveTile(empty + Vector2Int.up);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) TryMoveTile(empty + Vector2Int.right);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) TryMoveTile(empty + Vector2Int.left);
+        if (Input.GetKeyDown(KeyCode.Keypad2)) TryMoveTile(empty + Vector2Int.down);     // oben = ziehe unten ins leere
+        if (Input.GetKeyDown(KeyCode.Keypad8)) TryMoveTile(empty + Vector2Int.up);
+        if (Input.GetKeyDown(KeyCode.Keypad6)) TryMoveTile(empty + Vector2Int.right);
+        if (Input.GetKeyDown(KeyCode.Keypad4)) TryMoveTile(empty + Vector2Int.left);
     }
 
     // Initialisiert Grid-Slots und Zellgrößen
