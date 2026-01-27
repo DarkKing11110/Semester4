@@ -77238,6 +77238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d9aa1956b10834db27310320721d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoGetCameras: 0
   cameras:
   - {fileID: 1071587493}
   - {fileID: 1151384154}
@@ -77248,6 +77249,7 @@ MonoBehaviour:
   - {fileID: 294806279}
   - {fileID: 1729295782}
   - {fileID: 481372224}
+  perFrame: 2
   showingCamera: 
 --- !u!4 &2041157754
 Transform:
