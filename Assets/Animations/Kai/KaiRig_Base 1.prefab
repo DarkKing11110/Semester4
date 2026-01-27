@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 3210569606672237428}
   - component: {fileID: 8669263086909493573}
   - component: {fileID: 3074157464057586948}
+  - component: {fileID: -5721347408157291300}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -567,7 +568,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8196022893448053096}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &3074157464057586948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +708,20 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &-5721347408157291300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196022893448053096}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1001 &8545384209413984353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -758,6 +773,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c9c86f1d05b2ebe4e82f26c0d2294ae4, type: 3}
       propertyPath: m_Name
       value: KaiRig_Base 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9c86f1d05b2ebe4e82f26c0d2294ae4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -864,16 +883,23 @@ MonoBehaviour:
   cameraObstructionMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  thirdPersonYawSmoothTime: 0.12
   mouseSensitivityYaw: 2
   mouseSensitivityPitch: 2
   maxPitch: 90
   minPitch: -90
   moveSpeed: 5
   sprintMultiplier: 3
+  crouchSpeedMultiplier: 0.6
+  turnSpeed: 540
   isWalking: 0
   isJumping: 0
   isCrouching: 0
   isWalkingBackwards: 0
+  isStrafeForward: 0
+  isStrafeBackward: 0
+  isStrafeLeft: 0
+  isStrafeRight: 0
   attackRange: 2
   attackDamage: 10
   isAttacking: 0
@@ -894,6 +920,8 @@ MonoBehaviour:
   standUpObstructionMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  autoRotateToMoveDirection: 0
+  backwardRotateClamp: 45
 --- !u!95 &662466237542643630
 Animator:
   serializedVersion: 7

@@ -4709,40 +4709,7 @@ MonoBehaviour:
   m_Script: {fileID: 1206762433}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 1
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 2
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 3
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 4
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 5
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 6
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 7
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 8
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 9
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 10
-    category: 0
-    gameObject: {fileID: 0}
+  m_Entries: []
 --- !u!4 &117557628
 Transform:
   m_ObjectHideFlags: 19
@@ -4980,85 +4947,7 @@ MonoBehaviour:
   m_Script: {fileID: 1740846863}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 1
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 2
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 3
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 4
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 5
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 6
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 7
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 8
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 9
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 10
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 11
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 12
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 13
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 14
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 15
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 16
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 17
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 18
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 19
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 20
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 21
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 22
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 23
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 24
-    category: 0
-    gameObject: {fileID: 0}
-  - id: 25
-    category: 0
-    gameObject: {fileID: 0}
+  m_Entries: []
 --- !u!4 &133139941
 Transform:
   m_ObjectHideFlags: 19
@@ -5314,7 +5203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 139883395}
   - component: {fileID: 139883394}
-  - component: {fileID: 139883393}
   - component: {fileID: 139883392}
   m_Layer: 3
   m_Name: MainroomSecurityCam
@@ -5462,14 +5350,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &139883393
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139883391}
-  m_Enabled: 1
 --- !u!20 &139883394
 Camera:
   m_ObjectHideFlags: 0
@@ -10440,6 +10320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5721347408157291300, guid: 452f973868357e544897106ec791203f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3074157464057586948, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: dithering
       value: 1
@@ -10612,7 +10496,8 @@ PrefabInstance:
       propertyPath: m_BoxSize.z
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8669263086909493573, guid: 452f973868357e544897106ec791203f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7475629489708301689, guid: 452f973868357e544897106ec791203f, type: 3}
     m_AddedGameObjects: []
@@ -11709,7 +11594,6 @@ GameObject:
   m_Component:
   - component: {fileID: 294806280}
   - component: {fileID: 294806279}
-  - component: {fileID: 294806278}
   - component: {fileID: 294806277}
   m_Layer: 3
   m_Name: Office1SecurityCam
@@ -11857,14 +11741,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &294806278
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294806276}
-  m_Enabled: 1
 --- !u!20 &294806279
 Camera:
   m_ObjectHideFlags: 0
@@ -11941,7 +11817,6 @@ GameObject:
   m_Component:
   - component: {fileID: 299453222}
   - component: {fileID: 299453221}
-  - component: {fileID: 299453220}
   - component: {fileID: 299453219}
   m_Layer: 3
   m_Name: LivingQuaterws2SecurityCam
@@ -12089,14 +11964,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &299453220
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299453218}
-  m_Enabled: 1
 --- !u!20 &299453221
 Camera:
   m_ObjectHideFlags: 0
@@ -12853,7 +12720,6 @@ GameObject:
   m_Component:
   - component: {fileID: 321712640}
   - component: {fileID: 321712639}
-  - component: {fileID: 321712638}
   - component: {fileID: 321712637}
   m_Layer: 3
   m_Name: LivingQuaterws1SecurityCam
@@ -13001,14 +12867,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &321712638
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321712636}
-  m_Enabled: 1
 --- !u!20 &321712639
 Camera:
   m_ObjectHideFlags: 0
@@ -18240,7 +18098,6 @@ GameObject:
   m_Component:
   - component: {fileID: 481372225}
   - component: {fileID: 481372224}
-  - component: {fileID: 481372223}
   - component: {fileID: 481372222}
   m_Layer: 3
   m_Name: CafeteriaSecurityCam
@@ -18388,14 +18245,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &481372223
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481372221}
-  m_Enabled: 1
 --- !u!20 &481372224
 Camera:
   m_ObjectHideFlags: 0
@@ -20017,7 +19866,6 @@ GameObject:
   m_Component:
   - component: {fileID: 539072101}
   - component: {fileID: 539072100}
-  - component: {fileID: 539072099}
   - component: {fileID: 539072098}
   m_Layer: 3
   m_Name: GeneratorSecurityCam
@@ -20165,14 +20013,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &539072099
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539072097}
-  m_Enabled: 1
 --- !u!20 &539072100
 Camera:
   m_ObjectHideFlags: 0
@@ -25226,6 +25066,7 @@ MonoBehaviour:
   m_Script: {fileID: 2111360093}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &719670311
 Transform:
   m_ObjectHideFlags: 19
@@ -30282,6 +30123,7 @@ MonoBehaviour:
   m_Script: {fileID: 1176713211}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &895560044
 Transform:
   m_ObjectHideFlags: 19
@@ -36417,7 +36259,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1071587494}
   - component: {fileID: 1071587493}
-  - component: {fileID: 1071587492}
   - component: {fileID: 1071587491}
   m_Layer: 3
   m_Name: Bio1SecurityCam
@@ -36565,14 +36406,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &1071587492
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071587490}
-  m_Enabled: 1
 --- !u!20 &1071587493
 Camera:
   m_ObjectHideFlags: 0
@@ -38713,7 +38546,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1151384155}
   - component: {fileID: 1151384154}
-  - component: {fileID: 1151384153}
   - component: {fileID: 1151384152}
   m_Layer: 3
   m_Name: Bio2SecurityCam
@@ -38861,14 +38693,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &1151384153
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151384151}
-  m_Enabled: 1
 --- !u!20 &1151384154
 Camera:
   m_ObjectHideFlags: 0
@@ -58034,7 +57858,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1729295783}
   - component: {fileID: 1729295782}
-  - component: {fileID: 1729295781}
   - component: {fileID: 1729295780}
   m_Layer: 3
   m_Name: Office2SecurityCam
@@ -58182,14 +58005,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &1729295781
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729295779}
-  m_Enabled: 1
 --- !u!20 &1729295782
 Camera:
   m_ObjectHideFlags: 0
