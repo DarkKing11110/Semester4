@@ -57,8 +57,16 @@ PrefabInstance:
       value: Wall_Door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983162374848688037, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1983162374848688037, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -272,6 +280,10 @@ PrefabInstance:
     - target: {fileID: 4597106056322457558, guid: 7ba64982700ba194e896d8374e8d5e05, type: 3}
       propertyPath: m_Name
       value: ActivationTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597106056322457558, guid: 7ba64982700ba194e896d8374e8d5e05, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
