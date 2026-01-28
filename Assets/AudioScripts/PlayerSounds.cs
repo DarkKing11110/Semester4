@@ -19,7 +19,16 @@ public class PlayerSounds: MonoBehaviour
     {
         if (footsteps.isValid())
         {
+            footsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
             footsteps.start();
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            PlayFootsteps();
         }
     }
 }
