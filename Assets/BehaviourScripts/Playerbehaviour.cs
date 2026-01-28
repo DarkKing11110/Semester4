@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -109,6 +110,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Tooltip("Max. Rotationswinkel pro Schritt in den Rückwärtsgang relativ zur aktuellen Blickrichtung (Grad).")]
     public float backwardRotateClamp = 45f;
+
+    [SerializeField]
+    private PlayerSounds playerSounds;
 
     void Start()
     {
@@ -627,6 +631,13 @@ public class PlayerBehaviour : MonoBehaviour
             normal = { textColor = Color.white }
         };
         GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
+
+
+        
+    }
+    private void PlayFootstep()
+    {
+        playerSounds.PlayFootsteps();
     }
 }
 

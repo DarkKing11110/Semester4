@@ -10417,6 +10417,10 @@ PrefabInstance:
       value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 7283798788336987775, guid: 452f973868357e544897106ec791203f, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1268531142}
+    - target: {fileID: 7283798788336987775, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: cameraSmoothTime
       value: 0
       objectReference: {fileID: 0}
@@ -10500,9 +10504,17 @@ PrefabInstance:
     - {fileID: 8669263086909493573, guid: 452f973868357e544897106ec791203f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7475629489708301689, guid: 452f973868357e544897106ec791203f, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1268531143}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 452f973868357e544897106ec791203f, type: 3}
+--- !u!4 &282144177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8150940095233865610, guid: 452f973868357e544897106ec791203f, type: 3}
+  m_PrefabInstance: {fileID: 282144176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &284151308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42642,6 +42654,57 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50296289}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1268531141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268531143}
+  - component: {fileID: 1268531142}
+  m_Layer: 0
+  m_Name: PlayerSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1268531142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268531141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7759fc583efc6f045a249c0c12c26eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _footsteps:
+    Guid:
+      Data1: -1580489498
+      Data2: 1325902358
+      Data3: 862871424
+      Data4: -288695249
+    Path: event:/SFX_Player/Player_Footsteps
+--- !u!4 &1268531143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268531141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 282144177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1272358601 stripped
 Transform:
