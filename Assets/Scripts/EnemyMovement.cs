@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform Player;
 
-    //Enemy Values
+    [Header("Enemy Values")]
     public float EnemySpeed;
     public float EnemyChaseSpeed;
     public float HearingValue;
@@ -22,6 +22,10 @@ public class EnemyMovement : MonoBehaviour
     private bool ChaseState = false;
     private float Distance;
 
+    public bool isWalking;
+    public bool isAttacking;
+    public bool isRunning;
+
     [SerializeField] float range;
 
     NavMeshAgent MeshAgent;
@@ -32,12 +36,24 @@ public class EnemyMovement : MonoBehaviour
     {
         //Player = GameObject.Find("Player");
         MeshAgent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();         
+        animator = GetComponent<Animator>();
+        isWalking = false;
+        isAttacking = false;
+        isRunning = false;
+
     }
 
     void Update()
     {
-        EnemyPatrol();
+        if (ChaseState == false)
+        {
+            EnemyPatrol();
+        }
+        else
+        {
+            EnemyChase();
+        }
+        
     }
 
     public void EnemyPatrol()
@@ -45,9 +61,13 @@ public class EnemyMovement : MonoBehaviour
         MeshAgent.isStopped = false;
         MeshAgent.speed = EnemySpeed;
 
-        animator.SetBool("iswalking", true);
-        animator.SetBool("isrunning", false);
-        animator.SetBool("isattacking", false);
+        isWalking = true;
+        isRunning = false;
+        isAttacking = false;
+
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isAttacking", isAttacking);
 
         if (!Pointset)
         {
@@ -71,9 +91,13 @@ public class EnemyMovement : MonoBehaviour
 
     public void EnemyChase()
     {
-        animator.SetBool("iswalking", false);
-        animator.SetBool("isrunning", true);
-        animator.SetBool("isattacking", false);
+        isWalking = false;
+        isRunning = true;
+        isAttacking = false;
+
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isAttacking", isAttacking);
         MeshAgent.isStopped = false;
         MeshAgent.speed = EnemyChaseSpeed;
         MeshAgent.destination = Player.position;
@@ -83,10 +107,14 @@ public class EnemyMovement : MonoBehaviour
 
         if (Distance < AttackRange)
         {
+            isWalking = false;
+            isRunning = false;
+            isAttacking = true;
+
             //attack and player loses 1 heart. we havent decided how many hearts b4 player dies
-            animator.SetBool("iswalking", false);
-            animator.SetBool("isrunning", false);
-            animator.SetBool("isattacking", true);
+            animator.SetBool("isWalking", isWalking);
+            animator.SetBool("isRunning", isRunning);
+            animator.SetBool("isAttacking", isAttacking);
 
         }
 
