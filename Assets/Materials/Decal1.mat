@@ -26,6 +26,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseColors:
+        m_Texture: {fileID: 2800000, guid: 77487ae2cca1dab49a7d61d9cc2433e9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMap:
+        m_Texture: {fileID: 2800000, guid: 34412ee5aa6c46e4ea8e8caab9416667, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 5ce1310b4b83f4f4d9a494fc171212db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_16719b02f6d04e3da0bfac4b7a9b122f_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 5ce1310b4b83f4f4d9a494fc171212db, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -66,6 +78,7 @@ Material:
     - _DecalStencilRef: 16
     - _DecalStencilWriteMask: 16
     - _DrawOrder: 0
+    - _Opacity: 1
     - _disstance_focus: 0.1
     - _distance_fate: 0.56
     - _focus_distance: 0
