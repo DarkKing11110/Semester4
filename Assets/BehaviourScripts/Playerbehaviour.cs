@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static UnityEngine.UI.ScrollRect;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+
+    
     [Header("View")]
     [Tooltip("Wenn aktiviert, nutzt der Spieler die Third-Person-Kamera.")]
     public bool useThirdPerson = false; // Tickbox im Inspector
@@ -104,6 +107,9 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 standColliderCenter;
     private bool capsuleCached;
 
+    // Audioshit
+    private Playermovement movement;
+
     // Felder
     [Tooltip("Dreht die Figur automatisch in die Bewegungsrichtung (Third-Person).")]
     public bool autoRotateToMoveDirection = false;
@@ -152,6 +158,10 @@ public class PlayerBehaviour : MonoBehaviour
             cameraYaw = transform.eulerAngles.y;
             cameraYawSmoothed = cameraYaw;
         }
+
+
+        movement = new Playermovement();
+        movement.playerSounds = GetComponentInChildren<PlayerSounds>();
     }
 
     public void TakeDamage(int damage)
@@ -176,6 +186,8 @@ public class PlayerBehaviour : MonoBehaviour
         HandleMouseLook();
         RegenerateStamina();
         HandleAnimations();   // zentral wie der Sprint-Handler
+
+        movement.Update(); // Audio
     }
 
     void Move()
@@ -565,6 +577,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (isAttacked && !isDead)
             isAttacked = false;
+
+
+        Debug.Log($"run:{isRunning} crouch:{isCrouching}");
     }
 
     private void SetIdleFlags(bool idleStanding, bool idleCrouching)
@@ -632,12 +647,46 @@ public class PlayerBehaviour : MonoBehaviour
         };
         GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
 
-
+        
         
     }
+
+    
     private void PlayFootstep()
     {
         playerSounds.PlayFootsteps();
     }
+
+    public class Playermovement
+    {
+        public PlayerSounds playerSounds;
+
+        bool isRunning;
+        bool isCrouching;
+
+        public void Update()
+        {
+            Debug.Log($"[BEFORE MOVEMENT] run:{isRunning} crouch:{isCrouching}");
+
+            MovementType movement;
+
+            if (isCrouching)
+                movement = MovementType.Crouch;
+            else if (isRunning)
+                movement = MovementType.Run;
+            else
+                movement = MovementType.Walk;
+
+            playerSounds.SetMovementType(movement);
+            
+        }
+    }
+}
+
+public enum MovementType
+{
+    Walk = 0,
+    Run = 1,
+    Crouch = 2
 }
 

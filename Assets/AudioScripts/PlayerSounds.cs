@@ -24,11 +24,20 @@ public class PlayerSounds: MonoBehaviour
         }
     }
 
-    private void Update()
+
+
+    public void SetMovementType(MovementType movement)
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            PlayFootsteps();
+        if (!footsteps.isValid())
+        { 
+            Debug.LogWarning("Footsteps event is NOT valid");
+            return;
         }
+
+        Debug.Log($"Setting FMOD MovementType to: {movement} ({(float)movement})");
+
+        footsteps.setParameterByName("MovementType", (float)movement);
     }
+
+   
 }

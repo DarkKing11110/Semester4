@@ -93,7 +93,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639051312236007763
+  lastModified: 639053072501340613
   FileSizes: []
   Exists: 1
 --- !u!114 &-6783363837578803364
@@ -432,7 +432,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 5792654062625071041}
   MinDistance: 1
   MaxDistance: 20
   Length: 725
@@ -575,7 +576,7 @@ MonoBehaviour:
   - {fileID: -8111530445333246383}
   StringsBanks:
   - {fileID: 8950288449733558335}
-  cacheTime: 639051312237308923
+  cacheTime: 639053076415482359
   cacheVersion: 131635
 --- !u!114 &116934228437644786
 MonoBehaviour:
@@ -767,7 +768,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Player.bank
   Name: SFX_Player
   StudioPath: bank:/SFX_Player
-  lastModified: 639051312236408101
+  lastModified: 639053076415482359
   FileSizes: []
   Exists: 1
 --- !u!114 &2278087898590528671
@@ -1123,6 +1124,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 9685
+--- !u!114 &5792654062625071041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Player_Footsteps/MovementType
+  m_EditorClassIdentifier: 
+  Name: MovementType
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 181411083
+    data2: 287849473
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &5835623609831143374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,13 +1213,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Master.strings.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
-  Name: Desktop/Master.strings
+  Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639051312236037766
+  lastModified: 639053072501360631
   FileSizes:
   - Name: 
-    Value: 2930
+    Value: 2974
   Exists: 1
