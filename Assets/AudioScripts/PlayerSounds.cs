@@ -30,14 +30,35 @@ public class PlayerSounds: MonoBehaviour
     {
         if (!footsteps.isValid())
         { 
-            Debug.LogWarning("Footsteps event is NOT valid");
             return;
         }
-
-        Debug.Log($"Setting FMOD MovementType to: {movement} ({(float)movement})");
 
         footsteps.setParameterByName("MovementType", (float)movement);
     }
 
-   
+    private MovementType currentAudioMovement = MovementType.Walk;
+
+
+    public void UpdateMovementForAudio(bool isRunning, bool isCrouching)
+    {
+        MovementType newMovement;
+
+        if (isCrouching)
+            newMovement = MovementType.Crouch;
+        else if (isRunning)
+            newMovement = MovementType.Run;
+        else
+            newMovement = MovementType.Walk;
+
+        // Only update FMOD if the state actually changed
+        if (newMovement == currentAudioMovement)
+            return;
+
+        currentAudioMovement = newMovement;
+
+        
+        if (footsteps.isValid())
+            footsteps.setParameterByName("MovementType", (float)currentAudioMovement);
+    }
+
 }

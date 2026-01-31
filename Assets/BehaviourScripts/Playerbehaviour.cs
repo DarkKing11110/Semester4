@@ -108,7 +108,7 @@ public class PlayerBehaviour : MonoBehaviour
     private bool capsuleCached;
 
     // Audioshit
-    private Playermovement movement;
+    
 
     // Felder
     [Tooltip("Dreht die Figur automatisch in die Bewegungsrichtung (Third-Person).")]
@@ -160,8 +160,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
 
-        movement = new Playermovement();
-        movement.playerSounds = GetComponentInChildren<PlayerSounds>();
+        
     }
 
     public void TakeDamage(int damage)
@@ -187,7 +186,9 @@ public class PlayerBehaviour : MonoBehaviour
         RegenerateStamina();
         HandleAnimations();   // zentral wie der Sprint-Handler
 
-        movement.Update(); // Audio
+         // Audio
+        playerSounds.UpdateMovementForAudio(isRunning, isCrouching);
+
     }
 
     void Move()
@@ -657,30 +658,7 @@ public class PlayerBehaviour : MonoBehaviour
         playerSounds.PlayFootsteps();
     }
 
-    public class Playermovement
-    {
-        public PlayerSounds playerSounds;
-
-        bool isRunning;
-        bool isCrouching;
-
-        public void Update()
-        {
-            Debug.Log($"[BEFORE MOVEMENT] run:{isRunning} crouch:{isCrouching}");
-
-            MovementType movement;
-
-            if (isCrouching)
-                movement = MovementType.Crouch;
-            else if (isRunning)
-                movement = MovementType.Run;
-            else
-                movement = MovementType.Walk;
-
-            playerSounds.SetMovementType(movement);
-            
-        }
-    }
+    
 }
 
 public enum MovementType

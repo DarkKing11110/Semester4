@@ -10417,6 +10417,10 @@ PrefabInstance:
       value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 7283798788336987775, guid: 452f973868357e544897106ec791203f, type: 3}
+      propertyPath: isCrouching
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283798788336987775, guid: 452f973868357e544897106ec791203f, type: 3}
       propertyPath: playerSounds
       value: 
       objectReference: {fileID: 1268531142}
