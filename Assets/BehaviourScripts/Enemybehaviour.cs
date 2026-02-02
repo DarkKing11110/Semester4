@@ -28,7 +28,8 @@ public class EnemyBehaviour : MonoBehaviour
     public float attackCooldown = 1.2f; // Sekunden zwischen Angriffen
 
     private float lastAttackTime = -999f;
-
+    
+   
 
     private int currentPatrolIndex;
     private NavMeshAgent agent;
