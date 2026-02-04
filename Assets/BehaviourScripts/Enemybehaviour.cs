@@ -44,6 +44,10 @@ public class EnemyBehaviour : MonoBehaviour
     private enum State { Patrolling, Chasing, Attacking, Fleeing }
     private State currentState;
 
+
+    [SerializeField]
+    private EnemySounds enemySounds; // Audio
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -347,4 +351,18 @@ public class EnemyBehaviour : MonoBehaviour
         GoToNextPatrolPoint();
     }
 
+    private void PlayFootstep()
+    {
+        enemySounds.PlayFootsteps();
+    }
+    
+
+}
+
+public enum EnemyMovementType
+{
+    Patrolling = 0,
+    Chasing = 1,
+    Attacking = 2,
+    Fleeing = 3
 }
