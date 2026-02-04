@@ -46,8 +46,7 @@ public class EnemyBehaviour : MonoBehaviour
     private State currentState;
 
 
-    [SerializeField]
-    private EnemySounds enemySounds; // Audio
+    
 
     void Start()
     {
@@ -352,18 +351,6 @@ public class EnemyBehaviour : MonoBehaviour
         GoToNextPatrolPoint();
     }
 
-    private void PlayFootstep()
-    {
-        enemySounds.PlayFootsteps();
-    }
-    
-
 }
 
-public enum EnemyMovementType
-{
-    Patrolling = 0,
-    Chasing = 1,
-    Attacking = 2,
-    Fleeing = 3
-}
+

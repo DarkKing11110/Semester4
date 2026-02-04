@@ -33,6 +33,9 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] LayerMask GroundLayer, PlayerLayer;
 
+    [SerializeField]
+    private EnemySounds enemySounds; // Audio
+
     private void Awake()
     {
         //Player = GameObject.Find("Player");
@@ -156,4 +159,15 @@ public class EnemyMovement : MonoBehaviour
             print("Point set");
         }
     }
+    private void PlayFootstep()
+    {
+        enemySounds.PlayFootsteps();
+    }
+}
+
+public enum EnemyMovementType
+{
+    Walking = 0,
+    Running = 1,
+    Attacking = 2,
 }

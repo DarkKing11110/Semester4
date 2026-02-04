@@ -92,7 +92,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677283342627254416}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &3921456847542354789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +425,7 @@ MonoBehaviour:
     m_Bits: 0
   autoRotateToMoveDirection: 1
   backwardRotateClamp: -1.6
+  playerSounds: {fileID: 0}
 --- !u!95 &4086146987731411131
 Animator:
   serializedVersion: 7

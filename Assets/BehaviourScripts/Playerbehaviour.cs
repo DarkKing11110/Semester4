@@ -580,7 +580,7 @@ public class PlayerBehaviour : MonoBehaviour
             isAttacked = false;
 
 
-        Debug.Log($"run:{isRunning} crouch:{isCrouching}");
+       
     }
 
     private void SetIdleFlags(bool idleStanding, bool idleCrouching)

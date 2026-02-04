@@ -7,7 +7,7 @@ public class EnemySounds : MonoBehaviour
     [SerializeField] private FMODUnity.EventReference _footsteps;
     private FMOD.Studio.EventInstance footsteps;
 
-    private EnemyMovementType currentAudiomovement = EnemyMovementType.Patrolling;
+    private EnemyMovementType currentAudiomovement = EnemyMovementType.Walking;
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class EnemySounds : MonoBehaviour
         footsteps.setParameterByName("MovementType", (float)movement);
     }
 
-    private EnemyMovementType currentAudioMovement = EnemyMovementType.Patrolling;
+    private EnemyMovementType currentAudioMovement = EnemyMovementType.Walking;
 
     public void UpdateMovementForAudio(EnemyMovementType movement)
     {
