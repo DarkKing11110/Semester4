@@ -67,9 +67,6 @@ PrefabInstance:
       addedObject: {fileID: 568408633735637041}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 370ff82514a50c4488fafcbc108aec17, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5987902840919682104}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 370ff82514a50c4488fafcbc108aec17, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 777851745593937666}
   m_SourcePrefab: {fileID: 100100000, guid: 370ff82514a50c4488fafcbc108aec17, type: 3}
 --- !u!1 &5304200378774463558 stripped
@@ -149,36 +146,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5987902840919682104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5304200378774463558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3757f7dd9c3e7c94b8bc65b9955f5c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolRoutes: []
-  player: {fileID: 0}
-  chaseRange: 10
-  hearingRange: 15
-  attackRange: 3
-  fleeHealthThreshold: 20
-  fleeDistance: 10
-  maxHealth: 100
-  routeSwitchInterval: 30
-  currentHealth: 0
-  normalSpeed: 3.5
-  chaseSpeed: 8
-  hidingLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  lostInterestTime: 5
-  attackDamage: 20
-  attackCooldown: 1.2
 --- !u!95 &777851745593937666
 Animator:
   serializedVersion: 7
