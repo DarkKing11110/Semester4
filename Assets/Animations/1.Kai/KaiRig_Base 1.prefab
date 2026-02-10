@@ -922,6 +922,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   autoRotateToMoveDirection: 0
   backwardRotateClamp: 45
+  playerSounds: {fileID: 0}
 --- !u!95 &662466237542643630
 Animator:
   serializedVersion: 7

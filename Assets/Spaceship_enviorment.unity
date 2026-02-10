@@ -296,7 +296,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -1042,7 +1042,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -1945,7 +1945,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 4
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -2482,7 +2482,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -6176,7 +6176,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -7548,7 +7548,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -9776,7 +9776,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.77
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -9784,8 +9784,8 @@ MonoBehaviour:
     influence:
       m_Shape: 0
       m_BoxSize: {x: 24.582977, y: 5.0313616, z: 23.001709}
-      m_BoxBlendDistancePositive: {x: 1, y: 1, z: 1}
-      m_BoxBlendDistanceNegative: {x: 1, y: 1, z: 1}
+      m_BoxBlendDistancePositive: {x: 0.15, y: 0.15, z: 0.15}
+      m_BoxBlendDistanceNegative: {x: 0.15, y: 0.15, z: 0.15}
       m_BoxBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_BoxBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
       m_BoxSideFadePositive: {x: 1, y: 1, z: 1}
@@ -11992,7 +11992,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: -1
       fadeDistance: 10000
@@ -13138,7 +13138,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -13628,7 +13628,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -19799,7 +19799,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -19807,7 +19807,7 @@ MonoBehaviour:
     influence:
       m_Shape: 0
       m_BoxSize: {x: 4.9485703, y: 5.0313616, z: 13.668682}
-      m_BoxBlendDistancePositive: {x: 1, y: 1, z: 1}
+      m_BoxBlendDistancePositive: {x: 1, y: 1, z: 4.3}
       m_BoxBlendDistanceNegative: {x: 1, y: 1, z: 1}
       m_BoxBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_BoxBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
@@ -21906,7 +21906,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -25890,7 +25890,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -27025,7 +27025,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -27844,7 +27844,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -28668,7 +28668,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -29526,7 +29526,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -35463,7 +35463,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -36580,7 +36580,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 1
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -36588,8 +36588,8 @@ MonoBehaviour:
     influence:
       m_Shape: 0
       m_BoxSize: {x: 17.156574, y: 5.0313616, z: 7.5929813}
-      m_BoxBlendDistancePositive: {x: 1, y: 1, z: 1}
-      m_BoxBlendDistanceNegative: {x: 1, y: 1, z: 1}
+      m_BoxBlendDistancePositive: {x: 0.15, y: 0.15, z: 0.15}
+      m_BoxBlendDistanceNegative: {x: 0.15, y: 0.15, z: 0.15}
       m_BoxBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_BoxBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
       m_BoxSideFadePositive: {x: 1, y: 1, z: 1}
@@ -37566,7 +37566,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -39492,7 +39492,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -40041,7 +40041,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -44994,7 +44994,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -48072,7 +48072,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -50354,7 +50354,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -51960,7 +51960,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -53249,7 +53249,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -54774,7 +54774,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 4
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -55571,7 +55571,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 4
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -57836,7 +57836,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -58838,7 +58838,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -60296,7 +60296,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -61526,7 +61526,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 160.35654, y: 0.5782024, z: 91.436005}
   m_Center: {x: 1.6164436, y: -0.2855601, z: -45.217995}
@@ -61678,7 +61678,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -68984,7 +68984,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -69585,7 +69585,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -69593,8 +69593,8 @@ MonoBehaviour:
     influence:
       m_Shape: 0
       m_BoxSize: {x: 37.517822, y: 5.0313616, z: 5.0518074}
-      m_BoxBlendDistancePositive: {x: 1, y: 1, z: 1}
-      m_BoxBlendDistanceNegative: {x: 1, y: 1, z: 1}
+      m_BoxBlendDistancePositive: {x: 0.15, y: 0.15, z: 0.15}
+      m_BoxBlendDistanceNegative: {x: 0.15, y: 0.15, z: 0.15}
       m_BoxBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_BoxBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
       m_BoxSideFadePositive: {x: 1, y: 1, z: 1}
@@ -72058,6 +72058,58 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.realtimeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_Shape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.lighting.importance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.lighting.multiplier
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_SphereBlendDistance
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxBlendDistanceNegative.x
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxBlendDistanceNegative.y
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxBlendDistanceNegative.z
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxBlendDistancePositive.x
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxBlendDistancePositive.y
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_BoxBlendDistancePositive.z
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.cameraSettings.frustum.nearClipPlaneRaw
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 484944650423735112, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_ProbeSettings.influence.m_EditorSimplifiedModeBlendDistance
+      value: 1.71
+      objectReference: {fileID: 0}
     - target: {fileID: 534405441967802711, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -72089,6 +72141,18 @@ PrefabInstance:
     - target: {fileID: 999824989207117985, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045244153191797322, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.058000714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045244153191797322, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.337
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045244153191797322, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.021000363
       objectReference: {fileID: 0}
     - target: {fileID: 1152855148573998134, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_Layer
@@ -72256,7 +72320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.85
+      value: -31.778
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -72264,7 +72328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -77.51
+      value: -53.83
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74781,7 +74845,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -75522,7 +75586,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -75982,7 +76046,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -78970,7 +79034,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -80000,7 +80064,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -81505,7 +81569,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.77
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -81513,8 +81577,8 @@ MonoBehaviour:
     influence:
       m_Shape: 0
       m_BoxSize: {x: 24.582977, y: 5.0313616, z: 23.001709}
-      m_BoxBlendDistancePositive: {x: 1, y: 1, z: 1}
-      m_BoxBlendDistanceNegative: {x: 1, y: 1, z: 1}
+      m_BoxBlendDistancePositive: {x: 0.15, y: 0.15, z: 0.15}
+      m_BoxBlendDistanceNegative: {x: 0.15, y: 0.15, z: 0.15}
       m_BoxBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_BoxBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
       m_BoxSideFadePositive: {x: 1, y: 1, z: 1}
@@ -83157,7 +83221,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -85653,7 +85717,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -88180,7 +88244,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -88705,7 +88769,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -89382,7 +89446,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -89931,7 +89995,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 2
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -91432,7 +91496,7 @@ MonoBehaviour:
     timeSlicing: 0
     lighting:
       importance: 3
-      multiplier: 0.31
+      multiplier: 1
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -91441,7 +91505,7 @@ MonoBehaviour:
       m_Shape: 0
       m_BoxSize: {x: 4.682823, y: 5.0313616, z: 14.821388}
       m_BoxBlendDistancePositive: {x: 1, y: 1, z: 1}
-      m_BoxBlendDistanceNegative: {x: 1, y: 1, z: 1}
+      m_BoxBlendDistanceNegative: {x: 1, y: 1, z: 4.07}
       m_BoxBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_BoxBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
       m_BoxSideFadePositive: {x: 1, y: 1, z: 1}
@@ -94336,7 +94400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000023841858
+      value: 0.291
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -94370,6 +94434,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4921186928030555791, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5304200378774463558, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_Name
       value: ElliotBaseFINISHED
@@ -94389,6 +94457,10 @@ PrefabInstance:
     - target: {fileID: 9193016769751244485, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_Height
       value: 2.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193016769751244485, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

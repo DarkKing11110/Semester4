@@ -284,7 +284,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639063302556186917
+  lastModified: 639058490479921904
   FileSizes: []
   Exists: 1
 --- !u!114 &-3276898734920472329
@@ -302,7 +302,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Player.bank
   Name: SFX_Player
   StudioPath: bank:/SFX_Player
-  lastModified: 639063302556206917
+  lastModified: 639058490479941907
   FileSizes: []
   Exists: 1
 --- !u!114 &-2800586294033330382
@@ -426,7 +426,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/VO_Player.bank
   Name: VO_Player
   StudioPath: bank:/VO_Player
-  lastModified: 639063302556326928
+  lastModified: 639058490480161954
   FileSizes: []
   Exists: 1
 --- !u!114 &-556575548936159601
@@ -444,7 +444,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639063302556186917
+  lastModified: 639058490479931905
   FileSizes:
   - Name: 
     Value: 2922
@@ -464,7 +464,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Monster.bank
   Name: SFX_Monster
   StudioPath: bank:/SFX_Monster
-  lastModified: 639063302556196912
+  lastModified: 639058490479931905
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -524,7 +524,7 @@ MonoBehaviour:
   - {fileID: -3430048395933799374}
   StringsBanks:
   - {fileID: -556575548936159601}
-  cacheTime: 639063302556326928
+  cacheTime: 639058490480161954
   cacheVersion: 131635
 --- !u!114 &239333974077979278
 MonoBehaviour:
