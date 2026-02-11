@@ -102,13 +102,13 @@ MonoBehaviour:
   Banks:
   - {fileID: -1721521428444757781}
   IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
+  Is3D: 1
+  IsOneShot: 0
   Parameters:
   - {fileID: 8305488069563544992}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 29866
+  MinDistance: 2.6000001
+  MaxDistance: 8
+  Length: 25000
 --- !u!114 &-7805875945638372321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +191,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3840
+--- !u!114 &-4525411558697172730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX_Monster/Monster_Attack
+  m_EditorClassIdentifier: 
+  Path: event:/SFX_Monster/Monster_Attack
+  Guid:
+    Data1: 795842549
+    Data2: 1313920646
+    Data3: -1884769875
+    Data4: 247776131
+  Banks:
+  - {fileID: -458968160798286052}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4312180218758224793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +311,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639058449422488205
+  lastModified: 639063435856201884
   FileSizes: []
   Exists: 1
 --- !u!114 &-3276898734920472329
@@ -302,7 +329,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Player.bank
   Name: SFX_Player
   StudioPath: bank:/SFX_Player
-  lastModified: 639058449423157874
+  lastModified: 639059370054915315
   FileSizes: []
   Exists: 1
 --- !u!114 &-2800586294033330382
@@ -426,7 +453,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/VO_Player.bank
   Name: VO_Player
   StudioPath: bank:/VO_Player
-  lastModified: 639058449424946132
+  lastModified: 639063447638987153
   FileSizes: []
   Exists: 1
 --- !u!114 &-556575548936159601
@@ -444,10 +471,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639058449422508215
+  lastModified: 639063435856232239
   FileSizes:
   - Name: 
-    Value: 2922
+    Value: 3172
   Exists: 1
 --- !u!114 &-458968160798286052
 MonoBehaviour:
@@ -464,7 +491,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Monster.bank
   Name: SFX_Monster
   StudioPath: bank:/SFX_Monster
-  lastModified: 639051312236137859
+  lastModified: 639063450241801736
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -519,12 +546,16 @@ MonoBehaviour:
   - {fileID: -8715109403564044741}
   - {fileID: 4869655197251676508}
   - {fileID: 4243562551989712996}
+  - {fileID: 2471013414987095309}
+  - {fileID: 5413121641771812497}
+  - {fileID: 2478023079480184206}
+  - {fileID: -4525411558697172730}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3430048395933799374}
   StringsBanks:
   - {fileID: -556575548936159601}
-  cacheTime: 639058449424946132
+  cacheTime: 639063450241801736
   cacheVersion: 131635
 --- !u!114 &239333974077979278
 MonoBehaviour:
@@ -553,6 +584,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 7000
+--- !u!114 &966865306277488631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monster_Footsteps/EnemyMovementType
+  m_EditorClassIdentifier: 
+  Name: EnemyMovementType
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1798469581
+    data2: 1488298074
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &1448117847221949154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +635,86 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &1778845565670576029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monster_Breathing/MonsterBreathState
+  m_EditorClassIdentifier: 
+  Name: MonsterBreathState
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1065208346
+    data2: 688440497
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2471013414987095309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX_Monster/Monster_Breathing
+  m_EditorClassIdentifier: 
+  Path: event:/SFX_Monster/Monster_Breathing
+  Guid:
+    Data1: 636926492
+    Data2: 1256296900
+    Data3: 248274358
+    Data4: 2046634708
+  Banks:
+  - {fileID: -458968160798286052}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 1778845565670576029}
+  MinDistance: 4.2000003
+  MaxDistance: 35
+  Length: 21598
+--- !u!114 &2478023079480184206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX_Monster/Monster_Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/SFX_Monster/Monster_Footsteps
+  Guid:
+    Data1: 1129966798
+    Data2: 1287070167
+    Data3: 1428501399
+    Data4: -1697868001
+  Banks:
+  - {fileID: -458968160798286052}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 966865306277488631}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &2800974048121845489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,6 +985,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 10651
+--- !u!114 &5413121641771812497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX_Monster/Monster_Hit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX_Monster/Monster_Hit
+  Guid:
+    Data1: -210166897
+    Data2: 1177085807
+    Data3: 452154809
+    Data4: 677879987
+  Banks:
+  - {fileID: -458968160798286052}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &5484672554436900585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1073,9 +1235,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Player_Breathing/Breath_State
+  m_Name: parameter:/Player_Breathing/BreathState
   m_EditorClassIdentifier: 
-  Name: Breath_State
+  Name: BreathState
   StudioPath: 
   Min: 0
   Max: 5
