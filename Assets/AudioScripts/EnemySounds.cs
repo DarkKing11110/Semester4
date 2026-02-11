@@ -1,20 +1,40 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerSounds;
 
 public class EnemySounds : MonoBehaviour
 {
     [SerializeField] private FMODUnity.EventReference _footsteps;
     private FMOD.Studio.EventInstance footsteps;
 
+    [SerializeField] private FMODUnity.EventReference _breathing;
+    private FMOD.Studio.EventInstance breathing;
+
     private EnemyMovementType currentAudiomovement = EnemyMovementType.Walking;
 
     private void Awake()
     {
+
+        if (!_breathing.IsNull)
+        {
+            breathing = RuntimeManager.CreateInstance(_breathing);
+
+            breathing.start();
+        }
+
         if (!_footsteps.IsNull)
         {
             footsteps = FMODUnity.RuntimeManager.CreateInstance(_footsteps);
         }
+    }
+
+    private void Update()
+    {
+
+        breathing.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+
     }
 
     public void PlayFootsteps()
@@ -50,6 +70,31 @@ public class EnemySounds : MonoBehaviour
 
         if (footsteps.isValid())
             footsteps.setParameterByName("MovementType", (float)currentAudioMovement);
+    }
+
+    private MonsterBreathState currentMonsterBreathState = MonsterBreathState.Walking;
+
+    public void SetBreathState(MonsterBreathState newState)
+    {
+        if (!breathing.isValid())
+            return;
+
+        if (newState == currentMonsterBreathState)
+            return;
+
+        currentMonsterBreathState = newState;
+
+        breathing.setParameterByName(
+            "BreathState",
+            (float)newState
+        );
+    }
+
+    public enum MonsterBreathState
+    {
+        Walking = 0,
+        Running = 1,
+        Exhausted = 2,
     }
 
 }

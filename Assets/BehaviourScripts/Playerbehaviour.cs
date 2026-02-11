@@ -188,6 +188,7 @@ public class PlayerBehaviour : MonoBehaviour
 
          // Audio
         playerSounds.UpdateMovementForAudio(isRunning, isCrouching);
+        UpdateBreathing();
 
     }
 
@@ -658,13 +659,17 @@ public class PlayerBehaviour : MonoBehaviour
         playerSounds.PlayFootsteps();
     }
 
+    void UpdateBreathing()
+    {
+        if (isRunning)
+            playerSounds.SetBreathState(PlayerSounds.BreathState.Running);
+        else if (currentStamina < 40f)
+            playerSounds.SetBreathState(PlayerSounds.BreathState.Exhausted);
+        else
+            playerSounds.SetBreathState(PlayerSounds.BreathState.Calm);
+    }
     
-}
 
-public enum MovementType
-{
-    Walk = 0,
-    Run = 1,
-    Crouch = 2
+    
 }
 

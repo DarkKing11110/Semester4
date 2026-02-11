@@ -163,6 +163,14 @@ public class EnemyMovement : MonoBehaviour
     {
         enemySounds.PlayFootsteps();
     }
+
+    void UpdateBreathing()
+    {
+        if (isRunning)
+            enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Running);
+        else
+            enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Walking);
+    }
 }
 
 public enum EnemyMovementType

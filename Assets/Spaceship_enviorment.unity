@@ -5147,6 +5147,14 @@ MonoBehaviour:
       Data3: 862871424
       Data4: -288695249
     Path: event:/SFX_Player/Player_Footsteps
+  footstepCooldown: 0.2
+  _breathing:
+    Guid:
+      Data1: 1686359468
+      Data2: 1118844276
+      Data3: 859841707
+      Data4: 91986368
+    Path: event:/VO_Player/VO_Player_SFX/Player_Breathing
 --- !u!1001 &129138608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9095,6 +9103,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a5ac255ac1aa2a941b8988e1362b600c, type: 3}
   m_PrefabInstance: {fileID: 1781656638}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &201597151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+  m_PrefabInstance: {fileID: 8988905068672020813}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04db3c390cd8b6a46820d52d046d8da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &204877575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79810,7 +79829,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 512
-  enemySounds: {fileID: 0}
+  enemySounds: {fileID: 201597151}
 --- !u!4 &1825030735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
@@ -94453,6 +94472,26 @@ PrefabInstance:
     - target: {fileID: 5987902840919682104, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: chaseSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _breathing.Path
+      value: event:/SFX_Monster/Monster_Breathing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _breathing.Guid.Data1
+      value: 636926492
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _breathing.Guid.Data2
+      value: 1256296900
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _breathing.Guid.Data3
+      value: 248274358
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _breathing.Guid.Data4
+      value: 2046634708
       objectReference: {fileID: 0}
     - target: {fileID: 9193016769751244485, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_Height
