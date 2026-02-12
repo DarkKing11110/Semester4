@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639064038739215948
+  lastModified: 639064688374851202
   FileSizes: []
   Exists: 1
 --- !u!114 &-7712038004901932730
@@ -154,6 +154,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6139394887232972327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monster_Footsteps/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2779528869
+    data2: 3943391971
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-6039281154518960281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +248,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/VO_Player.bank
   Name: VO_Player
   StudioPath: bank:/VO_Player
-  lastModified: 639064038739493567
+  lastModified: 639064624885812259
   FileSizes: []
   Exists: 1
 --- !u!114 &-3658853911930675994
@@ -519,6 +543,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: -508088765541329863}
+  - {fileID: -6139394887232972327}
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
@@ -685,7 +710,7 @@ MonoBehaviour:
   - {fileID: -8382577269873335886}
   StringsBanks:
   - {fileID: 955883865702321600}
-  cacheTime: 639064038739493567
+  cacheTime: 639064688375172453
   cacheVersion: 131635
 --- !u!114 &321445962978824204
 MonoBehaviour:
@@ -791,9 +816,10 @@ MonoBehaviour:
   - {fileID: 8133664796096776763}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
   - {fileID: 3397205779050536916}
+  - {fileID: 7803698953074028262}
   MinDistance: 4.2000003
   MaxDistance: 35
   Length: 21598
@@ -812,10 +838,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639064038739231467
+  lastModified: 639064688374882230
   FileSizes:
   - Name: 
-    Value: 3172
+    Value: 3212
   Exists: 1
 --- !u!114 &1085197762005082746
 MonoBehaviour:
@@ -1214,6 +1240,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 11319
+--- !u!114 &7803698953074028262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Monster_Breathing/Occlusion
+  m_EditorClassIdentifier: 
+  Name: Occlusion
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2779528869
+    data2: 3943391971
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8063960420081107843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,7 +1279,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Player.bank
   Name: SFX_Player
   StudioPath: bank:/SFX_Player
-  lastModified: 639064038739323007
+  lastModified: 639064624883587746
   FileSizes: []
   Exists: 1
 --- !u!114 &8133664796096776763
@@ -1247,7 +1297,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Monster.bank
   Name: SFX_Monster
   StudioPath: bank:/SFX_Monster
-  lastModified: 639064038739312576
+  lastModified: 639064688375172453
   FileSizes: []
   Exists: 1
 --- !u!114 &8635006558905167254
