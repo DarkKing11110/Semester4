@@ -219,5 +219,6 @@ public class RiddlePuzzle : MonoBehaviour
     {
         Debug.Log("[RiddlePuzzle] Puzzle gelöst!");
         // TODO: hier gewünschte Aktion ausführen (Tür öffnen, Belohnung, etc.)
+        GameEvents.OnMinigameCompleted?.Invoke("RiddlePuzzle");
     }
 }
