@@ -15,9 +15,14 @@ namespace FMODUnity
     {
         public EmitterRef[] Emitters;
         public EmitterGameEvent TriggerEvent;
+        [SerializeField]
+        [Tooltip("Tags to exclude from TriggerEnter/Exit for this component.")]
+        private string[] ExcludedTags = new string[0];
 
         private void Awake()
         {
+            // Apply local exclusions to base EventHandler filtering
+            ExcludeTags = ExcludedTags;
             for (int i = 0; i < Emitters.Length; i++)
             {
                 var emitterRef = Emitters[i];

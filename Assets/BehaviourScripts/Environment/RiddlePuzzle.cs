@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class RiddlePuzzle : MonoBehaviour
 {
     [Header("UI Grid")]
-    [Tooltip("Panel/Container für das 8x8 Puzzle (RectTransform).")]
+    [Tooltip("Panel/Container fï¿½r das 8x8 Puzzle (RectTransform).")]
     public RectTransform gridPanel;
     [Tooltip("Alle 63 Puzzle-Teile (ein Slot bleibt leer). Reihenfolge = Zielreihenfolge von 0..62.")]
     public List<RectTransform> tiles = new List<RectTransform>();
@@ -18,13 +19,19 @@ public class RiddlePuzzle : MonoBehaviour
     public int gridSize = 8; // 8x8
     [Tooltip("Beim Start mischen.")]
     public bool shuffleOnStart = true;
-    [Tooltip("Mischschritte (mehr = stärker gemischt, aber immer lösbar).")]
+    [Tooltip("Mischschritte (mehr = stï¿½rker gemischt, aber immer lï¿½sbar).")]
+
+    [Header("FMOD Events")]
+    //[Tooltip("FMOD Studio Event fÃ¼r Tile-Bewegung.")]
+    [SerializeField] private EventReference tileMoveEvent;
+    [Tooltip("FMOD Studio Event fÃ¼r Puzzle gelÃ¶st.")]
+    [SerializeField] private EventReference puzzleSolveEvent;
     public int shuffleMoves = 200;
 
     // interner Zustand
     private RectTransform[,] gridSlots; // aktuelle tile-Belegung (null = leer)
     private Vector2Int empty;           // Koordinate des leeren Feldes
-    private Vector2 cellSize;           // berechnete Zellgröße
+    private Vector2 cellSize;           // berechnete Zellgrï¿½ï¿½e
     private bool initialized;
 
     void Start()
@@ -36,14 +43,14 @@ public class RiddlePuzzle : MonoBehaviour
 
     void Update()
     {
-        // Tastatursteuerung: schiebe das Feld, das zum leeren Feld benachbart ist (Pfeile „ziehen“ das leere Feld)
-        if (Input.GetKeyDown(KeyCode.Keypad2)) TryMoveTile(empty + Vector2Int.down);     // oben = ziehe unten ins leere
-        if (Input.GetKeyDown(KeyCode.Keypad8)) TryMoveTile(empty + Vector2Int.up);
-        if (Input.GetKeyDown(KeyCode.Keypad6)) TryMoveTile(empty + Vector2Int.right);
-        if (Input.GetKeyDown(KeyCode.Keypad4)) TryMoveTile(empty + Vector2Int.left);
+        // Tastatursteuerung: schiebe das Feld, das zum leeren Feld benachbart ist (Pfeile ï¿½ziehenï¿½ das leere Feld)
+        if (Input.GetKeyDown(KeyCode.K)) TryMoveTile(empty + Vector2Int.down);     // oben = ziehe unten ins leere
+        if (Input.GetKeyDown(KeyCode.B)) TryMoveTile(empty + Vector2Int.up);
+        if (Input.GetKeyDown(KeyCode.C)) TryMoveTile(empty + Vector2Int.right);
+        if (Input.GetKeyDown(KeyCode.V)) TryMoveTile(empty + Vector2Int.left);
     }
 
-    // Initialisiert Grid-Slots und Zellgrößen
+    // Initialisiert Grid-Slots und Zellgrï¿½ï¿½en
     private void InitGrid()
     {
         if (gridPanel == null)
@@ -58,7 +65,7 @@ public class RiddlePuzzle : MonoBehaviour
         }
         gridSlots = new RectTransform[gridSize, gridSize];
 
-        // Zellgröße aus Panel berechnen (unter Berücksichtigung von Padding/Spacing)
+        // Zellgrï¿½ï¿½e aus Panel berechnen (unter Berï¿½cksichtigung von Padding/Spacing)
         var panelSize = gridPanel.rect.size;
         float totalSpacingX = cellSpacing.x * (gridSize - 1);
         float totalSpacingY = cellSpacing.y * (gridSize - 1);
@@ -66,7 +73,7 @@ public class RiddlePuzzle : MonoBehaviour
         float usableY = panelSize.y - 2 * gridPadding.y - totalSpacingY;
         cellSize = new Vector2(usableX / gridSize, usableY / gridSize);
 
-        // Alle Tiles auf korrekte Größe setzen (optional)
+        // Alle Tiles auf korrekte Grï¿½ï¿½e setzen (optional)
         foreach (var t in tiles)
         {
             if (t == null) continue;
@@ -76,7 +83,7 @@ public class RiddlePuzzle : MonoBehaviour
             t.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, cellSize.x);
             t.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, cellSize.y);
 
-            // Klick-Handler hinzufügen
+            // Klick-Handler hinzufï¿½gen
             var btn = t.GetComponent<Button>();
             if (btn != null)
             {
@@ -123,7 +130,7 @@ public class RiddlePuzzle : MonoBehaviour
         tile.localPosition = new Vector3(px, py, 0f);
     }
 
-    // Zufälliges, stets lösbares Shuffle: führe legale Moves des leeren Feldes aus
+    // Zufï¿½lliges, stets lï¿½sbares Shuffle: fï¿½hre legale Moves des leeren Feldes aus
     private void ShuffleSolvable(int moves)
     {
         var rng = new System.Random();
@@ -144,7 +151,7 @@ public class RiddlePuzzle : MonoBehaviour
         TryMoveTile(pos.Value);
     }
 
-    // Versuche, Tile an Position „from“ ins leere Feld zu schieben; nur erlaubt, wenn orthogonal benachbart
+    // Versuche, Tile an Position ï¿½fromï¿½ ins leere Feld zu schieben; nur erlaubt, wenn orthogonal benachbart
     private bool TryMoveTile(Vector2Int from)
     {
         if (!initialized) return false;
@@ -163,7 +170,13 @@ public class RiddlePuzzle : MonoBehaviour
         SetTilePosition(tile, empty);
         empty = from;
 
-        // Optional: Prüfe Sieg
+        // FMOD Event abspielen
+       
+        
+            FMODUnity.RuntimeManager.PlayOneShot(tileMoveEvent);
+        
+
+        // Optional: Prï¿½fe Sieg
         // if (IsSolved()) OnSolved();
 
         return true;
@@ -194,7 +207,7 @@ public class RiddlePuzzle : MonoBehaviour
 
     private bool InBounds(Vector2Int p) => p.x >= 0 && p.x < gridSize && p.y >= 0 && p.y < gridSize;
 
-    // Zielprüfung: Tiles in Reihenfolge 0..62 an (x,y) = y*gridSize + x
+    // Zielprï¿½fung: Tiles in Reihenfolge 0..62 an (x,y) = y*gridSize + x
     private bool IsSolved()
     {
         int idx = 0;
@@ -217,7 +230,12 @@ public class RiddlePuzzle : MonoBehaviour
 
     private void OnSolved()
     {
-        Debug.Log("[RiddlePuzzle] Puzzle gelöst!");
-        // TODO: hier gewünschte Aktion ausführen (Tür öffnen, Belohnung, etc.)
+        
+        
+            FMODUnity.RuntimeManager.PlayOneShot(puzzleSolveEvent);
+        
+
+        Debug.Log("[RiddlePuzzle] Puzzlxe gelï¿½st!");
+        // TODO: hier gewï¿½nschte Aktion ausfï¿½hren (Tï¿½r ï¿½ffnen, Belohnung, etc.)
     }
 }

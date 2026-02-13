@@ -11,6 +11,21 @@ namespace FMODUnity
 #endif
     {
         public string CollisionTag = "";
+        [SerializeField]
+        protected string[] ExcludeTags = new string[0];
+
+        private bool IsExcludedByTag(string tag)
+        {
+            if (ExcludeTags == null || ExcludeTags.Length == 0)
+                return false;
+            for (int i = 0; i < ExcludeTags.Length; i++)
+            {
+                var t = ExcludeTags[i];
+                if (!string.IsNullOrEmpty(t) && t == tag)
+                    return true;
+            }
+            return false;
+        }
 
         protected virtual void Start()
         {
@@ -35,6 +50,12 @@ namespace FMODUnity
 #if UNITY_PHYSICS_EXIST
         private void OnTriggerEnter(Collider other)
         {
+            // Exclude by tag (collider or attached rigidbody)
+            if (IsExcludedByTag(other.tag) || (other.attachedRigidbody && IsExcludedByTag(other.attachedRigidbody.tag)))
+            {
+                return;
+            }
+
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag) || (other.attachedRigidbody && other.attachedRigidbody.CompareTag(CollisionTag)))
             {
                 HandleGameEvent(EmitterGameEvent.TriggerEnter);
@@ -43,6 +64,12 @@ namespace FMODUnity
 
         private void OnTriggerExit(Collider other)
         {
+            // Exclude by tag (collider or attached rigidbody)
+            if (IsExcludedByTag(other.tag) || (other.attachedRigidbody && IsExcludedByTag(other.attachedRigidbody.tag)))
+            {
+                return;
+            }
+
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag) || (other.attachedRigidbody && other.attachedRigidbody.CompareTag(CollisionTag)))
             {
                 HandleGameEvent(EmitterGameEvent.TriggerExit);
@@ -53,6 +80,12 @@ namespace FMODUnity
 #if UNITY_PHYSICS2D_EXIST
         private void OnTriggerEnter2D(Collider2D other)
         {
+            // Exclude by tag
+            if (IsExcludedByTag(other.tag))
+            {
+                return;
+            }
+
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
             {
                 HandleGameEvent(EmitterGameEvent.TriggerEnter2D);
@@ -61,6 +94,12 @@ namespace FMODUnity
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            // Exclude by tag
+            if (IsExcludedByTag(other.tag))
+            {
+                return;
+            }
+
             if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
             {
                 HandleGameEvent(EmitterGameEvent.TriggerExit2D);
