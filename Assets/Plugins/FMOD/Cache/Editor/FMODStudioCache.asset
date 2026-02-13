@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639065071980396552
+  lastModified: 639066184372664618
   FileSizes: []
   Exists: 1
 --- !u!114 &-7712038004901932730
@@ -72,6 +72,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3177
+--- !u!114 &-7301868913177237244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX_Enviroment.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Enviroment.bank
+  Name: SFX_Enviroment
+  StudioPath: 
+  lastModified: 639066184372746392
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7100505618102219683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +266,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/VO_Player.bank
   Name: VO_Player
   StudioPath: bank:/VO_Player
-  lastModified: 639064038739493567
+  lastModified: 639066184372912974
   FileSizes: []
   Exists: 1
 --- !u!114 &-3658853911930675994
@@ -649,6 +667,24 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-59313049102309662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambiences.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/FMOD/Desktop/Ambiences.bank
+  Name: Ambiences
+  StudioPath: 
+  lastModified: 639066184372664618
+  FileSizes: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +703,8 @@ MonoBehaviour:
   - {fileID: 8133664796096776763}
   - {fileID: 8063960420081107843}
   - {fileID: -4711362774038220180}
+  - {fileID: -59313049102309662}
+  - {fileID: -7301868913177237244}
   EditorEvents:
   - {fileID: 873638937099647548}
   - {fileID: 5948144884646317022}
@@ -710,7 +748,7 @@ MonoBehaviour:
   - {fileID: -8382577269873335886}
   StringsBanks:
   - {fileID: 955883865702321600}
-  cacheTime: 639065071980881412
+  cacheTime: 639066184372912974
   cacheVersion: 131635
 --- !u!114 &321445962978824204
 MonoBehaviour:
@@ -838,7 +876,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639065071980534855
+  lastModified: 639066184372679678
   FileSizes:
   - Name: 
     Value: 3212
@@ -1279,7 +1317,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Player.bank
   Name: SFX_Player
   StudioPath: bank:/SFX_Player
-  lastModified: 639065071980881412
+  lastModified: 639066184372771443
   FileSizes: []
   Exists: 1
 --- !u!114 &8133664796096776763
@@ -1297,7 +1335,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Monster.bank
   Name: SFX_Monster
   StudioPath: bank:/SFX_Monster
-  lastModified: 639065071980674057
+  lastModified: 639066184372761411
   FileSizes: []
   Exists: 1
 --- !u!114 &8635006558905167254
