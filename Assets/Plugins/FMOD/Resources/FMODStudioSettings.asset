@@ -463,8 +463,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 0
   HasPlatforms: 0
-  sourceProjectPath: ../../Fmod 11.02 (2.02)/Fmod 11.02 (2.02).fspro
-  sourceBankPath: Assets/Plugins/FMOD
+  sourceProjectPath: 
+  sourceBankPath: Assets/StreamingAssets/FMOD/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -488,8 +488,11 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Ambience
-  - Envrioment
+  - Ambiences
+  - SFX_Enviroment
+  - SFX_Monster
+  - SFX_Player
+  - VO_Player
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
