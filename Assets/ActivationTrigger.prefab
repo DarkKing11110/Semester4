@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 2290690985669564931}
   - component: {fileID: 5010459207904167506}
   - component: {fileID: 3380146954332106851}
-  - component: {fileID: 418063603189272668}
-  - component: {fileID: 4184942026055983056}
+  - component: {fileID: 752966079330110019}
   m_Layer: 0
   m_Name: ActivationTrigger
   m_TagString: Untagged
@@ -88,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &418063603189272668
-BoxCollider:
+--- !u!135 &752966079330110019
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,24 +106,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4184942026055983056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4597106056322457558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9890df897f9a43f468a0f6d0fe67782c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activationTag: 
-  activationMethods:
-    m_PersistentCalls:
-      m_Calls: []
-  deactivationMethods:
-    m_PersistentCalls:
-      m_Calls: []
+  m_Radius: 0.5455127
+  m_Center: {x: 0.00000019035411, y: 0.11003327, z: 0}
