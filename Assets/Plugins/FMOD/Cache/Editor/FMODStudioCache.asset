@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639066184372664618
+  lastModified: 639066269818620019
   FileSizes: []
   Exists: 1
 --- !u!114 &-7712038004901932730
@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Enviroment.bank
   Name: SFX_Enviroment
   StudioPath: 
-  lastModified: 639066184372746392
+  lastModified: 639066269818869819
   FileSizes: []
   Exists: 1
 --- !u!114 &-7100505618102219683
@@ -266,7 +266,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/VO_Player.bank
   Name: VO_Player
   StudioPath: bank:/VO_Player
-  lastModified: 639066184372912974
+  lastModified: 639066269819282789
   FileSizes: []
   Exists: 1
 --- !u!114 &-3658853911930675994
@@ -682,7 +682,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Ambiences.bank
   Name: Ambiences
   StudioPath: 
-  lastModified: 639066184372664618
+  lastModified: 639066269818447138
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -748,7 +748,7 @@ MonoBehaviour:
   - {fileID: -8382577269873335886}
   StringsBanks:
   - {fileID: 955883865702321600}
-  cacheTime: 639066184372912974
+  cacheTime: 639066269819282789
   cacheVersion: 131635
 --- !u!114 &321445962978824204
 MonoBehaviour:
@@ -876,7 +876,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639066184372679678
+  lastModified: 639066269818651001
   FileSizes:
   - Name: 
     Value: 3212
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Player.bank
   Name: SFX_Player
   StudioPath: bank:/SFX_Player
-  lastModified: 639066184372771443
+  lastModified: 639066269819060417
   FileSizes: []
   Exists: 1
 --- !u!114 &8133664796096776763
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Monster.bank
   Name: SFX_Monster
   StudioPath: bank:/SFX_Monster
-  lastModified: 639066184372761411
+  lastModified: 639066269819040227
   FileSizes: []
   Exists: 1
 --- !u!114 &8635006558905167254
