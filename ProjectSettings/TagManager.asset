@@ -17,8 +17,8 @@ TagManager:
   - Ceeling
   - Character
   - Ground
+  - OcclusionLayer
   - 
-  - Environment
   - 
   - 
   - 
