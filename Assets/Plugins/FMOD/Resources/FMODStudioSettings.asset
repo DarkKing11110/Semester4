@@ -488,8 +488,6 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Ambiences
-  - SFX_Enviroment
   - SFX_Monster
   - SFX_Player
   - VO_Player

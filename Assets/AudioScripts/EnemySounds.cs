@@ -16,6 +16,9 @@ public class EnemySounds : MonoBehaviour
 
     [SerializeField] LayerMask occlusionMask;
     [SerializeField] float rayOffset = 0.5f;
+
+    [SerializeField] Transform listenerTransform;
+
     float occlusionSmoothed;
 
     private void Awake()
@@ -120,7 +123,8 @@ public class EnemySounds : MonoBehaviour
 
     float CalculateOcclusion()
     {
-        Vector3 listener = Camera.main.transform.position;
+        Vector3 listener = listenerTransform.position;
+
         Vector3 source = transform.position;
 
         int blocked = 0;

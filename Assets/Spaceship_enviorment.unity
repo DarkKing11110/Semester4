@@ -10367,11 +10367,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2117f311d130cad459323c95a8f1878f, type: 3}
   m_PrefabInstance: {fileID: 207457434}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &209305252 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9154275865776307675, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
-  m_PrefabInstance: {fileID: 1496260638}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &209717556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25279,7 +25274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storySteps:
-  - {fileID: 11400000, guid: 66e65ed52bbb81740a1669f064b4ece5, type: 2}
+  - {fileID: 11400000, guid: 45b2ddf9aa49dde4aa3ec2acf3717bdc, type: 2}
 --- !u!4 &502949645
 Transform:
   m_ObjectHideFlags: 0
@@ -68681,6 +68676,10 @@ PrefabInstance:
       propertyPath: playerSounds
       value: 
       objectReference: {fileID: 33002373}
+    - target: {fileID: 7677283342627254416, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      propertyPath: m_Name
+      value: Camera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -70079,7 +70078,7 @@ MonoBehaviour:
   introCamera: {fileID: 1536552888}
   mainCamera: {fileID: 1895321264}
   playerRoot: {fileID: 1033079300}
-  lookAtTarget: {fileID: 209305252}
+  lookAtTarget: {fileID: 0}
   introStartPose: {fileID: 1889120352}
   lateralOffset: 0
   verticalOffset: 0.2
@@ -70285,7 +70284,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536552884}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1536552888
 Camera:
   m_ObjectHideFlags: 0
@@ -87677,6 +87676,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 3032494840488130207, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
   m_PrefabInstance: {fileID: 1496260638}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1895321265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 440981635780417886, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+  m_PrefabInstance: {fileID: 1496260638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1895777748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100368,6 +100372,10 @@ PrefabInstance:
       propertyPath: _breathing.Path
       value: event:/SFX_Monster/Monster_Breathing
       objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: listenerTransform
+      value: 
+      objectReference: {fileID: 1895321265}
     - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: occlusionMask.m_Bits
       value: 4096
