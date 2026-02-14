@@ -20,7 +20,7 @@ public class doorIntro : MonoBehaviour
     [Header("Trigger Zonen")]
     [Tooltip("Trigger für das Auslösen der Intro-Animation (externer Collider).")]
     public Collider introTriggerArea;
-    [Tooltip("Trigger für den Wechsel zur normalen Tür (externer Collider). Wird erst aktiviert, wenn die Intro-Area betreten wurde.")]
+    [Tooltip("Trigger für den Wechsel zur normalen Tür (externer Collider).")]
     public Collider swapTriggerArea;
 
     [Header("Tür-Tausch")]
@@ -38,7 +38,6 @@ public class doorIntro : MonoBehaviour
     public string[] allowedTags;
 
     private bool introPlayedOnce;
-    private bool swapAreaActivated;
     private readonly HashSet<GameObject> _authorizedInRange = new HashSet<GameObject>();
 
     void Awake()
@@ -49,14 +48,6 @@ public class doorIntro : MonoBehaviour
 
         if (introDoorToDeactivate == null)
             introDoorToDeactivate = gameObject;
-
-        // Swap-Area initial deaktivieren (sofern vorhanden)
-        if (swapTriggerArea != null)
-        {
-            var swapGO = swapTriggerArea.gameObject;
-            if (swapGO.activeSelf) swapGO.SetActive(false);
-            swapAreaActivated = false;
-        }
 
         SetupTriggerRelays();
     }
@@ -82,7 +73,7 @@ public class doorIntro : MonoBehaviour
             Debug.LogWarning("[doorIntro] introTriggerArea ist nicht zugewiesen.");
         }
 
-        // Swap-Trigger (Relay vorbereiten, Objekt bleibt aber deaktiviert bis Aktivierung)
+        // Swap-Trigger
         if (swapTriggerArea != null)
         {
             if (!swapTriggerArea.isTrigger)
@@ -106,25 +97,9 @@ public class doorIntro : MonoBehaviour
         if (!IsEntityAuthorized(root)) return;
 
         if (kind == DoorIntroTriggerRelay.TriggerKind.Intro)
-        {
-            // Swap-Area freischalten, sobald Intro-Area betreten wurde (einmalig)
-            ActivateSwapAreaIfNeeded();
             TryPlayIntro();
-        }
         else if (kind == DoorIntroTriggerRelay.TriggerKind.Swap)
-        {
             TrySwapDoors();
-        }
-    }
-
-    private void ActivateSwapAreaIfNeeded()
-    {
-        if (swapAreaActivated) return;
-        if (swapTriggerArea == null) return;
-
-        var swapGO = swapTriggerArea.gameObject;
-        swapGO.SetActive(true);
-        swapAreaActivated = true;
     }
 
     private void TryPlayIntro()

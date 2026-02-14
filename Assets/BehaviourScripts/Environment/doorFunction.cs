@@ -67,7 +67,7 @@ public class doorFunction : MonoBehaviour
     private bool _isOpen;
     private KeyCode _openKeyCode;
 
-    // Tracking berechtigter Entitäten in Reichweite
+    // WICHTIG: Root-Entities statt einzelner Collider tracken, damit mehrfaches Betätigen ohne Re-Enter funktioniert
     private readonly HashSet<GameObject> _authorizedInRange = new HashSet<GameObject>();
 
     private bool _closedPosInitialized = false;
@@ -79,6 +79,7 @@ public class doorFunction : MonoBehaviour
         _isOpen = startOpened;
         transform.localPosition = _isOpen ? _openPos : _closedPos;
         ParseKey();
+        SetupTriggerHandling();
 #if UNITY_EDITOR
         ApplyEditorForceState();
 #endif
@@ -89,10 +90,6 @@ public class doorFunction : MonoBehaviour
 #if UNITY_EDITOR
         if (editorForcePersist) ApplyEditorForceState();
 #endif
-        // Bereich prüfen (statt OnTriggerEnter/Exit oder Relay)
-        if (requireEntityInRange)
-            RefreshAuthorizedInRange();
-
         HandleInput();
         MoveDoor();
     }
@@ -157,16 +154,20 @@ public class doorFunction : MonoBehaviour
         Debug.LogWarning($"[doorFunction] Konnte Taste '{openKey}' nicht zuordnen. Verwende gültigen KeyCode oder Einzelzeichen.");
     }
 
-    /// Bereichsprüfung: füllt _authorizedInRange über Physics.Overlap… basierend auf triggerArea oder lokalen Trigger-Collidern
-    private void RefreshAuthorizedInRange()
+    /// <summary>
+    /// Suche Trigger und richte Relay ein, falls der Trigger nicht auf dem Tür-GameObject sitzt.
+    /// Wenn 'triggerArea' gesetzt ist, wird ausschließlich dieser Collider verwendet.
+    /// </summary>
+    private void SetupTriggerHandling()
     {
-        _authorizedInRange.Clear();
+        List<Collider> triggers = new List<Collider>();
 
-        // Quelle bestimmen: explizite triggerArea oder alle isTrigger-Colliders am Objekt/Kindern
-        List<Collider> sources = new List<Collider>();
-        if (triggerArea != null && triggerArea.isTrigger)
+        if (triggerArea != null)
         {
-            sources.Add(triggerArea);
+            if (triggerArea.isTrigger)
+                triggers.Add(triggerArea);
+            else
+                Debug.LogWarning("[doorFunction] Zugewiesener triggerArea Collider hat isTrigger=false. Setze isTrigger=true.");
         }
         else
         {
@@ -174,75 +175,52 @@ public class doorFunction : MonoBehaviour
             foreach (var c in all)
             {
                 if (c != null && c.isTrigger)
-                    sources.Add(c);
-            }
-            if (sources.Count == 0)
-            {
-                // wenn keine Trigger vorhanden, nichts zu prüfen
-                return;
+                    triggers.Add(c);
             }
         }
 
-        foreach (var src in sources)
+        if (requireEntityInRange && triggers.Count == 0)
         {
-            if (src == null) continue;
-            // Overlap je nach Collider-Typ
-            if (src is BoxCollider box)
-            {
-                Vector3 center = box.transform.TransformPoint(box.center);
-                Vector3 halfExtents = Vector3.Scale(box.size, box.transform.lossyScale) * 0.5f;
-                Quaternion rot = box.transform.rotation;
-                var overlaps = Physics.OverlapBox(center, halfExtents, rot, ~0, QueryTriggerInteraction.Ignore);
-                AddAuthorized(overlaps);
-            }
-            else if (src is SphereCollider sphere)
-            {
-                Vector3 center = sphere.transform.TransformPoint(sphere.center);
-                float radius = sphere.radius * Mathf.Max(sphere.transform.lossyScale.x, sphere.transform.lossyScale.y, sphere.transform.lossyScale.z);
-                var overlaps = Physics.OverlapSphere(center, radius, ~0, QueryTriggerInteraction.Ignore);
-                AddAuthorized(overlaps);
-            }
-            else if (src is CapsuleCollider cap)
-            {
-                // Endpunkte berechnen
-                Vector3 center = cap.transform.TransformPoint(cap.center);
-                Vector3 axis;
-                switch (cap.direction)
-                {
-                    case 0: axis = cap.transform.right; break;
-                    case 1: axis = cap.transform.up; break;
-                    default: axis = cap.transform.forward; break;
-                }
-                float radius = cap.radius * Mathf.Max(cap.transform.lossyScale.x, cap.transform.lossyScale.y, cap.transform.lossyScale.z);
-                float heightWorld = cap.height * Mathf.Max(cap.transform.lossyScale.x, cap.transform.lossyScale.y, cap.transform.lossyScale.z);
-                float halfSegment = Mathf.Max(0f, (heightWorld * 0.5f) - radius);
-                Vector3 p0 = center - axis * halfSegment;
-                Vector3 p1 = center + axis * halfSegment;
-                var overlaps = Physics.OverlapCapsule(p0, p1, radius, ~0, QueryTriggerInteraction.Ignore);
-                AddAuthorized(overlaps);
-            }
-            else
-            {
-                // generischer Fallback über Bounds
-                var b = src.bounds;
-                var overlaps = Physics.OverlapBox(b.center, b.extents, Quaternion.identity, ~0, QueryTriggerInteraction.Ignore);
-                AddAuthorized(overlaps);
-            }
+            Debug.LogWarning("[doorFunction] Kein Trigger-Collider gefunden. Füge einen Collider mit isTrigger=true hinzu (am Tür-Objekt, Kind oder extern und weise ihn bei 'triggerArea' zu).");
+        }
+
+        foreach (var c in triggers)
+        {
+            if (c == null) continue;
+            if (c.gameObject == gameObject) continue;
+
+            var relay = c.gameObject.GetComponent<DoorTriggerRelay>();
+            if (relay == null) relay = c.gameObject.AddComponent<DoorTriggerRelay>();
+            relay.owner = this;
         }
     }
 
-    private void AddAuthorized(Collider[] overlaps)
+    // Falls der Trigger auf dem Tür-Objekt sitzt (kein externes Relay nötig)
+    private void OnTriggerEnter(Collider other)
     {
-        if (overlaps == null) return;
-        for (int i = 0; i < overlaps.Length; i++)
-        {
-            var other = overlaps[i];
-            if (other == null) continue;
-            var root = GetEntityRoot(other);
-            if (root == null) continue;
-            if (IsEntityAuthorized(root))
-                _authorizedInRange.Add(root);
-        }
+        if (!requireEntityInRange) return;
+        var entity = GetEntityRoot(other);
+        if (entity != null && IsEntityAuthorized(entity))
+            _authorizedInRange.Add(entity);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!requireEntityInRange) return;
+        var entity = GetEntityRoot(other);
+        if (entity != null)
+            _authorizedInRange.Remove(entity);
+    }
+
+    // Wird von DoorTriggerRelay aufgerufen, wenn Relay vorhanden ist
+    internal void OnRelayEnter(Collider other)
+    {
+        OnTriggerEnter(other);
+    }
+
+    internal void OnRelayExit(Collider other)
+    {
+        OnTriggerExit(other);
     }
 
     // Root-Entity bestimmen (Rigidbody-Root bevorzugen)
@@ -339,7 +317,7 @@ public class doorFunction : MonoBehaviour
         RecalculateOpenPos();
         ApplyEditorForceState();
         ParseKey();
-        // Keine Relay-Erstellung mehr
+        SetupTriggerHandling();
     }
 
     private void ApplyEditorForceState()
@@ -401,4 +379,17 @@ public class doorFunction : MonoBehaviour
 /// Relay-Komponente: leitet Trigger-Ereignisse von externen/Kind-Collidern an die doorFunction weiter.
 /// Wird bei Bedarf automatisch an das Collider-GameObject angefügt.
 /// </summary>
+public sealed class DoorTriggerRelay : MonoBehaviour
+{
+    public doorFunction owner;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (owner != null) owner.OnRelayEnter(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (owner != null) owner.OnRelayExit(other);
+    }
+}

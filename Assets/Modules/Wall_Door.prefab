@@ -85,9 +85,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1983162374848688037, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4861901638509002532}
-    - targetCorrespondingSourceObject: {fileID: 1983162374848688037, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6997819526351131125}
   m_SourcePrefab: {fileID: 100100000, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
 --- !u!1 &3210791934339749866 stripped
 GameObject:
@@ -116,32 +113,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5960699698216763218, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
---- !u!114 &6997819526351131125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3210791934339749866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428ad89f0f5ce9944a955a0c60452d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slideDirection: 4
-  slideDistance: 2
-  moveSpeed: 3
-  startOpened: 0
-  openKey: E
-  allowedEntities: []
-  allowedTags:
-  - Player
-  requireEntityInRange: 1
-  triggerArea: {fileID: 9158562310766717667}
-  showGizmos: 1
-  editorForceOpen: 0
-  editorForcePersist: 0
-  resetClosedPosition: 0
 --- !u!4 &3494833520264175524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
@@ -322,10 +293,5 @@ PrefabInstance:
 --- !u!4 &7683288426625514147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2290690985669564931, guid: 7ba64982700ba194e896d8374e8d5e05, type: 3}
-  m_PrefabInstance: {fileID: 8460765396811915424}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &9158562310766717667 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 752966079330110019, guid: 7ba64982700ba194e896d8374e8d5e05, type: 3}
   m_PrefabInstance: {fileID: 8460765396811915424}
   m_PrefabAsset: {fileID: 0}

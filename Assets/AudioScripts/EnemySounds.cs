@@ -14,8 +14,6 @@ public class EnemySounds : MonoBehaviour
 
     private EnemyMovementType currentAudiomovement = EnemyMovementType.Walking;
 
-    float occlusionSmoothed;
-
     private void Awake()
     {
 
@@ -36,23 +34,6 @@ public class EnemySounds : MonoBehaviour
     {
 
         breathing.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-
-       {
-            float occ = CalculateOcclusion();
-
-            occlusionSmoothed = Mathf.Lerp(
-                occlusionSmoothed,
-                occ,
-                Time.deltaTime * 8f
-            );
-            
-            Debug.Log("Occlusion: " + occ);
-
-            breathing.setParameterByName("Occlusion", occlusionSmoothed);
-        }
-
-        
-
 
     }
 
@@ -115,32 +96,5 @@ public class EnemySounds : MonoBehaviour
         Running = 1,
         Exhausted = 2,
     }
-
-    float CalculateOcclusion()
-    {
-        Vector3 listener = Camera.main.transform.position;
-        Vector3 source = transform.position;
-
-        int rays = 5;
-        int blocked = 0;
-
-        Vector3[] offsets =
-        {
-        Vector3.zero,
-        Vector3.up * 0.5f,
-        Vector3.down * 0.5f,
-        Vector3.right * 0.5f,
-        Vector3.left * 0.5f
-    };
-
-        for (int i = 0; i < rays; i++)
-        {
-            if (Physics.Linecast(listener, source + offsets[i]))
-                blocked++;
-        }
-
-        return blocked / (float)rays;
-    }
-
 
 }
