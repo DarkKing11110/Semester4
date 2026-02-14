@@ -43,7 +43,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639066184372664618
+  lastModified: 639066363362521354
   FileSizes: []
   Exists: 1
 --- !u!114 &-7712038004901932730
@@ -73,24 +73,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3177
---- !u!114 &-7301868913177237244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/SFX_Enviroment.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Enviroment.bank
-  Name: SFX_Enviroment
-  StudioPath: 
-  lastModified: 639066184372746392
-  FileSizes: []
-  Exists: 1
 --- !u!114 &-7100505618102219683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +306,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/VO_Player.bank
   Name: VO_Player
   StudioPath: bank:/VO_Player
-  lastModified: 639066184372912974
+  lastModified: 639065427652206582
   FileSizes: []
 =======
   Path: ../../Fmod 11.02 (2.02)/Build/Desktop/Ambience.bank
@@ -657,6 +639,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-200847436082404438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Environment
+  m_EditorClassIdentifier: 
+  Name: Environment
+  StudioPath: parameter:/Environment
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1343256515
+    data2: 3325242699
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-105635759796344074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +687,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+<<<<<<< HEAD
 --- !u!114 &-59313049102309662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,6 +709,8 @@ MonoBehaviour:
 =======
   Length: 17626
 >>>>>>> parent of a5b49959 (Merge branch 'Main3.0' of https://github.com/DarkKing11110/Semester4 into Main3.0)
+=======
+>>>>>>> parent of b0a4c114 (Revert "Merge branch 'Audio-Manu' into Main3.0")
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,6 +730,7 @@ MonoBehaviour:
   - {fileID: 8133664796096776763}
   - {fileID: 8063960420081107843}
   - {fileID: -4711362774038220180}
+<<<<<<< HEAD
   - {fileID: -59313049102309662}
   - {fileID: -7301868913177237244}
 =======
@@ -747,16 +757,62 @@ MonoBehaviour:
   - {fileID: 677362264419905815}
   - {fileID: 1219796439050567511}
   EditorParameters: []
+=======
+  EditorEvents:
+  - {fileID: 873638937099647548}
+  - {fileID: 5948144884646317022}
+  - {fileID: -1084660677657948031}
+  - {fileID: -6297574718642906758}
+  - {fileID: -1050977759364777416}
+  - {fileID: 1085197762005082746}
+  - {fileID: -1654335985570340291}
+  - {fileID: -2345231903039037963}
+  - {fileID: 5183330976120774413}
+  - {fileID: -7100505618102219683}
+  - {fileID: 4349793249169143942}
+  - {fileID: -6466697427619100312}
+  - {fileID: -1155175624441331822}
+  - {fileID: 6062166251509537335}
+  - {fileID: 7339379361886767416}
+  - {fileID: 6863918601128441071}
+  - {fileID: 761955026160275400}
+  - {fileID: 5025503405645213244}
+  - {fileID: -6039281154518960281}
+  - {fileID: -2224459195158964964}
+  - {fileID: 8635006558905167254}
+  - {fileID: -3658853911930675994}
+  - {fileID: -3001510319939542900}
+  - {fileID: 1227454966759107723}
+  - {fileID: 5490967097820841019}
+  - {fileID: -5373215281629336517}
+  - {fileID: -582646147381947530}
+  - {fileID: 9113807872073509528}
+  - {fileID: 537460793301062096}
+  - {fileID: 321445962978824204}
+  - {fileID: -1829263808472861748}
+  - {fileID: -1876771927986305795}
+  - {fileID: 2072831418616804274}
+  - {fileID: -7712038004901932730}
+  - {fileID: -8908214314986065802}
+  - {fileID: -2910289510887427153}
+  - {fileID: 2714376329536002832}
+  EditorParameters:
+  - {fileID: -200847436082404438}
+>>>>>>> parent of b0a4c114 (Revert "Merge branch 'Audio-Manu' into Main3.0")
   MasterBanks:
   - {fileID: 1500304477965720431}
   StringsBanks:
 <<<<<<< HEAD
   - {fileID: 955883865702321600}
+<<<<<<< HEAD
   cacheTime: 639066184372912974
 =======
   - {fileID: 8894487362832064640}
   cacheTime: 639065747129438231
 >>>>>>> parent of a5b49959 (Merge branch 'Main3.0' of https://github.com/DarkKing11110/Semester4 into Main3.0)
+=======
+  cacheTime: 639066363362541366
+>>>>>>> parent of b0a4c114 (Revert "Merge branch 'Audio-Manu' into Main3.0")
   cacheVersion: 131635
 --- !u!114 &677362264419905815
 MonoBehaviour:
@@ -1109,6 +1165,7 @@ MonoBehaviour:
   Name: Master.strings
   StudioPath: bank:/Master.strings
 <<<<<<< HEAD
+<<<<<<< HEAD
   lastModified: 639066184372679678
 =======
   lastModified: 639065414342689065
@@ -1116,6 +1173,12 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1728
+=======
+  lastModified: 639066363362541366
+  FileSizes:
+  - Name: 
+    Value: 3308
+>>>>>>> parent of b0a4c114 (Revert "Merge branch 'Audio-Manu' into Main3.0")
   Exists: 1
 <<<<<<< HEAD
 --- !u!114 &1085197762005082746
@@ -1554,7 +1617,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Player.bank
   Name: SFX_Player
   StudioPath: bank:/SFX_Player
-  lastModified: 639066184372771443
+  lastModified: 639065427651377677
   FileSizes: []
   Exists: 1
 --- !u!114 &8133664796096776763
@@ -1572,7 +1635,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Monster.bank
   Name: SFX_Monster
   StudioPath: bank:/SFX_Monster
-  lastModified: 639066184372761411
+  lastModified: 639066358532723739
   FileSizes: []
   Exists: 1
 --- !u!114 &8635006558905167254
