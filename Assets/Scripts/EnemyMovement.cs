@@ -19,8 +19,9 @@ public class EnemyMovement : MonoBehaviour
 
     public Vector3 Point;
     public bool Pointset;
-    private bool ChaseState = false;
     private float Distance;
+    public float PointTimer;
+    public bool Chase = false;
 
     public bool isWalking;
     public bool isAttacking;
@@ -28,9 +29,15 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] float range;
 
+    private enum State { Patrol, Chase, Attack}
+    private State CurrentState;
+
     NavMeshAgent MeshAgent;
 
     [SerializeField] LayerMask GroundLayer, PlayerLayer;
+
+    [SerializeField]
+    //private EnemySounds enemySounds; // Audio
 
     private void Awake()
     {
@@ -41,19 +48,39 @@ public class EnemyMovement : MonoBehaviour
         isAttacking = false;
         isRunning = false;
 
+        CurrentState = State.Patrol;
     }
 
     void Update()
     {
-        if (ChaseState == false)
+        Distance = Vector3.Distance(transform.position, Player.position);
+
+        if (Distance <= AttackRange && CanSeePlayer())
         {
-            EnemyPatrol();
+            CurrentState = State.Attack;
+        }
+        else if (Distance <= HearingValue && CanSeePlayer() || Chase == true)
+        {
+            CurrentState = State.Chase;
         }
         else
         {
-            EnemyChase();
+            CurrentState = State.Patrol;
         }
         
+        switch (CurrentState)
+        {
+            case State.Patrol:
+                EnemyPatrol();
+                break;
+            case State.Chase:
+                EnemyChase();
+                break;
+            case State.Attack:
+                AttackPlayer();
+                break;
+        }
+
     }
 
     public void EnemyPatrol()
@@ -75,18 +102,19 @@ public class EnemyMovement : MonoBehaviour
         }
         if (Pointset)
         {
-            print("Going to the point");
             MeshAgent.SetDestination(Point);
+            PointTimer += Time.deltaTime;
+            if (PointTimer > 20)
+            {
+                PointTimer = 0;
+                Pointset = false;
+            }
         }
         if (Vector3.Distance(transform.position, Point) < 10)
         {
             Pointset = false;
         }
-        if (Distance <= HearingValue && CanSeePlayer())
-        {
-            ChaseState = true;
-            EnemyChase();           
-        }
+        
     }
 
     public void EnemyChase()
@@ -95,6 +123,8 @@ public class EnemyMovement : MonoBehaviour
         isRunning = true;
         isAttacking = false;
 
+        Chase = true;
+      
         animator.SetBool("isWalking", isWalking);
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isAttacking", isAttacking);
@@ -105,27 +135,25 @@ public class EnemyMovement : MonoBehaviour
 
         Distance = Vector3.Distance(transform.position, Player.position);
 
-        if (Distance < AttackRange)
-        {
-            isWalking = false;
-            isRunning = false;
-            isAttacking = true;
-
-            //attack and player loses 1 heart. we havent decided how many hearts b4 player dies
-            animator.SetBool("isWalking", isWalking);
-            animator.SetBool("isRunning", isRunning);
-            animator.SetBool("isAttacking", isAttacking);
-
-        }
-
-        if (ChaseTimer > 45f)
+        if (ChaseTimer > 5)
         {
             ChaseTimer = 0;
-            ChaseState = false;
+            Chase = false;
+            CurrentState = State.Patrol;
         }
     }
 
+    public void AttackPlayer()
+    {
+        isWalking = false;
+        isRunning = false;
+        isAttacking = true;
 
+        //attack and player loses 1 heart. we havent decided how many hearts b4 player dies
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isAttacking", isAttacking);
+    }
     private bool CanSeePlayer()
     {
         Vector3 directionToPlayer = (Player.position - transform.position).normalized;
@@ -149,4 +177,23 @@ public class EnemyMovement : MonoBehaviour
             print("Point set");
         }
     }
+    //private void PlayFootstep()
+    //{
+    //    enemySounds.PlayFootsteps();
+    //}
+//
+    //void UpdateBreathing()
+   //{
+   //     if (isRunning)
+   //         enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Running);
+   //     else
+   //         enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Walking);
+   // }
+}
+
+public enum EnemyMovementType
+{
+    Walking = 0,
+    Running = 1,
+    Attacking = 2,
 }
