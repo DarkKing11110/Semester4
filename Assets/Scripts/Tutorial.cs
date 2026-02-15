@@ -16,9 +16,9 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-       cp1 = true;
-       cp2 = false;
-       cp3 = false;
+        cp1 = true;
+        cp2 = false;
+        cp3 = false;
     }
 
     void Update()

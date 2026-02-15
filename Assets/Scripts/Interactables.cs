@@ -11,27 +11,14 @@ public class Interactables : MonoBehaviour
     {
         Panel.SetActive(false);
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E)) 
         {
+            print("Works");
             Panel.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Panel.SetActive(false);
-        }
-    }
-
-
-    //Testing Purposes
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Panel.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape)) 
         {
             Panel.SetActive(false);
         }

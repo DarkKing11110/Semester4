@@ -12,12 +12,12 @@ TagManager:
   - Security Cameras
   - Water
   - UI
-  - Navmesh
-  - Player
-  - Enemy
-  - 
-  - 
-  - 
+  - Door
+  - Items
+  - Ceeling
+  - Character
+  - Ground
+  - OcclusionLayer
   - 
   - 
   - 

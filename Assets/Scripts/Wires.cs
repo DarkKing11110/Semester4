@@ -1,14 +1,15 @@
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class Wires : MonoBehaviour
+public class Wires : MonoBehaviour, IPointerDownHandler
 {
     float[] rotations = { 0, 90, 180, 270 };
 
     public float[] CorrectRotations;
     bool isPlaced = false;
     [SerializeField] GameObject FlowObject;
-    private ElectricFlow flow;
+    public ElectricFlow flow;
 
     int NumberofCorrectRotations = 1;
 
@@ -38,7 +39,7 @@ public class Wires : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+   public void OnPointerDown(PointerEventData eventData)
     {
         transform.Rotate(new Vector3(0, 0, 90));
         if (NumberofCorrectRotations > 1)

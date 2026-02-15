@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using static UnityEngine.UI.ScrollRect;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+
+    
     [Header("View")]
     [Tooltip("Wenn aktiviert, nutzt der Spieler die Third-Person-Kamera.")]
     public bool useThirdPerson = false; // Tickbox im Inspector
@@ -103,12 +107,18 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 standColliderCenter;
     private bool capsuleCached;
 
+    // Audioshit
+    
+
     // Felder
     [Tooltip("Dreht die Figur automatisch in die Bewegungsrichtung (Third-Person).")]
     public bool autoRotateToMoveDirection = false;
 
     [Tooltip("Max. Rotationswinkel pro Schritt in den Rückwärtsgang relativ zur aktuellen Blickrichtung (Grad).")]
     public float backwardRotateClamp = 45f;
+
+    [SerializeField]
+    private PlayerSounds playerSounds;
 
     void Start()
     {
@@ -148,6 +158,9 @@ public class PlayerBehaviour : MonoBehaviour
             cameraYaw = transform.eulerAngles.y;
             cameraYawSmoothed = cameraYaw;
         }
+
+
+        
     }
 
     public void TakeDamage(int damage)
@@ -172,6 +185,11 @@ public class PlayerBehaviour : MonoBehaviour
         HandleMouseLook();
         RegenerateStamina();
         HandleAnimations();   // zentral wie der Sprint-Handler
+
+         // Audio
+        playerSounds.UpdateMovementForAudio(isRunning, isCrouching);
+        UpdateBreathing();
+
     }
 
     void Move()
@@ -561,6 +579,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (isAttacked && !isDead)
             isAttacked = false;
+
+
+       
     }
 
     private void SetIdleFlags(bool idleStanding, bool idleCrouching)
@@ -627,6 +648,28 @@ public class PlayerBehaviour : MonoBehaviour
             normal = { textColor = Color.white }
         };
         GUI.Label(new Rect(staminaX, staminaY, barWidth, staminaBarHeight), "Stamina", staminaStyle);
+
+        
+        
     }
+
+    
+    private void PlayFootstep()
+    {
+        playerSounds.PlayFootsteps();
+    }
+
+    void UpdateBreathing()
+    {
+        if (isRunning)
+            playerSounds.SetBreathState(PlayerSounds.BreathState.Running);
+        else if (currentStamina < 40f)
+            playerSounds.SetBreathState(PlayerSounds.BreathState.Exhausted);
+        else
+            playerSounds.SetBreathState(PlayerSounds.BreathState.Calm);
+    }
+    
+
+    
 }
 
