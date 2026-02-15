@@ -106995,8 +106995,8 @@ MonoBehaviour:
   animator: {fileID: 1825030730}
   Point: {x: 0, y: 0, z: 0}
   Pointset: 0
-  ChaseState: 0
   PointTimer: 100
+  Chase: 0
   isWalking: 0
   isAttacking: 0
   isRunning: 0
@@ -126425,6 +126425,10 @@ PrefabInstance:
     - target: {fileID: 5304200378774463558, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_Name
       value: ElliotBaseFINISHED
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304200378774463558, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5987902840919682104, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: player
