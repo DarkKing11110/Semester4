@@ -29756,7 +29756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storySteps:
-  - {fileID: 11400000, guid: ceb9b23f47f3bc4409134eb2570bcddc, type: 2}
+  - {fileID: 11400000, guid: 45b2ddf9aa49dde4aa3ec2acf3717bdc, type: 2}
 --- !u!4 &502949645
 Transform:
   m_ObjectHideFlags: 0
@@ -106995,8 +106995,8 @@ MonoBehaviour:
   animator: {fileID: 1825030730}
   Point: {x: 0, y: 0, z: 0}
   Pointset: 0
-  ChaseState: 0
   PointTimer: 100
+  Chase: 0
   isWalking: 0
   isAttacking: 0
   isRunning: 0
@@ -110161,6 +110161,11 @@ MonoBehaviour:
 --- !u!20 &1895321264 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 3032494840488130207, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+  m_PrefabInstance: {fileID: 1496260638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1895321265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 440981635780417886, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
   m_PrefabInstance: {fileID: 1496260638}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1895777748
@@ -126426,6 +126431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElliotBaseFINISHED
       objectReference: {fileID: 0}
+    - target: {fileID: 5304200378774463558, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5987902840919682104, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: player
       value: 
@@ -126442,6 +126451,10 @@ PrefabInstance:
       propertyPath: _breathing.Path
       value: event:/SFX_Monster/Monster_Breathing
       objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: listenerTransform
+      value: 
+      objectReference: {fileID: 1895321265}
     - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: _breathing.Guid.Data1
       value: 636926492
