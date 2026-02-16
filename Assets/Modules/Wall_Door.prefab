@@ -133,10 +133,13 @@ MonoBehaviour:
   moveSpeed: 3
   startOpened: 0
   openKey: E
+  playerTag: Player
+  enemyTag: Enemy
   allowedEntities: []
   allowedTags:
   - Player
   requireEntityInRange: 1
+  autoReactMode: 2
   triggerArea: {fileID: 9158562310766717667}
   showGizmos: 1
   editorForceOpen: 0

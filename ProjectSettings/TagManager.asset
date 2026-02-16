@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Security_Camera
+  - Enemy
   layers:
   - Default
   - TransparentFX

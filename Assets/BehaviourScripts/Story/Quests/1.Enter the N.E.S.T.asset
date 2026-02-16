@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a7bfa3aafb15947b42949d39a72b4c, type: 3}
   m_Name: 1.Enter the N.E.S.T
   m_EditorClassIdentifier: 
-  stepID: 
-  description: 
-  condition: []
+  stepID: FindElliot
+  description: Why haven't I heard from Elliot?
+  condition:
+  - {fileID: 11400000, guid: cfceb9a111c63d24dabdb4dc04a6c654, type: 2}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a7bfa3aafb15947b42949d39a72b4c, type: 3}
   m_Name: 3.Fix the Outage
   m_EditorClassIdentifier: 
-  stepID: 
-  description: 
-  condition: []
+  stepID: FoundCircuit
+  description: Find the Circuit breaker behind.
+  condition:
+  - {fileID: 11400000, guid: eb3473f5aa14a0241bd60072d0f4265d, type: 2}

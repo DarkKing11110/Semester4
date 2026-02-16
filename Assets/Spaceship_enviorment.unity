@@ -6203,6 +6203,7 @@ MonoBehaviour:
   m_Script: {fileID: 1206762433}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &117557628
 Transform:
   m_ObjectHideFlags: 19
@@ -6714,6 +6715,7 @@ MonoBehaviour:
   m_Script: {fileID: 1740846863}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &133139941
 Transform:
   m_ObjectHideFlags: 19
@@ -14314,6 +14316,10 @@ PrefabInstance:
     - target: {fileID: 4308806013064643870, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_Name
       value: Wall_Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: autoReactToPresence
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: requireEntityInRange
@@ -29764,7 +29770,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storySteps:
-  - {fileID: 11400000, guid: ceb9b23f47f3bc4409134eb2570bcddc, type: 2}
+  - {fileID: 11400000, guid: cf084f4d50aadfc4ab79f8e93be4df9d, type: 2}
+  - {fileID: 11400000, guid: ab677aacca4d182459ba2802150b4f64, type: 2}
+  - {fileID: 11400000, guid: ff78f6f1481ea2a4a898cdf41cc33f1e, type: 2}
+  - {fileID: 11400000, guid: eda80a90978b00b4b885ab91848d242c, type: 2}
+  - {fileID: 11400000, guid: 9ac60e550952ea2438e51d62fc4a4f26, type: 2}
+  - {fileID: 11400000, guid: 160696a8ecd2b6b429bb2e259468f74b, type: 2}
+  - {fileID: 11400000, guid: beb38dc5c4bf92d45af2c03f97dff58a, type: 2}
+  - {fileID: 11400000, guid: 6581bcd6fc41d2f4c89b496cc0e846b7, type: 2}
+  - {fileID: 11400000, guid: df5c08bdf74c8064f83045285d9ce71d, type: 2}
+  - {fileID: 11400000, guid: 224c0f83adb8796458bc499c096cfc7d, type: 2}
+  - {fileID: 11400000, guid: 6d1a2319e74ac0943993266b2830c8c2, type: 2}
+  - {fileID: 11400000, guid: 2b1f327a3c2b35d459542f4d0078fbe4, type: 2}
+  - {fileID: 11400000, guid: 414d48233fee9a345b0961093d26826a, type: 2}
+  - {fileID: 11400000, guid: 9e4863fd393d50a418758ca474d607d9, type: 2}
+  - {fileID: 11400000, guid: e6ecef27027378e4bb0db212a21bede6, type: 2}
+  - {fileID: 11400000, guid: 3502e5da9e46f8444b1c496cf0dd6f7e, type: 2}
+  - {fileID: 11400000, guid: 0b7b42a1da725a14297f7f6fcdbd7519, type: 2}
+  - {fileID: 11400000, guid: c4321a38b865a7242b570cc2a7675a44, type: 2}
 --- !u!4 &502949645
 Transform:
   m_ObjectHideFlags: 0
@@ -43411,6 +43434,7 @@ MonoBehaviour:
   m_Script: {fileID: 2111360093}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &719670311
 Transform:
   m_ObjectHideFlags: 19
@@ -52388,6 +52412,7 @@ MonoBehaviour:
   m_Script: {fileID: 1176713211}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &895560044
 Transform:
   m_ObjectHideFlags: 19
@@ -100295,6 +100320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: autoReactToPresence
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -126365,6 +126394,10 @@ PrefabInstance:
       propertyPath: m_ShadowResolution.m_UseOverride
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3071050766910008435, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 4499879505910277741, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_ShadowNearPlane
       value: 0.41
@@ -126380,6 +126413,10 @@ PrefabInstance:
     - target: {fileID: 4499879505910277741, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_ShadowResolution.m_UseOverride
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553150428779468213, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8280708360294515118, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -126518,6 +126555,10 @@ PrefabInstance:
     - target: {fileID: 5304200378774463558, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304200378774463558, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5987902840919682104, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: player
