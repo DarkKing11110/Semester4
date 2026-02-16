@@ -64,7 +64,7 @@ public class doorFunction : MonoBehaviour
     // Intern Haupttür
     private Vector3 _closedPos;
     private Vector3 _openPos;
-    private bool _isOpen;
+    public bool _isOpen;
     private KeyCode _openKeyCode;
     private readonly HashSet<GameObject> _authorizedInRange = new HashSet<GameObject>();
     private bool _closedPosInitialized = false;
@@ -144,6 +144,8 @@ public class doorFunction : MonoBehaviour
     {
         if (!IsOpenKeyPressed()) return;
 
+        Debug.Log("Open");
+        _isOpen = !_isOpen;
         if (requireEntityInRange)
         {
             if (autoReactMode == AutoReactMode.EnemyOnly)
@@ -157,11 +159,11 @@ public class doorFunction : MonoBehaviour
             }
         }
 
-        _isOpen = !_isOpen;
     }
 
     private void MoveDoor()
     {
+        if (_isOpen) Debug.Log("opening"); ;
         Vector3 targetMain = _isOpen ? _openPos : _closedPos;
         if (moveSpeed <= 0f)
             transform.localPosition = targetMain;
@@ -181,6 +183,7 @@ public class doorFunction : MonoBehaviour
     private bool IsOpenKeyPressed()
     {
         if (_openKeyCode == KeyCode.None) return false;
+        Debug.Log("pressed");
         return Input.GetKeyDown(_openKeyCode);
     }
 
