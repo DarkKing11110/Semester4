@@ -88227,7 +88227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.485
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -88235,7 +88235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.394
+      value: 3.52
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -107130,7 +107130,7 @@ MonoBehaviour:
   isWalking: 0
   isAttacking: 0
   isRunning: 0
-  range: 170
+  range: 450
   GroundLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -126354,6 +126354,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 445278842167483916, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1075758475190562334, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_CastShadows
       value: 1
@@ -126453,6 +126457,10 @@ PrefabInstance:
     - target: {fileID: 4553150428779468213, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198430718709592400, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8280708360294515118, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_LocalPosition.x
