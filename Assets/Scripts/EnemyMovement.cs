@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] LayerMask GroundLayer, PlayerLayer;
 
     [SerializeField]
-    //private EnemySounds enemySounds; // Audio
+    private EnemySounds enemySounds; // Audio
 
     private void Awake()
     {
@@ -177,18 +177,18 @@ public class EnemyMovement : MonoBehaviour
             print("Point set");
         }
     }
-    //private void PlayFootstep()
-    //{
-    //    enemySounds.PlayFootsteps();
-    //}
-//
-    //void UpdateBreathing()
-   //{
-   //     if (isRunning)
-   //         enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Running);
-   //     else
-   //         enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Walking);
-   // }
+    private void PlayFootstep()
+    {
+        enemySounds.PlayFootsteps();
+    }
+
+    void UpdateBreathing()
+    {
+        if (isRunning)
+            enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Running);
+        else
+           enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Walking);
+    }
 }
 
 public enum EnemyMovementType
