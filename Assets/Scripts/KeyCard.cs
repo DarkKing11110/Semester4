@@ -10,6 +10,7 @@ public class KeyCard : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Keypad2.Keycard = true;
+            GameEvents.OnMinigameCompleted?.Invoke("foundKeycard");
             //Play a sound of collecting the card
         }
     }

@@ -11,7 +11,12 @@ public class MissionTrigger : MonoBehaviour
     [Tooltip("MissionTrigger String")]
     public string missionTriggerString = "Enter String";
 
+    [Tooltip("MissionTrigger Integer")]
+    public int MissionIndex = 0;
+
     private bool triggered;
+
+    [SerializeField] private StoryManager storyManager;
 
     private void Reset()
     {
@@ -20,12 +25,18 @@ public class MissionTrigger : MonoBehaviour
         if (col != null) col.isTrigger = true;
     }
 
+    private void Start()
+    {
+        // Fallback, falls nicht gesetzt: erste Instanz suchen
+        if (storyManager == null) storyManager = FindObjectOfType<StoryManager>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (triggerOnce && triggered) return;
 
         var root = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
-        if (!string.IsNullOrWhiteSpace(playerTag) && !root.CompareTag(playerTag)) return;
+        if (!string.IsNullOrWhiteSpace(playerTag) && !root.CompareTag(playerTag) && storyManager.CurrentStepIndex == MissionIndex) return;
 
         // Missionsfortschritt auslösen
         AdvanceMission();
@@ -41,7 +52,7 @@ public class MissionTrigger : MonoBehaviour
 
         // Oder direkt einen Manager ansprechen
         // MissionManager.Instance?.AdvanceStep("IntroArea");
-        GameEvents.OnMinigameCompleted?.Invoke("missionTriggerString");
+        GameEvents.OnMinigameCompleted?.Invoke(missionTriggerString);
         Debug.Log("[MissionTrigger] Missionsfortschritt ausgelöst.");
     }
 }
