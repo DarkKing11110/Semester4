@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639068539864528700
+  lastModified: 639068903607670701
   FileSizes: []
   Exists: 1
 --- !u!114 &-7712038004901932730
@@ -248,7 +248,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/VO_Player.bank
   Name: VO_Player
   StudioPath: bank:/VO_Player
-  lastModified: 639068539868772832
+  lastModified: 639068905100202159
   FileSizes: []
   Exists: 1
 --- !u!114 &-3658853911930675994
@@ -625,30 +625,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-200847436082404438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Environment
-  m_EditorClassIdentifier: 
-  Name: Environment
-  StudioPath: parameter:/Environment
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 1343256515
-    data2: 3325242699
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-105635759796344074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,13 +706,12 @@ MonoBehaviour:
   - {fileID: -2910289510887427153}
   - {fileID: 2714376329536002832}
   - {fileID: 3593725311506650497}
-  EditorParameters:
-  - {fileID: -200847436082404438}
+  EditorParameters: []
   MasterBanks:
   - {fileID: -8382577269873335886}
   StringsBanks:
   - {fileID: 955883865702321600}
-  cacheTime: 639068539868772832
+  cacheTime: 639068906392022397
   cacheVersion: 131635
 --- !u!114 &321445962978824204
 MonoBehaviour:
@@ -864,7 +839,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639068539864558729
+  lastModified: 639068906392022397
   FileSizes:
   - Name: 
     Value: 3352
@@ -1350,7 +1325,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/SFX_Monster.bank
   Name: SFX_Monster
   StudioPath: bank:/SFX_Monster
-  lastModified: 639068539865919341
+  lastModified: 639068906391091551
   FileSizes: []
   Exists: 1
 --- !u!114 &8635006558905167254
