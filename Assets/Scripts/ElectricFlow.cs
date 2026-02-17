@@ -25,6 +25,7 @@ public class ElectricFlow : MonoBehaviour
         CorrectWires += 1;
         if (CorrectWires == TotalWires)
         {
+            GameEvents.OnMinigameCompleted?.Invoke("FoundCircuit");
             //Ending 
         }
     }
