@@ -1,44 +1,50 @@
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class doorIntro : MonoBehaviour
 {
-    [Header("Intro Tür / Animation")]
-    [Tooltip("Animator der Intro-Tür (wird automatisch vom gleichen Objekt geholt, wenn leer).")]
+    [Header("Intro Tï¿½r / Animation")]
+    [Tooltip("Animator der Intro-Tï¿½r (wird automatisch vom gleichen Objekt geholt, wenn leer).")]
     public Animator introAnimator;
-    [Tooltip("Animator-Trigger oder Bool für das Abspielen der Intro-Animation.")]
+    [Tooltip("Animator-Trigger oder Bool fï¿½r das Abspielen der Intro-Animation.")]
     public string introAnimTrigger = "PlayIntro";
     [Tooltip("Wenn true, wird statt Trigger ein Bool gesetzt.")]
     public bool useAnimatorBool = false;
 
     [Header("Minigame Bedingung")]
-    [Tooltip("Muss true sein, damit Intro-Animation und Tausch ausgelöst werden dürfen.")]
+    [Tooltip("Muss true sein, damit Intro-Animation und Tausch ausgelï¿½st werden dï¿½rfen.")]
     public bool minigameSolved = false;
-    [Tooltip("Optional: Tag, den der Spieler haben muss, um Trigger auszulösen.")]
+    [Tooltip("Optional: Tag, den der Spieler haben muss, um Trigger auszulï¿½sen.")]
     public string playerTag = "Player";
 
     [Header("Trigger Zonen")]
-    [Tooltip("Trigger für das Auslösen der Intro-Animation (externer Collider).")]
+    [Tooltip("Trigger fï¿½r das Auslï¿½sen der Intro-Animation (externer Collider).")]
     public Collider introTriggerArea;
-    [Tooltip("Trigger für den Wechsel zur normalen Tür (externer Collider). Wird erst aktiviert, wenn die Intro-Area betreten wurde.")]
+    [Tooltip("Trigger fï¿½r den Wechsel zur normalen Tï¿½r (externer Collider). Wird erst aktiviert, wenn die Intro-Area betreten wurde.")]
     public Collider swapTriggerArea;
 
-    [Header("Tür-Tausch")]
-    [Tooltip("Normale Tür Teil 1 (wird beim Swap aktiviert).")]
+    [Header("Tï¿½r-Tausch")]
+    [Tooltip("Normale Tï¿½r Teil 1 (wird beim Swap aktiviert).")]
     public GameObject normalDoorPartA;
-    [Tooltip("Normale Tür Teil 2 (wird beim Swap aktiviert).")]
+    [Tooltip("Normale Tï¿½r Teil 2 (wird beim Swap aktiviert).")]
     public GameObject normalDoorPartB;
-    [Tooltip("Intro-Tür-Objekt (wird deaktiviert). Wenn leer, wird dieses GameObject verwendet.")]
+    [Tooltip("Intro-Tï¿½r-Objekt (wird deaktiviert). Wenn leer, wird dieses GameObject verwendet.")]
     public GameObject introDoorToDeactivate;
 
     [Header("Filter (optional)")]
-    [Tooltip("Explizite GameObjects, die die Trigger auslösen dürfen (optional).")]
+    [Tooltip("Explizite GameObjects, die die Trigger auslï¿½sen dï¿½rfen (optional).")]
     public GameObject[] allowedEntities;
-    [Tooltip("Zusätzliche Tags, die die Trigger auslösen dürfen (optional).")]
+    [Tooltip("Zusï¿½tzliche Tags, die die Trigger auslï¿½sen dï¿½rfen (optional).")]
     public string[] allowedTags;
+
+    [Header("FMOD Intro Event")]
+    [Tooltip("FMOD event that plays once at animation start.")]
+    public EventReference introStartEvent;
 
     private bool introPlayedOnce;
     private bool swapAreaActivated;
+    private bool introEventPlayed;
     private readonly HashSet<GameObject> _authorizedInRange = new HashSet<GameObject>();
 
     void Awake()
@@ -61,10 +67,10 @@ public class doorIntro : MonoBehaviour
         SetupTriggerRelays();
     }
 
-    // Extern aufrufbar: wenn Minigame gelöst wurde (z. B. vom Puzzle-Controller)
+    // Extern aufrufbar: wenn Minigame gelï¿½st wurde (z. B. vom Puzzle-Controller)
     public void SetMinigameSolved(bool solved) => minigameSolved = solved;
 
-    // Relay-Setup: hängt Weiterleitungs-Komponenten an die externen Trigger
+    // Relay-Setup: hï¿½ngt Weiterleitungs-Komponenten an die externen Trigger
     private void SetupTriggerRelays()
     {
         // Intro-Trigger
@@ -144,6 +150,12 @@ public class doorIntro : MonoBehaviour
         else
             introAnimator.SetTrigger(introAnimTrigger);
 
+        if (!introEventPlayed && !introStartEvent.IsNull)
+        {
+            RuntimeManager.PlayOneShotAttached(introStartEvent, gameObject);
+            introEventPlayed = true;
+        }
+
         introPlayedOnce = true;
     }
 
@@ -151,17 +163,17 @@ public class doorIntro : MonoBehaviour
     {
         if (!minigameSolved) return;
 
-        // Intro-Tür ausblenden
+        // Intro-Tï¿½r ausblenden
         if (introDoorToDeactivate != null)
             introDoorToDeactivate.SetActive(false);
 
-        // Haupttür-Teile einblenden
+        // Haupttï¿½r-Teile einblenden
         bool anyAssigned = false;
         if (normalDoorPartA != null) { normalDoorPartA.SetActive(true); anyAssigned = true; }
         if (normalDoorPartB != null) { normalDoorPartB.SetActive(true); anyAssigned = true; }
 
         if (!anyAssigned)
-            Debug.LogWarning("[doorIntro] Keine normalen Türteile zugewiesen (normalDoorPartA/B).");
+            Debug.LogWarning("[doorIntro] Keine normalen Tï¿½rteile zugewiesen (normalDoorPartA/B).");
     }
 
     private GameObject GetEntityRoot(Collider other)
