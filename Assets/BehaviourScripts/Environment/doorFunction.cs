@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class doorFunction : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class doorFunction : MonoBehaviour
         PlayerOrEnemy
     }
 
-    [Header("Öffnungsrichtung & Distanz")]
+    [Header("ï¿½ffnungsrichtung & Distanz")]
     public SlideDirection slideDirection = SlideDirection.Right;
     public float slideDistance = 2f;
 
@@ -25,30 +27,30 @@ public class doorFunction : MonoBehaviour
     public bool startOpened = false;
 
     [Header("Eingabe")]
-    [Tooltip("Taste zum Öffnen/Schließen (optional).")]
+    [Tooltip("Taste zum ï¿½ffnen/Schlieï¿½en (optional).")]
     public string openKey = "E";
 
-    [Header("Berechtigte Entitäten")]
-    [Tooltip("Tag des Spielers (standardmäßig 'Player').")]
+    [Header("Berechtigte Entitï¿½ten")]
+    [Tooltip("Tag des Spielers (standardmï¿½ï¿½ig 'Player').")]
     public string playerTag = "Player";
     [Tooltip("Tag von KI-Gegnern (z. B. 'Enemy').")]
     public string enemyTag = "Enemy";
-    [Tooltip("Explizite GameObjects, die zusätzlich die Tür benutzen dürfen (optional).")]
+    [Tooltip("Explizite GameObjects, die zusï¿½tzlich die Tï¿½r benutzen dï¿½rfen (optional).")]
     public GameObject[] allowedEntities;
-    [Tooltip("Zusätzliche Tags, die zusätzlich die Tür benutzen dürfen (optional).")]
+    [Tooltip("Zusï¿½tzliche Tags, die zusï¿½tzlich die Tï¿½r benutzen dï¿½rfen (optional).")]
     public string[] allowedTags;
 
     [Header("Reichweite")]
-    [Tooltip("Erfordert Anwesenheit einer berechtigten Entität im Triggerbereich (Collider isTrigger=true).")]
+    [Tooltip("Erfordert Anwesenheit einer berechtigten Entitï¿½t im Triggerbereich (Collider isTrigger=true).")]
     public bool requireEntityInRange = true;
-    [Tooltip("Automatik-Modus für Öffnen/Schließen basierend auf Präsenz.")]
+    [Tooltip("Automatik-Modus fï¿½r ï¿½ffnen/Schlieï¿½en basierend auf Prï¿½senz.")]
     public AutoReactMode autoReactMode = AutoReactMode.PlayerOrEnemy;
 
     [Header("Trigger (optional extern)")]
     public Collider triggerArea;
 
-    [Header("Doppeltür (optional)")]
-    [Tooltip("Zweite Tür, die sich gegensätzlich zur Haupttür bewegen soll (optional).")]
+    [Header("Doppeltï¿½r (optional)")]
+    [Tooltip("Zweite Tï¿½r, die sich gegensï¿½tzlich zur Haupttï¿½r bewegen soll (optional).")]
     public Transform secondDoorTransform;
 
     [Header("Debug Anzeige")]
@@ -61,7 +63,7 @@ public class doorFunction : MonoBehaviour
     [Header("Basisposition Wartung")]
     public bool resetClosedPosition = false;
 
-    // Intern Haupttür
+    // Intern Haupttï¿½r
     private Vector3 _closedPos;
     private Vector3 _openPos;
     public bool _isOpen;
@@ -69,10 +71,55 @@ public class doorFunction : MonoBehaviour
     private readonly HashSet<GameObject> _authorizedInRange = new HashSet<GameObject>();
     private bool _closedPosInitialized = false;
 
-    // Intern Zweittür
+    // Intern Zweittï¿½r
     private Vector3 _secondClosedPos;
     private Vector3 _secondOpenPos;
     private bool _secondClosedPosInitialized = false;
+
+    // FMOD Integration
+    [Header("FMOD Events")]
+    [Tooltip("FMOD Studio Event fÃ¼r TÃ¼r-Ã–ffnen.")]
+    [SerializeField] private EventReference doorOpenEvent;
+    [Tooltip("FMOD Studio Event fÃ¼r TÃ¼r-SchlieÃŸen.")]
+    [SerializeField] private EventReference doorCloseEvent;
+
+    [Header("3D Event Settings")]
+    [Tooltip("Enable 3D spatialization for events.")]
+    [SerializeField] private bool use3D = true;
+    [Tooltip("Attach event instance to this Transform to auto-update position.")]
+    [SerializeField] private bool attachToGameObject = true;
+    [Tooltip("Optional Rigidbody used when attaching for velocity updates.")]
+    [SerializeField] private Rigidbody attachRigidbody;
+    [Tooltip("Position offset applied when not attaching.")]
+    [SerializeField] private Vector3 positionOffset = Vector3.zero;
+
+    [Header("Playback Attributes")]
+    [Tooltip("Initial volume for the event instance (0-1).")]
+    [Range(0f, 1f)]
+    [SerializeField] private float volume = 1f;
+    [Tooltip("Pitch multiplier for the event instance (0.5-2.0). 1 = normal.")]
+    [Range(0.5f, 2f)]
+    [SerializeField] private float pitch = 1f;
+    [Tooltip("Use fadeout when stopping the previous event.")]
+    [SerializeField] private bool allowFadeOutOnStop = false;
+
+    [Header("Occlusion Settings")]
+    [Tooltip("Enable occlusion checks via AudioOcclusion.")]
+    [SerializeField] private bool occlusionEnabled = false;
+    [Tooltip("AudioOcclusion source to use for computations.")]
+    [SerializeField] private AudioOcclusion occlusionSource;
+    [Tooltip("Use parameter names from AudioOcclusion. If false, use custom names below.")]
+    [SerializeField] private bool useOcclusionSourceSettings = true;
+    [Tooltip("FMOD parameter name for occlusion (0 or 1). Only used if not using source settings.")]
+    [SerializeField] private string occlusionParamName;
+    [Tooltip("FMOD parameter name for occlusion fade value (0-1). Only used if not using source settings.")]
+    [SerializeField] private string occlusionFadeParamName;
+    [Tooltip("Material parameter name if needed (e.g., reverb type). Only used if not using source settings.")]
+    [SerializeField] private string materialParamName;
+    [Tooltip("Material parameter value to set on start when not using source settings.")]
+    [SerializeField] private int materialParamValue = 0;
+
+    private EventInstance currentEventInstance;
 
     void Awake()
     {
@@ -100,6 +147,7 @@ public class doorFunction : MonoBehaviour
 #if UNITY_EDITOR
         if (editorForcePersist) ApplyEditorForceState();
 #endif
+        bool prevIsOpen = _isOpen;
         if (requireEntityInRange)
             RefreshAuthorizedInRange();
 
@@ -111,6 +159,18 @@ public class doorFunction : MonoBehaviour
         }
 
         HandleInput();
+
+        if (_isOpen != prevIsOpen)
+        {
+            if (_isOpen)
+            {
+                PlayEvent(doorOpenEvent);
+            }
+            else
+            {
+                PlayEvent(doorCloseEvent);
+            }
+        }
         MoveDoor();
     }
 
@@ -139,7 +199,7 @@ public class doorFunction : MonoBehaviour
         return false;
     }
 
-    // HandleInput(): manuelles Öffnen im Modus EnemyOnly erlauben, wenn der Spieler real in der Zone ist
+    // HandleInput(): manuelles ï¿½ffnen im Modus EnemyOnly erlauben, wenn der Spieler real in der Zone ist
     private void HandleInput()
     {
         if (!IsOpenKeyPressed()) return;
@@ -150,7 +210,7 @@ public class doorFunction : MonoBehaviour
         {
             if (autoReactMode == AutoReactMode.EnemyOnly)
             {
-                // explizite Spieler-Zonenprüfung unabhängig von _authorizedInRange
+                // explizite Spieler-Zonenprï¿½fung unabhï¿½ngig von _authorizedInRange
                 if (!IsPlayerInZone()) return;
             }
             else
@@ -177,6 +237,66 @@ public class doorFunction : MonoBehaviour
                 secondDoorTransform.localPosition = targetSecond;
             else
                 secondDoorTransform.localPosition = Vector3.MoveTowards(secondDoorTransform.localPosition, targetSecond, moveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void PlayEvent(EventReference eventRef)
+    {
+        if (!eventRef.IsNull)
+        {
+            StopCurrentEventIfPlaying();
+            currentEventInstance = RuntimeManager.CreateInstance(eventRef);
+
+            if (use3D)
+            {
+                if (attachToGameObject)
+                {
+                    RuntimeManager.AttachInstanceToGameObject(currentEventInstance, transform, attachRigidbody);
+                }
+                else
+                {
+                    var attrs = RuntimeUtils.To3DAttributes(transform);
+                    attrs.position.x += positionOffset.x;
+                    attrs.position.y += positionOffset.y;
+                    attrs.position.z += positionOffset.z;
+                    currentEventInstance.set3DAttributes(attrs);
+                }
+            }
+
+            if (volume != 1f)
+            {
+                currentEventInstance.setVolume(volume);
+            }
+            if (pitch != 1f)
+            {
+                currentEventInstance.setPitch(pitch);
+            }
+
+            if (occlusionEnabled && occlusionSource != null)
+            {
+                string matParam = useOcclusionSourceSettings ? occlusionSource.MaterialParamName : materialParamName;
+                int matValue = useOcclusionSourceSettings ? occlusionSource.MaterialParamValue : materialParamValue;
+                if (!string.IsNullOrEmpty(matParam))
+                {
+                    currentEventInstance.setParameterByName(matParam, matValue);
+                }
+            }
+
+            currentEventInstance.start();
+        }
+    }
+
+    private void StopCurrentEventIfPlaying()
+    {
+        if (currentEventInstance.isValid())
+        {
+            currentEventInstance.getPlaybackState(out PLAYBACK_STATE state);
+            if (state == PLAYBACK_STATE.PLAYING || state == PLAYBACK_STATE.STARTING || state == PLAYBACK_STATE.SUSTAINING)
+            {
+                currentEventInstance.stop(allowFadeOutOnStop ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT : FMOD.Studio.STOP_MODE.IMMEDIATE);
+            }
+            currentEventInstance.release();
+            currentEventInstance.clearHandle();
         }
     }
 
@@ -211,7 +331,7 @@ public class doorFunction : MonoBehaviour
         }
     }
 
-    // RefreshAuthorizedInRange(): Trigger berücksichtigen
+    // RefreshAuthorizedInRange(): Trigger berï¿½cksichtigen
     private void RefreshAuthorizedInRange()
     {
         _authorizedInRange.Clear();
@@ -310,7 +430,7 @@ public class doorFunction : MonoBehaviour
         if (secondDoorTransform == null) return;
         float dist = Mathf.Abs(slideDistance);
 
-        // Gegengesetzte Richtung relativ zur zweiten Tür (lokale Achsen der zweiten Tür)
+        // Gegengesetzte Richtung relativ zur zweiten Tï¿½r (lokale Achsen der zweiten Tï¿½r)
         Vector3 oppositeLocalDir;
         switch (slideDirection)
         {
@@ -331,7 +451,7 @@ public class doorFunction : MonoBehaviour
         Collider col = GetComponent<Collider>();
         if (requireEntityInRange && (col == null || !col.isTrigger) && triggerArea == null)
         {
-            Debug.LogWarning("[doorFunction] Trigger vorausgesetzt: Füge einen Collider mit isTrigger=true hinzu oder weise 'triggerArea' ein externes Collider-Objekt zu.");
+            Debug.LogWarning("[doorFunction] Trigger vorausgesetzt: Fï¿½ge einen Collider mit isTrigger=true hinzu oder weise 'triggerArea' ein externes Collider-Objekt zu.");
         }
     }
 
@@ -383,7 +503,7 @@ public class doorFunction : MonoBehaviour
         return false;
     }
 
-    // NEU: Hilfsfunktion – prüft explizit, ob der Spieler in der Trigger-Area ist (ohne _authorizedInRange zu benötigen)
+    // NEU: Hilfsfunktion ï¿½ prï¿½ft explizit, ob der Spieler in der Trigger-Area ist (ohne _authorizedInRange zu benï¿½tigen)
     private bool IsPlayerInZone()
     {
         if (string.IsNullOrWhiteSpace(playerTag)) return false;
@@ -514,11 +634,11 @@ public class doorFunction : MonoBehaviour
         Vector3 worldClosed = transform.parent != null ? transform.parent.TransformPoint(baseClosed) : baseClosed;
         Gizmos.DrawLine(worldClosed, worldOpen);
 
-        // Optionale Gizmos für zweite Tür
+        // Optionale Gizmos fï¿½r zweite Tï¿½r
         if (secondDoorTransform != null)
         {
             Vector3 secondBaseClosed = Application.isPlaying ? _secondClosedPos : (_secondClosedPosInitialized ? _secondClosedPos : secondDoorTransform.localPosition);
-            Vector3 secondOpen = secondBaseClosed + (-dir) * dist; // visuell: gegensätzlich zur Haupttür
+            Vector3 secondOpen = secondBaseClosed + (-dir) * dist; // visuell: gegensï¿½tzlich zur Haupttï¿½r
             Gizmos.color = Color.cyan;
             Vector3 secondWorldOpen = secondDoorTransform.parent != null ? secondDoorTransform.parent.TransformPoint(secondOpen) : secondOpen;
             Vector3 secondSize = (secondDoorTransform.GetComponent<Renderer>() != null ? secondDoorTransform.GetComponent<Renderer>().bounds.size : Vector3.one * 0.5f);
@@ -552,6 +672,35 @@ public class doorFunction : MonoBehaviour
                 Gizmos.DrawWireSphere(center + Vector3.up * (cap.height * 0.5f - radiusWorld), radiusWorld);
                 Gizmos.DrawWireSphere(center - Vector3.up * (cap.height * 0.5f - radiusWorld), radiusWorld);
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (occlusionEnabled && occlusionSource != null && currentEventInstance.isValid())
+        {
+            if (occlusionSource.TryComputeOcclusion(transform, out float fadeValue, out bool obstructed))
+            {
+                string fadeParam = useOcclusionSourceSettings ? occlusionSource.OcclusionFadeParamName : occlusionFadeParamName;
+                string occParam = useOcclusionSourceSettings ? occlusionSource.OcclusionParamName : occlusionParamName;
+                if (!string.IsNullOrEmpty(fadeParam))
+                {
+                    currentEventInstance.setParameterByName(fadeParam, fadeValue);
+                }
+                if (!string.IsNullOrEmpty(occParam))
+                {
+                    currentEventInstance.setParameterByName(occParam, obstructed ? 1f : 0f);
+                }
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (currentEventInstance.isValid())
+        {
+            currentEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            currentEventInstance.release();
         }
     }
 }
