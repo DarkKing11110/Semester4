@@ -100153,6 +100153,14 @@ PrefabInstance:
       value: event:/SFX_Monster/Monster_Breathing
       objectReference: {fileID: 0}
     - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit1.Path
+      value: event:/SFX_Monster/Monster_Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit2.Path
+      value: event:/SFX_Monster/Monster_Attack 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: listenerTransform
       value: 
       objectReference: {fileID: 1895321265}
@@ -100175,6 +100183,38 @@ PrefabInstance:
     - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: _breathing.Guid.Data4
       value: 2046634708
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit1.Guid.Data1
+      value: 795842549
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit1.Guid.Data2
+      value: 1313920646
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit1.Guid.Data3
+      value: -1884769875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit1.Guid.Data4
+      value: 247776131
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit2.Guid.Data1
+      value: -1959420665
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit2.Guid.Data2
+      value: 1217424311
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit2.Guid.Data3
+      value: -758348876
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877766376081609283, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: _attackHit2.Guid.Data4
+      value: 718871991
       objectReference: {fileID: 0}
     - target: {fileID: 9193016769751244485, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_Height
