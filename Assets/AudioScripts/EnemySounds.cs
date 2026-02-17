@@ -19,6 +19,10 @@ public class EnemySounds : MonoBehaviour
 
     [SerializeField] Transform listenerTransform;
 
+    [SerializeField] private EventReference _attackHit1;
+    [SerializeField] private EventReference _attackHit2;
+
+
     float occlusionSmoothed;
 
     private void Awake()
@@ -69,6 +73,17 @@ public class EnemySounds : MonoBehaviour
             footsteps.start();
         }
     }
+
+    public void PlayAttackHit1()
+    {
+        RuntimeManager.PlayOneShotAttached(_attackHit1, gameObject);
+    }
+
+    public void PlayAttackHit2()
+    {
+        RuntimeManager.PlayOneShotAttached(_attackHit2, gameObject);
+    }
+
 
     public void SetEnemyMovementType(EnemyMovementType movement)
     {
