@@ -5115,6 +5115,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 586f5666872f5b94da2807b7d2be24ff, type: 3}
   m_PrefabInstance: {fileID: 74351461}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &75255864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -756936674133844816, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &75255869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75255864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
+--- !u!114 &75255870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75255864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 1.5
+  TriggerEvent: 7
 --- !u!115 &77303613
 MonoScript:
   m_ObjectHideFlags: 0
@@ -15322,6 +15365,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
   m_PrefabInstance: {fileID: 2084261372}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &263432404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1607391305658492854, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &263432409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263432404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
+--- !u!114 &263432410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263432404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 2.5
+  TriggerEvent: 7
 --- !u!4 &263894163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
@@ -25689,6 +25775,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &432276534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2608797356310644464, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &432276539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432276534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 2.5
+  TriggerEvent: 7
+--- !u!114 &432276540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432276534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
 --- !u!1001 &432569430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27528,6 +27657,49 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
+--- !u!1 &455102034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4235210219086477018, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &455102039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455102034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
+--- !u!114 &455102040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455102034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 2.5
+  TriggerEvent: 7
 --- !u!1001 &455402549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59021,6 +59193,54 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 017496255291938498d87c4965ba1f0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1412583868}
+    - targetCorrespondingSourceObject: {fileID: -756936674133844816, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 75255870}
+    - targetCorrespondingSourceObject: {fileID: -756936674133844816, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 75255869}
+    - targetCorrespondingSourceObject: {fileID: 1979078170871298165, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1411243132}
+    - targetCorrespondingSourceObject: {fileID: 1979078170871298165, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1411243131}
+    - targetCorrespondingSourceObject: {fileID: 5434759400382659307, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1255245027}
+    - targetCorrespondingSourceObject: {fileID: 5434759400382659307, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1255245026}
+    - targetCorrespondingSourceObject: {fileID: 3141502543582246618, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938672436}
+    - targetCorrespondingSourceObject: {fileID: 3141502543582246618, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938672435}
+    - targetCorrespondingSourceObject: {fileID: 2608797356310644464, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 432276539}
+    - targetCorrespondingSourceObject: {fileID: 2608797356310644464, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 432276540}
+    - targetCorrespondingSourceObject: {fileID: -4235210219086477018, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 455102040}
+    - targetCorrespondingSourceObject: {fileID: -4235210219086477018, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 455102039}
+    - targetCorrespondingSourceObject: {fileID: 1607391305658492854, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 263432410}
+    - targetCorrespondingSourceObject: {fileID: 1607391305658492854, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 263432409}
+    - targetCorrespondingSourceObject: {fileID: 4418658069416066623, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1039113651}
+    - targetCorrespondingSourceObject: {fileID: 4418658069416066623, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1039113652}
   m_SourcePrefab: {fileID: 100100000, guid: 017496255291938498d87c4965ba1f0f, type: 3}
 --- !u!1 &967859145
 GameObject:
@@ -61958,6 +62178,49 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
+--- !u!1 &1039113646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4418658069416066623, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1039113651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039113646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 2.5
+  TriggerEvent: 7
+--- !u!114 &1039113652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039113646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
 --- !u!1001 &1040432148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76209,6 +76472,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
   m_PrefabInstance: {fileID: 1117567731}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1255245021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5434759400382659307, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1255245026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255245021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
+--- !u!114 &1255245027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255245021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 3.5
+  TriggerEvent: 7
 --- !u!1 &1257390861
 GameObject:
   m_ObjectHideFlags: 0
@@ -86947,6 +87253,49 @@ Transform:
   - {fileID: 887169218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1411243126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1979078170871298165, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1411243131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411243126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
+--- !u!114 &1411243132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411243126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 4.5
+  TriggerEvent: 7
 --- !u!1 &1412583864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 017496255291938498d87c4965ba1f0f, type: 3}
@@ -91725,7 +92074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.038
+      value: 16.77
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -91733,7 +92082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.689
+      value: -28.52
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -92058,6 +92407,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 33002372}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4195523216034721607, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2140515413}
     - targetCorrespondingSourceObject: {fileID: 7677283342627254416, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1895321261}
@@ -117432,6 +117784,49 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1938672430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3141502543582246618, guid: 017496255291938498d87c4965ba1f0f, type: 3}
+  m_PrefabInstance: {fileID: 966674560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1938672435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938672430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 0.5
+  TriggerEvent: 8
+--- !u!114 &1938672436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938672430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Emitters:
+  - Target: {fileID: 2140515413}
+    Params:
+    - Name: AmbienceTrigger
+      Value: 3.5
+  TriggerEvent: 7
 --- !u!1 &1939843161
 GameObject:
   m_ObjectHideFlags: 0
@@ -130135,6 +130530,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31be039ccc6522a41894ec5e78246c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2140515413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140515410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1989714821
+      Data2: 1098983456
+      Data3: 551100051
+      Data4: -1334979021
+    Path: event:/Ambience/Base Amb.
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params:
+  - Name: AmbienceTrigger
+    Value: 0.5
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &2141442452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
@@ -132043,7 +132471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19
+      value: 19.91
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.y
@@ -132051,7 +132479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.51
+      value: -7.03
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalRotation.w
@@ -132180,6 +132608,10 @@ PrefabInstance:
     - target: {fileID: 9193016769751244485, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193016769751244485, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
