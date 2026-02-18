@@ -2212,7 +2212,7 @@ GameObject:
   - component: {fileID: 39589768}
   - component: {fileID: 39589767}
   - component: {fileID: 39589766}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Reactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4183,6 +4183,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 61730477}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -4206,6 +4258,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door1
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4446,13 +4502,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 61730477}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &61730475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 61730474}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &61730476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 61730474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &61730477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61730476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &64324627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6631,7 +6723,7 @@ GameObject:
   - component: {fileID: 131721399}
   - component: {fileID: 131721398}
   - component: {fileID: 131721397}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8927,6 +9019,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 165442453}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -8950,6 +9094,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door2
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9190,13 +9338,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 165442453}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &165442451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 165442450}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &165442452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 165442450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &165442453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165442452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &168650377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11827,6 +12011,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 205576055}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -11850,6 +12086,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door5
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12090,13 +12330,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 205576055}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &205576053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 205576052}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &205576054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 205576052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &205576055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205576054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &207457434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12947,7 +13223,7 @@ GameObject:
   - component: {fileID: 219299865}
   - component: {fileID: 219299864}
   - component: {fileID: 219299863}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Security
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14340,6 +14616,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Caf2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -14396,8 +14676,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: editorForceOpen
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 247001205}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: editorForcePersist
@@ -14408,12 +14704,48 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: resetClosedPosition
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: requireEntityInRange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: allowedEntities.Array.size
@@ -14426,8 +14758,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 247001205}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &247001204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 247001203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &247001205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247001204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &250229664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19250,6 +19618,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -19297,11 +19669,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 317637375}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 317637375}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &317637374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 317637373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &317637375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317637374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &318206557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19471,7 +19931,7 @@ GameObject:
   - component: {fileID: 319170139}
   - component: {fileID: 319170138}
   - component: {fileID: 319170137}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19916,7 +20376,7 @@ GameObject:
   - component: {fileID: 322530587}
   - component: {fileID: 322530586}
   - component: {fileID: 322530585}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22170,6 +22630,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -22217,11 +22681,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 363095266}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 363095266}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &363095265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 363095264}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &363095266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363095265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &368734223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23718,7 +24270,7 @@ GameObject:
   - component: {fileID: 388679197}
   - component: {fileID: 388679196}
   - component: {fileID: 388679195}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Halway14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27067,7 +27619,7 @@ GameObject:
   - component: {fileID: 457294355}
   - component: {fileID: 457294354}
   - component: {fileID: 457294353}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Office1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28049,6 +28601,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Hub1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -28101,14 +28657,102 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 477108886}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: requireEntityInRange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 477108886}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &477108885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 477108884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &477108886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477108885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!4 &480054141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
@@ -32130,7 +32774,7 @@ GameObject:
   - component: {fileID: 520411722}
   - component: {fileID: 520411721}
   - component: {fileID: 520411724}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32650,6 +33294,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -32697,11 +33345,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 530600513}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 530600513}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &530600512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 530600511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &530600513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530600512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &533078370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34575,6 +35311,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -34622,11 +35362,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 574498342}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 574498342}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &574498341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 574498340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &574498342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574498341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &575820634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35878,6 +36706,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1856344252225202068, guid: 39d1cc9731dcfe742b2a02051294be4f, type: 3}
+--- !u!114 &586175834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586175828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &586962063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39810,6 +40666,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 632082365}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -39833,6 +40741,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door6
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -40074,13 +40986,49 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 9193200642864203604, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 632082365}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &632082363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 632082362}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &632082364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 632082362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &632082365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632082364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1 &633213814
 GameObject:
   m_ObjectHideFlags: 0
@@ -40920,7 +41868,7 @@ GameObject:
   - component: {fileID: 645245612}
   - component: {fileID: 645245611}
   - component: {fileID: 645245614}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45474,6 +46422,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -45521,11 +46473,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 755260706}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 755260706}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &755260705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 755260704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &755260706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755260705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1 &755666366
 GameObject:
   m_ObjectHideFlags: 0
@@ -49793,6 +50833,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -321097001797125818, guid: e15573ad27e206648830103b5ca7db16, type: 3}
+--- !u!114 &834968524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834968518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &840564666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49943,7 +51011,7 @@ GameObject:
   - component: {fileID: 843398313}
   - component: {fileID: 843398312}
   - component: {fileID: 843398311}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Office2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53706,7 +54774,7 @@ GameObject:
   - component: {fileID: 901453443}
   - component: {fileID: 901453442}
   - component: {fileID: 901453441}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54319,6 +55387,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Hub2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -54366,11 +55438,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 913497554}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 913497554}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &913497553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 913497552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &913497554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913497553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1 &915377171
 GameObject:
   m_ObjectHideFlags: 0
@@ -60257,7 +61417,7 @@ GameObject:
   - component: {fileID: 1026747245}
   - component: {fileID: 1026747244}
   - component: {fileID: 1026747247}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61138,6 +62298,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -61185,11 +62349,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1045080738}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1045080738}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1045080737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1045080736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1045080738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045080737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!4 &1045382396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 586f5666872f5b94da2807b7d2be24ff, type: 3}
@@ -62401,6 +63653,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1067133007}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -62424,6 +63728,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door9
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -62664,13 +63972,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1067133007}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &1067133005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 1067133004}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1067133006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 1067133004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1067133007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067133006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1068573933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69298,7 +70642,7 @@ GameObject:
   - component: {fileID: 1182745378}
   - component: {fileID: 1182745377}
   - component: {fileID: 1182745380}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: cafeteria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71311,7 +72655,7 @@ GameObject:
   - component: {fileID: 1218782686}
   - component: {fileID: 1218782685}
   - component: {fileID: 1218782684}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73237,6 +74581,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -73284,11 +74632,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1231862193}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1231862193}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1231862192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1231862191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1231862193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231862192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1231897317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75785,7 +77221,7 @@ GameObject:
   - component: {fileID: 1271576567}
   - component: {fileID: 1271576566}
   - component: {fileID: 1271576565}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80485,6 +81921,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -80532,11 +81972,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1335600406}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1335600406}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1335600405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1335600404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1335600406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335600405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1338864171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82943,6 +84471,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1366621061}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -82966,6 +84546,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door4
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -83206,13 +84790,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1366621061}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &1366621059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 1366621058}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1366621060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 1366621058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366621061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366621060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!4 &1368100921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 90608cf31b1bae54b82021d0181ef35e, type: 3}
@@ -85188,7 +86808,7 @@ GameObject:
   - component: {fileID: 1408623858}
   - component: {fileID: 1408623857}
   - component: {fileID: 1408623856}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86157,6 +87777,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -86204,11 +87828,103 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: _isOpen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1420348893}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1420348893}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1420348892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1420348891}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1420348893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420348892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1421094734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88196,6 +89912,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Hub3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -88243,11 +89963,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1466203522}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1466203522}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1466203521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1466203520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1466203522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466203521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1470834099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89445,6 +91253,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 277161054}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Office2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -89492,11 +91304,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1495131493}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1495131493}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1495131492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1495131491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1495131493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495131492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1495670281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90162,6 +92062,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1895321261}
   m_SourcePrefab: {fileID: 100100000, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+--- !u!54 &1496260639 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4498413024801879746, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
+  m_PrefabInstance: {fileID: 1496260638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1498806245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90181,6 +92086,58 @@ PrefabInstance:
     - target: {fileID: 1003284085370316299, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1498806248}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
       objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -90205,6 +92162,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door8
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -90449,13 +92410,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1498806248}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &1498806246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 1498806245}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1498806247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 1498806245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1498806248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498806247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1498946473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90857,6 +92854,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Caf1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -90904,11 +92905,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1507416793}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1507416793}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1507416792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1507416791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1507416793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507416792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!4 &1509778306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a5ac255ac1aa2a941b8988e1362b600c, type: 3}
@@ -93500,6 +95589,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -878780873799726442, guid: 39d1cc9731dcfe742b2a02051294be4f, type: 3}
+--- !u!114 &1574362048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574362042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!4 &1574536998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
@@ -93542,6 +95659,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4851328515596957163, guid: e15573ad27e206648830103b5ca7db16, type: 3}
+--- !u!114 &1579437189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579437183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1 &1579497167
 GameObject:
   m_ObjectHideFlags: 0
@@ -94820,7 +96965,7 @@ GameObject:
   - component: {fileID: 1612445135}
   - component: {fileID: 1612445134}
   - component: {fileID: 1612445133}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97751,6 +99896,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1645929849}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -97774,6 +99971,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door3
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -98014,13 +100215,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1645929849}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &1645929847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 1645929846}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1645929848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 1645929846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1645929849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645929848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1648325289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101990,6 +104227,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Gen.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -102038,14 +104279,102 @@ PrefabInstance:
       value: Wall_Door (17)
       objectReference: {fileID: 0}
     - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1724651289}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: autoReactToPresence
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1724651289}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1724651288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1724651287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1724651289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724651288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!4 &1725285134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08184046d0492724d847d947d48105cf, type: 3}
@@ -109627,7 +111956,7 @@ GameObject:
   - component: {fileID: 1834888387}
   - component: {fileID: 1834888386}
   - component: {fileID: 1834888390}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Storage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113308,6 +115637,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1909871212}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -113331,6 +115712,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door7
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -113572,13 +115957,49 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 9193200642864203604, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1909871212}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &1909871210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 1909871209}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1909871211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 1909871209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1909871212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909871211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1 &1910913635
 GameObject:
   m_ObjectHideFlags: 0
@@ -113749,7 +116170,7 @@ GameObject:
   - component: {fileID: 1913307283}
   - component: {fileID: 1913307282}
   - component: {fileID: 1913307281}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hallway6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116856,6 +119277,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 37586118}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Office1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -116903,11 +119328,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1970334948}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1970334948}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &1970334947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 1970334946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1970334948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970334947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &1974590583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118548,6 +121061,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Lab8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -118595,11 +121112,99 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 2031526840}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2031526840}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &2031526839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 2031526838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031526840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031526839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &2033204019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127874,6 +130479,58 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 55805227898392373}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954112740385412238, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 2599296857758843331, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -127897,6 +130554,10 @@ PrefabInstance:
     - target: {fileID: 3593759936873561917, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      propertyPath: m_Name
+      value: Door10
       objectReference: {fileID: 0}
     - target: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -128137,13 +130798,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 55805227898392373}
   m_SourcePrefab: {fileID: 100100000, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
 --- !u!4 &55805227898392371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8010783434550591519, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
   m_PrefabInstance: {fileID: 55805227898392370}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &55805227898392372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3932152360364353385, guid: 5fb80239f1f8448469d62475795bb11d, type: 3}
+  m_PrefabInstance: {fileID: 55805227898392370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &55805227898392373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55805227898392372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &635172840959250051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128323,6 +131020,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 833716734112107232, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: m_Name
+      value: Door_Lab13
+      objectReference: {fileID: 0}
+    - target: {fileID: 833716734112107232, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -128331,12 +131032,68 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1579437189}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: editorForcePersist
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       propertyPath: allowedTags.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       propertyPath: 'allowedTags.Array.data[0]'
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334060307457862374, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
       objectReference: {fileID: 0}
     - target: {fileID: 6132736855185617169, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       propertyPath: m_Name
@@ -128383,12 +131140,68 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 834968524}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       propertyPath: allowedTags.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       propertyPath: 'allowedTags.Array.data[0]'
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149745364806456433, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089054700469136244, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      propertyPath: m_Name
+      value: Door_Lab12
       objectReference: {fileID: 0}
     - target: {fileID: 8089054700469136244, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -128401,9 +131214,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 833716734112107232, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       insertIndex: 3
       addedObject: {fileID: 1579437188}
+    - targetCorrespondingSourceObject: {fileID: 833716734112107232, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1579437189}
     - targetCorrespondingSourceObject: {fileID: 8089054700469136244, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
       insertIndex: 3
       addedObject: {fileID: 834968523}
+    - targetCorrespondingSourceObject: {fileID: 8089054700469136244, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 834968524}
   m_SourcePrefab: {fileID: 100100000, guid: daace47fab1f39943a2fe585ef7b7831, type: 3}
 --- !u!1001 &2906916200268511365
 PrefabInstance:
@@ -128530,6 +131349,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1474368553}
     m_Modifications:
+    - target: {fileID: 386920582990329074, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: m_Name
+      value: Door_Lab1
+      objectReference: {fileID: 0}
     - target: {fileID: 479471916270836651, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
       propertyPath: m_Name
       value: Decontaminator (1)
@@ -128574,9 +131397,117 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 1574362048}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487959961041719502, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     - target: {fileID: 3883389660238234198, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 586175834}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696668653871484527, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561572166811775726, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      propertyPath: m_Name
+      value: Door_Hub4
       objectReference: {fileID: 0}
     - target: {fileID: 7239147494120869810, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
       propertyPath: m_IsTrigger
@@ -128589,9 +131520,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6561572166811775726, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
       insertIndex: 3
       addedObject: {fileID: 586175833}
+    - targetCorrespondingSourceObject: {fileID: 6561572166811775726, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 586175834}
     - targetCorrespondingSourceObject: {fileID: 386920582990329074, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
       insertIndex: 3
       addedObject: {fileID: 1574362047}
+    - targetCorrespondingSourceObject: {fileID: 386920582990329074, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1574362048}
   m_SourcePrefab: {fileID: 100100000, guid: 205c0973c6c77994d9b9b996b0674d9e, type: 3}
 --- !u!1001 &5602754037500306857
 PrefabInstance:
@@ -128944,6 +131881,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 666738141}
     m_Modifications:
     - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: m_Name
+      value: door_Security
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -128995,11 +131936,99 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: attachRigidbody
+      value: 
+      objectReference: {fileID: 1496260639}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionSource
+      value: 
+      objectReference: {fileID: 8871000201490083747}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: occlusionEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997819526351131125, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8871000201490083747}
   m_SourcePrefab: {fileID: 100100000, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+--- !u!1 &8871000201490083746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210791934339749866, guid: 1eaad56a40bb4514ca59ccfeebd11d26, type: 3}
+  m_PrefabInstance: {fileID: 8871000201490083745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8871000201490083747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871000201490083746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
 --- !u!1001 &8988905068672020813
 PrefabInstance:
   m_ObjectHideFlags: 0
