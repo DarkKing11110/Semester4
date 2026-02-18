@@ -8,6 +8,8 @@ public class ElectricFlow : MonoBehaviour
     private int CorrectWires;
 
     [SerializeField] int TotalWires = 0;
+
+    [SerializeField] private doorIntro introDoor;
     void Start()
     {
         TotalWires = WiresHolder.transform.childCount;
@@ -26,6 +28,7 @@ public class ElectricFlow : MonoBehaviour
         if (CorrectWires == TotalWires)
         {
             GameEvents.OnMinigameCompleted?.Invoke("FoundCircuit");
+            introDoor.SetMinigameSolved(true);
             //Ending 
         }
     }
