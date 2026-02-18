@@ -7,7 +7,7 @@ public class PlayerSounds: MonoBehaviour
 {
     [SerializeField] private FMODUnity.EventReference _footsteps;
     private FMOD.Studio.EventInstance footsteps;
-    [SerializeField] private float footstepCooldown = 0.5f;
+    [SerializeField] private float footstepCooldown = 0.3f;
     private float lastFootstepTime;
 
     [SerializeField] private FMODUnity.EventReference _breathing;
