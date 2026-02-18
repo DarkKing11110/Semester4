@@ -531,7 +531,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1.83
+    m_Value: 0.74
   directLightingStrength:
     m_OverrideState: 1
     m_Value: 1
@@ -680,10 +680,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -0.5
   contrast:
     m_OverrideState: 1
-    m_Value: 32
+    m_Value: 65
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -741,7 +741,7 @@ MonoBehaviour:
     m_Value: 90.3
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 13
+    m_Value: 9
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 0
@@ -805,7 +805,7 @@ MonoBehaviour:
     m_Value: 1.98
   intensity:
     m_OverrideState: 1
-    m_Value: 0.958
+    m_Value: 0.328
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
