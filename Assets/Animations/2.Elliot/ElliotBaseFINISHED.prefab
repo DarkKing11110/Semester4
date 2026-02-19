@@ -50,7 +50,33 @@ MonoBehaviour:
       Data2: 1287070167
       Data3: 1428501399
       Data4: -1697868001
-    Path: event:/SFX_Monster/Monster_Footsteps
+    Path: event:/SFX/SFX_Monster/Monster_Footsteps
+  _breathing:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  occlusionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rayOffset: 0.5
+  listenerTransform: {fileID: 0}
+  _attackHit1:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _attackHit2:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &4998195097462184215
 PrefabInstance:
   m_ObjectHideFlags: 0

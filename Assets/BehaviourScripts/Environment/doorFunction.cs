@@ -1,83 +1,141 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class doorFunction : MonoBehaviour
 {
-    // Alle möglichen lokalen Richtungen
-    public enum SlideDirection
+    public enum SlideDirection { Left, Right, Up, Down, Forward, Back }
+
+    public enum AutoReactMode
     {
-        Left,   // -X
-        Right,  // +X
-        Up,     // +Y
-        Down,   // -Y
-        Forward,// +Z
-        Back    // -Z
+        Off,
+        PlayerOnly,
+        EnemyOnly,
+        PlayerOrEnemy
     }
 
-    [Header("Öffnungsrichtung & Distanz")]
-    [Tooltip("Lokale Richtung, in die sich die Tür beim Öffnen verschiebt.")]
+    [Header("ï¿½ffnungsrichtung & Distanz")]
     public SlideDirection slideDirection = SlideDirection.Right;
-    [Tooltip("Wie weit die Tür sich in die gewählte Richtung verschiebt (Meter, Vorzeichen egal).")]
     public float slideDistance = 2f;
 
     [Header("Geschwindigkeit")]
-    [Tooltip("Geschwindigkeit der Bewegung in Metern pro Sekunde.")]
     public float moveSpeed = 3f;
 
     [Header("Startzustand")]
-    [Tooltip("Falls aktiviert, startet die Tür direkt im geöffneten Zustand.")]
     public bool startOpened = false;
 
     [Header("Eingabe")]
-    [Tooltip("Taste zum Öffnen/Schließen (Groß-/Kleinschreibung egal). Beispiele: E, F, Space, Return, Alpha1.")]
+    [Tooltip("Taste zum ï¿½ffnen/Schlieï¿½en (optional).")]
     public string openKey = "E";
 
-    [Header("Berechtigte Entitäten")]
-    [Tooltip("Explizite GameObjects, die die Tür benutzen dürfen (optional).")]
+    [Header("Berechtigte Entitï¿½ten")]
+    [Tooltip("Tag des Spielers (standardmï¿½ï¿½ig 'Player').")]
+    public string playerTag = "Player";
+    [Tooltip("Tag von KI-Gegnern (z. B. 'Enemy').")]
+    public string enemyTag = "Enemy";
+    [Tooltip("Explizite GameObjects, die zusï¿½tzlich die Tï¿½r benutzen dï¿½rfen (optional).")]
     public GameObject[] allowedEntities;
-    [Tooltip("Tags von Objekten, die die Tür benutzen dürfen (optional).")]
+    [Tooltip("Zusï¿½tzliche Tags, die zusï¿½tzlich die Tï¿½r benutzen dï¿½rfen (optional).")]
     public string[] allowedTags;
 
     [Header("Reichweite")]
-    [Tooltip("Erfordert Anwesenheit einer berechtigten Entität im Triggerbereich (Collider isTrigger=true).")]
+    [Tooltip("Erfordert Anwesenheit einer berechtigten Entitï¿½t im Triggerbereich (Collider isTrigger=true).")]
     public bool requireEntityInRange = true;
+    [Tooltip("Automatik-Modus fï¿½r ï¿½ffnen/Schlieï¿½en basierend auf Prï¿½senz.")]
+    public AutoReactMode autoReactMode = AutoReactMode.PlayerOrEnemy;
 
     [Header("Trigger (optional extern)")]
-    [Tooltip("Optional: Collider eines externen GameObjects, das als Triggerzone dienen soll. Wenn leer, wird ein Trigger am Türobjekt/Kindern erwartet.")]
     public Collider triggerArea;
 
+    [Header("Doppeltï¿½r (optional)")]
+    [Tooltip("Zweite Tï¿½r, die sich gegensï¿½tzlich zur Haupttï¿½r bewegen soll (optional).")]
+    public Transform secondDoorTransform;
+
     [Header("Debug Anzeige")]
-    [Tooltip("Zeigt in der Szene die offene Position als Drahtwürfel.")]
     public bool showGizmos = true;
 
     [Header("Debug Steuerung")]
-    [Tooltip("Erzwingt im Editor / Laufzeit den Zustand (offen = true, geschlossen = false).")]
     public bool editorForceOpen = false;
-    [Tooltip("Wenn aktiv, wird der erzwungene Zustand jeden Frame (nur Editor) beibehalten).")]
     public bool editorForcePersist = false;
 
     [Header("Basisposition Wartung")]
-    [Tooltip("Setzen um aktuelle LocalPosition als neue geschlossene Basis zu speichern (wird danach wieder deaktiviert).")]
     public bool resetClosedPosition = false;
 
-    // Interne Zustände
+    // Intern Haupttï¿½r
     private Vector3 _closedPos;
     private Vector3 _openPos;
-    private bool _isOpen;
+    public bool _isOpen;
     private KeyCode _openKeyCode;
-
-    // Tracking berechtigter Entitäten in Reichweite
     private readonly HashSet<GameObject> _authorizedInRange = new HashSet<GameObject>();
-
     private bool _closedPosInitialized = false;
+
+    // Intern Zweittï¿½r
+    private Vector3 _secondClosedPos;
+    private Vector3 _secondOpenPos;
+    private bool _secondClosedPosInitialized = false;
+
+    // FMOD Integration
+    [Header("FMOD Events")]
+    [Tooltip("FMOD Studio Event fÃ¼r TÃ¼r-Ã–ffnen.")]
+    [SerializeField] private EventReference doorOpenEvent;
+    [Tooltip("FMOD Studio Event fÃ¼r TÃ¼r-SchlieÃŸen.")]
+    [SerializeField] private EventReference doorCloseEvent;
+
+    [Header("3D Event Settings")]
+    [Tooltip("Enable 3D spatialization for events.")]
+    [SerializeField] private bool use3D = true;
+    [Tooltip("Attach event instance to this Transform to auto-update position.")]
+    [SerializeField] private bool attachToGameObject = true;
+    [Tooltip("Optional Rigidbody used when attaching for velocity updates.")]
+    [SerializeField] private Rigidbody attachRigidbody;
+    [Tooltip("Position offset applied when not attaching.")]
+    [SerializeField] private Vector3 positionOffset = Vector3.zero;
+
+    [Header("Playback Attributes")]
+    [Tooltip("Initial volume for the event instance (0-1).")]
+    [Range(0f, 1f)]
+    [SerializeField] private float volume = 1f;
+    [Tooltip("Pitch multiplier for the event instance (0.5-2.0). 1 = normal.")]
+    [Range(0.5f, 2f)]
+    [SerializeField] private float pitch = 1f;
+    [Tooltip("Use fadeout when stopping the previous event.")]
+    [SerializeField] private bool allowFadeOutOnStop = false;
+
+    [Header("Occlusion Settings")]
+    [Tooltip("Enable occlusion checks via AudioOcclusion.")]
+    [SerializeField] private bool occlusionEnabled = false;
+    [Tooltip("AudioOcclusion source to use for computations.")]
+    [SerializeField] private AudioOcclusion occlusionSource;
+    [Tooltip("Use parameter names from AudioOcclusion. If false, use custom names below.")]
+    [SerializeField] private bool useOcclusionSourceSettings = true;
+    [Tooltip("FMOD parameter name for occlusion (0 or 1). Only used if not using source settings.")]
+    [SerializeField] private string occlusionParamName;
+    [Tooltip("FMOD parameter name for occlusion fade value (0-1). Only used if not using source settings.")]
+    [SerializeField] private string occlusionFadeParamName;
+    [Tooltip("Material parameter name if needed (e.g., reverb type). Only used if not using source settings.")]
+    [SerializeField] private string materialParamName;
+    [Tooltip("Material parameter value to set on start when not using source settings.")]
+    [SerializeField] private int materialParamValue = 0;
+
+    private EventInstance currentEventInstance;
 
     void Awake()
     {
         InitClosedPosIfNeeded();
+        InitSecondClosedPosIfNeeded();
+
         RecalculateOpenPos();
+        RecalculateSecondOpenPos();
+
         _isOpen = startOpened;
+
+        // Anfangspositionen anwenden
         transform.localPosition = _isOpen ? _openPos : _closedPos;
+        if (secondDoorTransform != null)
+            secondDoorTransform.localPosition = _isOpen ? _secondOpenPos : _secondClosedPos;
+
         ParseKey();
 #if UNITY_EDITOR
         ApplyEditorForceState();
@@ -89,37 +147,163 @@ public class doorFunction : MonoBehaviour
 #if UNITY_EDITOR
         if (editorForcePersist) ApplyEditorForceState();
 #endif
-        // Bereich prüfen (statt OnTriggerEnter/Exit oder Relay)
+        bool prevIsOpen = _isOpen;
         if (requireEntityInRange)
             RefreshAuthorizedInRange();
 
+        if (requireEntityInRange && autoReactMode != AutoReactMode.Off)
+        {
+            bool anyAuthorized = HasAuthorizedForAutoReact();
+            if (anyAuthorized != _isOpen)
+                _isOpen = anyAuthorized;
+        }
+
         HandleInput();
+
+        if (_isOpen != prevIsOpen)
+        {
+            if (_isOpen)
+            {
+                PlayEvent(doorOpenEvent);
+            }
+            else
+            {
+                PlayEvent(doorCloseEvent);
+            }
+        }
         MoveDoor();
     }
 
+    private bool HasAuthorizedForAutoReact()
+    {
+        if (_authorizedInRange.Count == 0) return false;
+
+        foreach (var go in _authorizedInRange)
+        {
+            bool isPlayer = !string.IsNullOrWhiteSpace(playerTag) && go.CompareTag(playerTag);
+            bool isEnemy  = !string.IsNullOrWhiteSpace(enemyTag)  && go.CompareTag(enemyTag);
+
+            switch (autoReactMode)
+            {
+                case AutoReactMode.PlayerOnly:
+                    if (isPlayer) return true;
+                    break;
+                case AutoReactMode.EnemyOnly:
+                    if (isEnemy) return true;
+                    break;
+                case AutoReactMode.PlayerOrEnemy:
+                    if (isPlayer || isEnemy) return true;
+                    break;
+            }
+        }
+        return false;
+    }
+
+    // HandleInput(): manuelles ï¿½ffnen im Modus EnemyOnly erlauben, wenn der Spieler real in der Zone ist
     private void HandleInput()
     {
         if (!IsOpenKeyPressed()) return;
-        if (requireEntityInRange && _authorizedInRange.Count == 0) return;
+
+        Debug.Log("Open");
         _isOpen = !_isOpen;
+        if (requireEntityInRange)
+        {
+            if (autoReactMode == AutoReactMode.EnemyOnly)
+            {
+                // explizite Spieler-Zonenprï¿½fung unabhï¿½ngig von _authorizedInRange
+                if (!IsPlayerInZone()) return;
+            }
+            else
+            {
+                if (_authorizedInRange.Count == 0) return;
+            }
+        }
+
     }
 
     private void MoveDoor()
     {
-        Vector3 target = _isOpen ? _openPos : _closedPos;
+        if (_isOpen) Debug.Log("opening"); ;
+        Vector3 targetMain = _isOpen ? _openPos : _closedPos;
         if (moveSpeed <= 0f)
-        {
-            transform.localPosition = target;
-        }
+            transform.localPosition = targetMain;
         else
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetMain, moveSpeed * Time.deltaTime);
+
+        if (secondDoorTransform != null)
         {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, moveSpeed * Time.deltaTime);
+            Vector3 targetSecond = _isOpen ? _secondOpenPos : _secondClosedPos;
+            if (moveSpeed <= 0f)
+                secondDoorTransform.localPosition = targetSecond;
+            else
+                secondDoorTransform.localPosition = Vector3.MoveTowards(secondDoorTransform.localPosition, targetSecond, moveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void PlayEvent(EventReference eventRef)
+    {
+        if (!eventRef.IsNull)
+        {
+            StopCurrentEventIfPlaying();
+            currentEventInstance = RuntimeManager.CreateInstance(eventRef);
+
+            if (use3D)
+            {
+                if (attachToGameObject)
+                {
+                    RuntimeManager.AttachInstanceToGameObject(currentEventInstance, transform, attachRigidbody);
+                }
+                else
+                {
+                    var attrs = RuntimeUtils.To3DAttributes(transform);
+                    attrs.position.x += positionOffset.x;
+                    attrs.position.y += positionOffset.y;
+                    attrs.position.z += positionOffset.z;
+                    currentEventInstance.set3DAttributes(attrs);
+                }
+            }
+
+            if (volume != 1f)
+            {
+                currentEventInstance.setVolume(volume);
+            }
+            if (pitch != 1f)
+            {
+                currentEventInstance.setPitch(pitch);
+            }
+
+            if (occlusionEnabled && occlusionSource != null)
+            {
+                string matParam = useOcclusionSourceSettings ? occlusionSource.MaterialParamName : materialParamName;
+                int matValue = useOcclusionSourceSettings ? occlusionSource.MaterialParamValue : materialParamValue;
+                if (!string.IsNullOrEmpty(matParam))
+                {
+                    currentEventInstance.setParameterByName(matParam, matValue);
+                }
+            }
+
+            currentEventInstance.start();
+        }
+    }
+
+    private void StopCurrentEventIfPlaying()
+    {
+        if (currentEventInstance.isValid())
+        {
+            currentEventInstance.getPlaybackState(out PLAYBACK_STATE state);
+            if (state == PLAYBACK_STATE.PLAYING || state == PLAYBACK_STATE.STARTING || state == PLAYBACK_STATE.SUSTAINING)
+            {
+                currentEventInstance.stop(allowFadeOutOnStop ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT : FMOD.Studio.STOP_MODE.IMMEDIATE);
+            }
+            currentEventInstance.release();
+            currentEventInstance.clearHandle();
         }
     }
 
     private bool IsOpenKeyPressed()
     {
         if (_openKeyCode == KeyCode.None) return false;
+        Debug.Log("pressed");
         return Input.GetKeyDown(_openKeyCode);
     }
 
@@ -129,103 +313,72 @@ public class doorFunction : MonoBehaviour
         if (string.IsNullOrWhiteSpace(openKey)) return;
 
         string key = openKey.Trim();
-
-        if (Enum.TryParse(key, true, out KeyCode parsed))
-        {
-            _openKeyCode = parsed;
-            return;
-        }
+        if (Enum.TryParse(key, true, out KeyCode parsed)) { _openKeyCode = parsed; return; }
 
         if (key.Length == 1)
         {
             char c = char.ToUpperInvariant(key[0]);
-            if (c >= 'A' && c <= 'Z')
-            {
-                if (Enum.TryParse(c.ToString(), out parsed))
-                    _openKeyCode = parsed;
-                return;
-            }
+            if (c >= 'A' && c <= 'Z' && Enum.TryParse(c.ToString(), out parsed)) { _openKeyCode = parsed; return; }
             if (char.IsDigit(c))
             {
                 string alphaName = "Alpha" + c;
-                if (Enum.TryParse(alphaName, out parsed))
-                    _openKeyCode = parsed;
-                return;
+                if (Enum.TryParse(alphaName, out parsed)) _openKeyCode = parsed;
             }
         }
-
-        Debug.LogWarning($"[doorFunction] Konnte Taste '{openKey}' nicht zuordnen. Verwende gültigen KeyCode oder Einzelzeichen.");
+        else
+        {
+            Debug.LogWarning($"[doorFunction] Konnte Taste '{openKey}' nicht zuordnen.");
+        }
     }
 
-    /// Bereichsprüfung: füllt _authorizedInRange über Physics.Overlap… basierend auf triggerArea oder lokalen Trigger-Collidern
+    // RefreshAuthorizedInRange(): Trigger berï¿½cksichtigen
     private void RefreshAuthorizedInRange()
     {
         _authorizedInRange.Clear();
 
-        // Quelle bestimmen: explizite triggerArea oder alle isTrigger-Colliders am Objekt/Kindern
         List<Collider> sources = new List<Collider>();
         if (triggerArea != null && triggerArea.isTrigger)
-        {
             sources.Add(triggerArea);
-        }
         else
         {
             var all = GetComponentsInChildren<Collider>(true);
-            foreach (var c in all)
-            {
-                if (c != null && c.isTrigger)
-                    sources.Add(c);
-            }
-            if (sources.Count == 0)
-            {
-                // wenn keine Trigger vorhanden, nichts zu prüfen
-                return;
-            }
+            foreach (var c in all) if (c != null && c.isTrigger) sources.Add(c);
+            if (sources.Count == 0) return;
         }
 
         foreach (var src in sources)
         {
             if (src == null) continue;
-            // Overlap je nach Collider-Typ
             if (src is BoxCollider box)
             {
                 Vector3 center = box.transform.TransformPoint(box.center);
                 Vector3 halfExtents = Vector3.Scale(box.size, box.transform.lossyScale) * 0.5f;
-                Quaternion rot = box.transform.rotation;
-                var overlaps = Physics.OverlapBox(center, halfExtents, rot, ~0, QueryTriggerInteraction.Ignore);
+                var overlaps = Physics.OverlapBox(center, halfExtents, box.transform.rotation, ~0, QueryTriggerInteraction.Collide);
                 AddAuthorized(overlaps);
             }
             else if (src is SphereCollider sphere)
             {
                 Vector3 center = sphere.transform.TransformPoint(sphere.center);
                 float radius = sphere.radius * Mathf.Max(sphere.transform.lossyScale.x, sphere.transform.lossyScale.y, sphere.transform.lossyScale.z);
-                var overlaps = Physics.OverlapSphere(center, radius, ~0, QueryTriggerInteraction.Ignore);
+                var overlaps = Physics.OverlapSphere(center, radius, ~0, QueryTriggerInteraction.Collide);
                 AddAuthorized(overlaps);
             }
             else if (src is CapsuleCollider cap)
             {
-                // Endpunkte berechnen
                 Vector3 center = cap.transform.TransformPoint(cap.center);
-                Vector3 axis;
-                switch (cap.direction)
-                {
-                    case 0: axis = cap.transform.right; break;
-                    case 1: axis = cap.transform.up; break;
-                    default: axis = cap.transform.forward; break;
-                }
+                Vector3 axis = cap.direction == 0 ? cap.transform.right : (cap.direction == 1 ? cap.transform.up : cap.transform.forward);
                 float radius = cap.radius * Mathf.Max(cap.transform.lossyScale.x, cap.transform.lossyScale.y, cap.transform.lossyScale.z);
                 float heightWorld = cap.height * Mathf.Max(cap.transform.lossyScale.x, cap.transform.lossyScale.y, cap.transform.lossyScale.z);
                 float halfSegment = Mathf.Max(0f, (heightWorld * 0.5f) - radius);
                 Vector3 p0 = center - axis * halfSegment;
                 Vector3 p1 = center + axis * halfSegment;
-                var overlaps = Physics.OverlapCapsule(p0, p1, radius, ~0, QueryTriggerInteraction.Ignore);
+                var overlaps = Physics.OverlapCapsule(p0, p1, radius, ~0, QueryTriggerInteraction.Collide);
                 AddAuthorized(overlaps);
             }
             else
             {
-                // generischer Fallback über Bounds
                 var b = src.bounds;
-                var overlaps = Physics.OverlapBox(b.center, b.extents, Quaternion.identity, ~0, QueryTriggerInteraction.Ignore);
+                var overlaps = Physics.OverlapBox(b.center, b.extents, Quaternion.identity, ~0, QueryTriggerInteraction.Collide);
                 AddAuthorized(overlaps);
             }
         }
@@ -245,10 +398,8 @@ public class doorFunction : MonoBehaviour
         }
     }
 
-    // Root-Entity bestimmen (Rigidbody-Root bevorzugen)
     private GameObject GetEntityRoot(Collider other)
     {
-        if (other == null) return null;
         var rb = other.attachedRigidbody;
         return rb != null ? rb.gameObject : other.gameObject;
     }
@@ -274,12 +425,33 @@ public class doorFunction : MonoBehaviour
         _openPos = _closedPos + dir * dist;
     }
 
+    private void RecalculateSecondOpenPos()
+    {
+        if (secondDoorTransform == null) return;
+        float dist = Mathf.Abs(slideDistance);
+
+        // Gegengesetzte Richtung relativ zur zweiten Tï¿½r (lokale Achsen der zweiten Tï¿½r)
+        Vector3 oppositeLocalDir;
+        switch (slideDirection)
+        {
+            case SlideDirection.Left:    oppositeLocalDir = Vector3.right;   break;
+            case SlideDirection.Right:   oppositeLocalDir = Vector3.left;    break;
+            case SlideDirection.Up:      oppositeLocalDir = Vector3.down;    break;
+            case SlideDirection.Down:    oppositeLocalDir = Vector3.up;      break;
+            case SlideDirection.Forward: oppositeLocalDir = Vector3.back;    break;
+            case SlideDirection.Back:    oppositeLocalDir = Vector3.forward; break;
+            default:                     oppositeLocalDir = Vector3.left;    break;
+        }
+
+        _secondOpenPos = _secondClosedPos + oppositeLocalDir * dist;
+    }
+
     private void ValidateColliders()
     {
         Collider col = GetComponent<Collider>();
         if (requireEntityInRange && (col == null || !col.isTrigger) && triggerArea == null)
         {
-            Debug.LogWarning("[doorFunction] Trigger vorausgesetzt: Füge einen Collider mit isTrigger=true hinzu oder weise 'triggerArea' ein externes Collider-Objekt zu.");
+            Debug.LogWarning("[doorFunction] Trigger vorausgesetzt: Fï¿½ge einen Collider mit isTrigger=true hinzu oder weise 'triggerArea' ein externes Collider-Objekt zu.");
         }
     }
 
@@ -292,12 +464,25 @@ public class doorFunction : MonoBehaviour
         }
     }
 
+    private void InitSecondClosedPosIfNeeded()
+    {
+        if (secondDoorTransform == null) return;
+        if (!_secondClosedPosInitialized)
+        {
+            _secondClosedPos = secondDoorTransform.localPosition;
+            _secondClosedPosInitialized = true;
+        }
+    }
+
     private bool IsEntityAuthorized(GameObject go)
     {
-        bool hasSpecifics = (allowedEntities != null && allowedEntities.Length > 0) ||
-                            (allowedTags != null && allowedTags.Length > 0);
-        if (!hasSpecifics) return true;
+        if (!string.IsNullOrWhiteSpace(playerTag) && go.CompareTag(playerTag)) return true;
+        if (!string.IsNullOrWhiteSpace(enemyTag)  && go.CompareTag(enemyTag))  return true;
+        return IsInAllowedLists(go);
+    }
 
+    private bool IsInAllowedLists(GameObject go)
+    {
         if (allowedEntities != null)
         {
             for (int i = 0; i < allowedEntities.Length; i++)
@@ -306,7 +491,6 @@ public class doorFunction : MonoBehaviour
                 if (go == allowedEntities[i]) return true;
             }
         }
-
         if (allowedTags != null)
         {
             for (int i = 0; i < allowedTags.Length; i++)
@@ -319,27 +503,105 @@ public class doorFunction : MonoBehaviour
         return false;
     }
 
-    public void Open() => _isOpen = true;
-    public void Close() => _isOpen = false;
-    public void Toggle() => _isOpen = !_isOpen;
-    public bool IsOpen => _isOpen;
+    // NEU: Hilfsfunktion ï¿½ prï¿½ft explizit, ob der Spieler in der Trigger-Area ist (ohne _authorizedInRange zu benï¿½tigen)
+    private bool IsPlayerInZone()
+    {
+        if (string.IsNullOrWhiteSpace(playerTag)) return false;
+
+        List<Collider> sources = new List<Collider>();
+        if (triggerArea != null && triggerArea.isTrigger)
+            sources.Add(triggerArea);
+        else
+        {
+            var all = GetComponentsInChildren<Collider>(true);
+            foreach (var c in all) if (c != null && c.isTrigger) sources.Add(c);
+            if (sources.Count == 0) return false;
+        }
+
+        foreach (var src in sources)
+        {
+            if (src == null) continue;
+
+            if (src is BoxCollider box)
+            {
+                Vector3 center = box.transform.TransformPoint(box.center);
+                Vector3 halfExtents = Vector3.Scale(box.size, box.transform.lossyScale) * 0.5f;
+                var overlaps = Physics.OverlapBox(center, halfExtents, box.transform.rotation, ~0, QueryTriggerInteraction.Collide);
+                for (int i = 0; i < overlaps.Length; i++)
+                {
+                    var root = GetEntityRoot(overlaps[i]);
+                    if (root != null && root.CompareTag(playerTag))
+                        return true;
+                }
+            }
+            else if (src is SphereCollider sphere)
+            {
+                Vector3 center = sphere.transform.TransformPoint(sphere.center);
+                float radius = sphere.radius * Mathf.Max(sphere.transform.lossyScale.x, sphere.transform.lossyScale.y, sphere.transform.lossyScale.z);
+                var overlaps = Physics.OverlapSphere(center, radius, ~0, QueryTriggerInteraction.Collide);
+                for (int i = 0; i < overlaps.Length; i++)
+                {
+                    var root = GetEntityRoot(overlaps[i]);
+                    if (root != null && root.CompareTag(playerTag))
+                        return true;
+                }
+            }
+            else if (src is CapsuleCollider cap)
+            {
+                Vector3 center = cap.transform.TransformPoint(cap.center);
+                Vector3 axis = cap.direction == 0 ? cap.transform.right : (cap.direction == 1 ? cap.transform.up : cap.transform.forward);
+                float radius = cap.radius * Mathf.Max(cap.transform.lossyScale.x, cap.transform.lossyScale.y, cap.transform.lossyScale.z);
+                float heightWorld = cap.height * Mathf.Max(cap.transform.lossyScale.x, cap.transform.lossyScale.y, cap.transform.lossyScale.z);
+                float halfSegment = Mathf.Max(0f, (heightWorld * 0.5f) - radius);
+                Vector3 p0 = center - axis * halfSegment;
+                Vector3 p1 = center + axis * halfSegment;
+                var overlaps = Physics.OverlapCapsule(p0, p1, radius, ~0, QueryTriggerInteraction.Collide);
+                for (int i = 0; i < overlaps.Length; i++)
+                {
+                    var root = GetEntityRoot(overlaps[i]);
+                    if (root != null && root.CompareTag(playerTag))
+                        return true;
+                }
+            }
+            else
+            {
+                var b = src.bounds;
+                var overlaps = Physics.OverlapBox(b.center, b.extents, Quaternion.identity, ~0, QueryTriggerInteraction.Collide);
+                for (int i = 0; i < overlaps.Length; i++)
+                {
+                    var root = GetEntityRoot(overlaps[i]);
+                    if (root != null && root.CompareTag(playerTag))
+                        return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
 #if UNITY_EDITOR
     private void OnValidate()
     {
         InitClosedPosIfNeeded();
+        InitSecondClosedPosIfNeeded();
 
         if (resetClosedPosition)
         {
             _closedPos = transform.localPosition;
             _closedPosInitialized = true;
+            if (secondDoorTransform != null)
+            {
+                _secondClosedPos = secondDoorTransform.localPosition;
+                _secondClosedPosInitialized = true;
+            }
             resetClosedPosition = false;
         }
 
         RecalculateOpenPos();
+        RecalculateSecondOpenPos();
+
         ApplyEditorForceState();
         ParseKey();
-        // Keine Relay-Erstellung mehr
     }
 
     private void ApplyEditorForceState()
@@ -348,6 +610,8 @@ public class doorFunction : MonoBehaviour
         {
             _isOpen = editorForceOpen;
             transform.localPosition = _isOpen ? _openPos : _closedPos;
+            if (secondDoorTransform != null)
+                secondDoorTransform.localPosition = _isOpen ? _secondOpenPos : _secondClosedPos;
         }
     }
 #endif
@@ -370,6 +634,21 @@ public class doorFunction : MonoBehaviour
         Vector3 worldClosed = transform.parent != null ? transform.parent.TransformPoint(baseClosed) : baseClosed;
         Gizmos.DrawLine(worldClosed, worldOpen);
 
+        // Optionale Gizmos fï¿½r zweite Tï¿½r
+        if (secondDoorTransform != null)
+        {
+            Vector3 secondBaseClosed = Application.isPlaying ? _secondClosedPos : (_secondClosedPosInitialized ? _secondClosedPos : secondDoorTransform.localPosition);
+            Vector3 secondOpen = secondBaseClosed + (-dir) * dist; // visuell: gegensï¿½tzlich zur Haupttï¿½r
+            Gizmos.color = Color.cyan;
+            Vector3 secondWorldOpen = secondDoorTransform.parent != null ? secondDoorTransform.parent.TransformPoint(secondOpen) : secondOpen;
+            Vector3 secondSize = (secondDoorTransform.GetComponent<Renderer>() != null ? secondDoorTransform.GetComponent<Renderer>().bounds.size : Vector3.one * 0.5f);
+            Gizmos.DrawWireCube(secondWorldOpen, secondSize);
+
+            Gizmos.color = Color.yellow;
+            Vector3 secondWorldClosed = secondDoorTransform.parent != null ? secondDoorTransform.parent.TransformPoint(secondBaseClosed) : secondBaseClosed;
+            Gizmos.DrawLine(secondWorldClosed, secondWorldOpen);
+        }
+
         if (triggerArea != null)
         {
             Gizmos.color = Color.green;
@@ -381,7 +660,7 @@ public class doorFunction : MonoBehaviour
                 Gizmos.DrawWireCube(center, sizeWorld);
             }
             else if (trg is SphereCollider sphere)
-            {
+            {       
                 var center = trg.transform.TransformPoint(sphere.center);
                 float radiusWorld = sphere.radius * Mathf.Max(trg.transform.lossyScale.x, trg.transform.lossyScale.y, trg.transform.lossyScale.z);
                 Gizmos.DrawWireSphere(center, radiusWorld);
@@ -395,10 +674,34 @@ public class doorFunction : MonoBehaviour
             }
         }
     }
-}
 
-/// <summary>
-/// Relay-Komponente: leitet Trigger-Ereignisse von externen/Kind-Collidern an die doorFunction weiter.
-/// Wird bei Bedarf automatisch an das Collider-GameObject angefügt.
-/// </summary>
+    private void LateUpdate()
+    {
+        if (occlusionEnabled && occlusionSource != null && currentEventInstance.isValid())
+        {
+            if (occlusionSource.TryComputeOcclusion(transform, out float fadeValue, out bool obstructed))
+            {
+                string fadeParam = useOcclusionSourceSettings ? occlusionSource.OcclusionFadeParamName : occlusionFadeParamName;
+                string occParam = useOcclusionSourceSettings ? occlusionSource.OcclusionParamName : occlusionParamName;
+                if (!string.IsNullOrEmpty(fadeParam))
+                {
+                    currentEventInstance.setParameterByName(fadeParam, fadeValue);
+                }
+                if (!string.IsNullOrEmpty(occParam))
+                {
+                    currentEventInstance.setParameterByName(occParam, obstructed ? 1f : 0f);
+                }
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (currentEventInstance.isValid())
+        {
+            currentEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            currentEventInstance.release();
+        }
+    }
+}
 

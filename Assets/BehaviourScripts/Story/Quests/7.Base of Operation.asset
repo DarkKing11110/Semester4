@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a7bfa3aafb15947b42949d39a72b4c, type: 3}
+  m_Name: 7.Base of Operation
+  m_EditorClassIdentifier: 
+  stepID: openMap
+  description: Study the Map
+  condition:
+  - {fileID: 11400000, guid: a06905d57d973d54984aa422312f9139, type: 2}

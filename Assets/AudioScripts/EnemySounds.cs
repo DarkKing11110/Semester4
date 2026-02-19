@@ -14,6 +14,15 @@ public class EnemySounds : MonoBehaviour
 
     private EnemyMovementType currentAudiomovement = EnemyMovementType.Walking;
 
+    [SerializeField] LayerMask occlusionMask;
+    [SerializeField] float rayOffset = 0.5f;
+
+    [SerializeField] Transform listenerTransform;
+
+    [SerializeField] private EventReference _attackHit1;
+    [SerializeField] private EventReference _attackHit2;
+
+
     float occlusionSmoothed;
 
     private void Awake()
@@ -64,6 +73,17 @@ public class EnemySounds : MonoBehaviour
             footsteps.start();
         }
     }
+
+    public void PlayAttackHit1()
+    {
+        RuntimeManager.PlayOneShotAttached(_attackHit1, gameObject);
+    }
+
+    public void PlayAttackHit2()
+    {
+        RuntimeManager.PlayOneShotAttached(_attackHit2, gameObject);
+    }
+
 
     public void SetEnemyMovementType(EnemyMovementType movement)
     {
@@ -118,29 +138,39 @@ public class EnemySounds : MonoBehaviour
 
     float CalculateOcclusion()
     {
-        Vector3 listener = Camera.main.transform.position;
+        Vector3 listener = listenerTransform.position;
+
         Vector3 source = transform.position;
 
-        int rays = 5;
         int blocked = 0;
 
         Vector3[] offsets =
         {
         Vector3.zero,
-        Vector3.up * 0.5f,
-        Vector3.down * 0.5f,
-        Vector3.right * 0.5f,
-        Vector3.left * 0.5f
+        Vector3.up * rayOffset,
+        Vector3.down * rayOffset,
+        Vector3.right * rayOffset,
+        Vector3.left * rayOffset
     };
 
-        for (int i = 0; i < rays; i++)
+        for (int i = 0; i < offsets.Length; i++)
         {
-            if (Physics.Linecast(listener, source + offsets[i]))
+            Vector3 target = source + offsets[i];
+
+            if (Physics.Linecast(listener, target, occlusionMask))
+            {
                 blocked++;
+                Debug.DrawLine(listener, target, Color.red);
+            }
+            else
+            {
+                Debug.DrawLine(listener, target, Color.green);
+            }
         }
 
-        return blocked / (float)rays;
+        return blocked / (float)offsets.Length;
     }
+
 
 
 }

@@ -488,10 +488,11 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Ambiences
-  - SFX_Enviroment
+  - Ambience
+  - Environment
   - SFX_Monster
   - SFX_Player
+  - UI
   - VO_Player
   BanksToLoad: []
   LiveUpdatePort: 9264
@@ -544,7 +545,7 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     Overlay:
-      Value: 1
+      Value: 0
       HasValue: 1
     OverlayPosition:
       Value: 0

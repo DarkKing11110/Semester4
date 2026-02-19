@@ -343,10 +343,10 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.04034039}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.14343345}
 --- !u!114 &-3095338938555096976
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -531,13 +531,13 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.83
   directLightingStrength:
     m_OverrideState: 1
     m_Value: 1
   radius:
     m_OverrideState: 1
-    m_Value: 1.2
+    m_Value: 0.99
   spatialBilateralAggressiveness:
     m_OverrideState: 1
     m_Value: 0.15
@@ -569,7 +569,7 @@ MonoBehaviour:
     m_Value: 16
   m_FullResolution:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_MaximumRadiusInPixels:
     m_OverrideState: 1
     m_Value: 80
@@ -615,6 +615,7 @@ MonoBehaviour:
   - {fileID: -7987222871018124322}
   - {fileID: 933321572344141328}
   - {fileID: -3427853710691020824}
+  - {fileID: 8808994903882089696}
 --- !u!114 &639513383604015115
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -734,15 +735,15 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 3.69
+    m_Value: 3090.9
   maximumHeight:
-    m_OverrideState: 0
-    m_Value: 90.3
+    m_OverrideState: 1
+    m_Value: 3090.9
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 13
+    m_Value: 16
   enableVolumetricFog:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   albedo:
     m_OverrideState: 1
@@ -829,3 +830,28 @@ MonoBehaviour:
   m_HighQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &8808994903882089696
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e2d32e2c7b0c418e030c3236d663a, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  quality:
+    m_OverrideState: 1
+    m_Value: 3
+  spectralLut:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.057
+  m_MaxSamples:
+    m_OverrideState: 1
+    m_Value: 16

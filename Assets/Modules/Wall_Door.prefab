@@ -133,15 +133,20 @@ MonoBehaviour:
   moveSpeed: 3
   startOpened: 0
   openKey: E
+  playerTag: Player
+  enemyTag: Enemy
   allowedEntities: []
   allowedTags:
   - Player
   requireEntityInRange: 1
+  autoReactMode: 3
   triggerArea: {fileID: 9158562310766717667}
+  secondDoorTransform: {fileID: 0}
   showGizmos: 1
   editorForceOpen: 0
   editorForcePersist: 0
   resetClosedPosition: 0
+  _isOpen: 0
 --- !u!4 &3494833520264175524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}

@@ -41,6 +41,12 @@ public class CamIntro : MonoBehaviour
     [Header("Sonstiges")]
     public bool playOnStart = true;
 
+    [Header("Spieler-Sperre")]
+    [Tooltip("Wenn aktiv, wird die Spielerbewegung während der Intro-Kamera gesperrt.")]
+    public bool lockPlayerMovementDuringIntro = true;
+    [Tooltip("Optional: direkte Referenz auf PlayerBehaviour. Wenn leer, wird automatisch gesucht.")]
+    public PlayerBehaviour playerBehaviour;
+
     // intern
     private Transform introCamTransform;
     private Vector3 blendStartPos;
@@ -61,6 +67,15 @@ public class CamIntro : MonoBehaviour
             return;
         }
         if (playing) return;
+
+        // Spielerbewegung sperren
+        if (lockPlayerMovementDuringIntro)
+        {
+            if (playerBehaviour == null)
+                playerBehaviour = FindObjectOfType<PlayerBehaviour>();
+            if (playerBehaviour != null)
+                playerBehaviour.enabled = false;
+        }
 
         introCamera.gameObject.SetActive(true);
         mainCamera.gameObject.SetActive(false);
@@ -183,6 +198,10 @@ public class CamIntro : MonoBehaviour
 
         mainCamera.gameObject.SetActive(true);
         introCamera.gameObject.SetActive(false);
+
+        // Spielerbewegung wieder freigeben
+        if (lockPlayerMovementDuringIntro && playerBehaviour != null)
+            playerBehaviour.enabled = true;
 
         playing = false;
     }

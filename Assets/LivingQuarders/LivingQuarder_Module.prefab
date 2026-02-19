@@ -139,7 +139,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -244,14 +244,19 @@ MonoBehaviour:
   moveSpeed: 3
   startOpened: 0
   openKey: E
+  playerTag: Player
+  enemyTag: Enemy
   allowedEntities: []
   allowedTags: []
   requireEntityInRange: 1
+  autoReactMode: 3
   triggerArea: {fileID: 7816553524065552865}
+  secondDoorTransform: {fileID: 0}
   showGizmos: 1
   editorForceOpen: 0
   editorForcePersist: 0
   resetClosedPosition: 0
+  _isOpen: 0
 --- !u!1001 &2974996362316612981
 PrefabInstance:
   m_ObjectHideFlags: 0

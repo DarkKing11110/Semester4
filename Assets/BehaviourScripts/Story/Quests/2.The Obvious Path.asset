@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a7bfa3aafb15947b42949d39a72b4c, type: 3}
   m_Name: 2.The Obvious Path
   m_EditorClassIdentifier: 
-  stepID: 
-  description: 
-  condition: []
+  stepID: ObviousPath
+  description: Walk through the double door to the reception.
+  condition:
+  - {fileID: 11400000, guid: e0c3b640d6774d744ac0dae6a06afd57, type: 2}
