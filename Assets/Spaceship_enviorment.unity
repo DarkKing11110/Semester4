@@ -119871,18 +119871,18 @@ MonoBehaviour:
   Panel: {fileID: 854306192}
   terminalOpenEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1066390176
+      Data2: 1152686432
+      Data3: -1623292753
+      Data4: -1331797239
+    Path: event:/UI/Terminal Open
   terminalCloseEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1748770078
+      Data2: 1336312237
+      Data3: -911114824
+      Data4: -1727200107
+    Path: event:/UI/Terminal Close
   allowFadeOutOnStop: 1
 --- !u!65 &1967806969
 BoxCollider:
