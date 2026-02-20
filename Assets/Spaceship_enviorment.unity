@@ -33824,7 +33824,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -91859,7 +91859,6 @@ GameObject:
   - component: {fileID: 1489541737}
   - component: {fileID: 1489541741}
   - component: {fileID: 1489541740}
-  - component: {fileID: 1489541739}
   - component: {fileID: 1489541738}
   m_Layer: 5
   m_Name: GeneratorRiddle
@@ -91905,6 +91904,9 @@ MonoBehaviour:
   gridPadding: {x: 8, y: 8}
   gridSize: 8
   shuffleOnStart: 1
+  GeneratorSolved: solvedGenerator
+  storyManager: {fileID: 502949644}
+  requiredQuestIdOrName: 8
   tileMoveEvent:
     Guid:
       Data1: 0
@@ -91920,29 +91922,6 @@ MonoBehaviour:
       Data4: 0
     Path: 
   shuffleMoves: 200
---- !u!114 &1489541739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489541736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4aea8977d3a85f41945bb5a7fdb379d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreFirstEnable: 0
-  runOnlyOnce: 1
-  storyManager: {fileID: 502949644}
-  expectedQuestIdOrName: 8
-  Condition: solvedGenerator
-  onPanelActivatedMatchingQuest:
-    m_PersistentCalls:
-      m_Calls: []
-  onPanelDeactivated:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1489541740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113149,7 +113128,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -117134,7 +117113,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
