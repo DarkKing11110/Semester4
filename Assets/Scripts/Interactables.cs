@@ -26,12 +26,16 @@ public class Interactables : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && Panel != null && !Panel.activeSelf)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             print("Works");
             Panel.SetActive(true);
             PlayEvent(terminalOpenEvent);
         }
         if (Input.GetKey(KeyCode.Escape) && Panel != null && Panel.activeSelf)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             Panel.SetActive(false);
             PlayEvent(terminalCloseEvent);
         }
