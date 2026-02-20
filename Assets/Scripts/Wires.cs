@@ -1,6 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using FMODUnity;
+
 
 public class Wires : MonoBehaviour, IPointerDownHandler
 {
@@ -42,6 +44,7 @@ public class Wires : MonoBehaviour, IPointerDownHandler
    public void OnPointerDown(PointerEventData eventData)
     {
         transform.Rotate(new Vector3(0, 0, 90));
+        RuntimeManager.PlayOneShot("event:/Environment/Minigames/Tile Spin");
         if (NumberofCorrectRotations > 1)
         {
             if (transform.eulerAngles.z == CorrectRotations[0] || transform.eulerAngles.z == CorrectRotations[1] && isPlaced == false)

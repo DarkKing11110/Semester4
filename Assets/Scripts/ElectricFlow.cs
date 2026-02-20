@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class ElectricFlow : MonoBehaviour
 {
     public GameObject WiresHolder;
@@ -27,6 +28,8 @@ public class ElectricFlow : MonoBehaviour
         CorrectWires += 1;
         if (CorrectWires == TotalWires)
         {
+            
+            
             GameEvents.OnMinigameCompleted?.Invoke("FoundCircuit");
             introDoor.SetMinigameSolved(true);
             //Ending 
