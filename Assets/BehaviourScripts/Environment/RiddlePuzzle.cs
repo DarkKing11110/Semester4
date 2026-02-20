@@ -1,7 +1,8 @@
+using FMODUnity;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using FMODUnity;
 
 public class RiddlePuzzle : MonoBehaviour
 {
@@ -20,6 +21,14 @@ public class RiddlePuzzle : MonoBehaviour
     [Tooltip("Beim Start mischen.")]
     public bool shuffleOnStart = true;
     [Tooltip("Mischschritte (mehr = st�rker gemischt, aber immer l�sbar).")]
+
+
+    [Header("Quest Stuff")]
+    public string GeneratorSolved;
+    [Tooltip("StoryManager-Referenz (optional, wird sonst automatisch gesucht).")]
+    public StoryManager storyManager;
+    [Tooltip("Quest-ID oder Name, bei der dieses Puzzle zählen soll.")]
+    public string requiredQuestIdOrName;
 
     [Header("FMOD Events")]
     //[Tooltip("FMOD Studio Event für Tile-Bewegung.")]
@@ -237,7 +246,23 @@ public class RiddlePuzzle : MonoBehaviour
 
         
         Debug.Log("[RiddlePuzzle] Puzzle gelöst!");
-        // TODO: hier gewünschte Aktion ausführen (Tür öffnen, Belohnung, etc.)
-        GameEvents.OnMinigameCompleted?.Invoke("RiddlePuzzle");
+        
+        if (IsCorrectQuestActive())
+            GameEvents.OnMinigameCompleted?.Invoke(GeneratorSolved);
+    }
+
+    private bool IsCorrectQuestActive()
+    {
+        if (storyManager == null)
+            storyManager = FindObjectOfType<StoryManager>();
+
+        if (storyManager == null) return false;
+        if (string.IsNullOrWhiteSpace(requiredQuestIdOrName)) return false;
+
+        // StoryManager.GetCurrentMissionIdOrName() hast du vorher ergänzt
+        string currentId = storyManager.GetCurrentMissionIdOrName();
+        if (string.IsNullOrEmpty(currentId)) return false;
+
+        return string.Equals(currentId, requiredQuestIdOrName, StringComparison.OrdinalIgnoreCase);
     }
 }
