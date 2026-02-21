@@ -1,5 +1,6 @@
 using FMODUnity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,8 +21,8 @@ public class RiddlePuzzle : MonoBehaviour
     public int gridSize = 8; // 8x8
     [Tooltip("Beim Start mischen.")]
     public bool shuffleOnStart = true;
-    [Tooltip("Mischschritte (mehr = st�rker gemischt, aber immer l�sbar).")]
-
+    [Tooltip("Mischschritte (mehr = stärker gemischt, aber immer lösbar).")]
+    public int shuffleMoves = 200;
 
     [Header("Quest Stuff")]
     public string GeneratorSolved;
@@ -30,12 +31,20 @@ public class RiddlePuzzle : MonoBehaviour
     [Tooltip("Quest-ID oder Name, bei der dieses Puzzle zählen soll.")]
     public string requiredQuestIdOrName;
 
+    [Header("Generator-Material")]
+    [Tooltip("Renderer des Generators (Material mit Exposed Property).")]
+    public Renderer generatorRenderer;
+    [Tooltip("Optional explizites Material. Wenn leer, wird das Material des Renderers verwendet.")]
+    public Material generatorMaterialOverride;
+    [Tooltip("Name der Exposed Property im Shader (z. B. 'MainTile').")]
+    public string generatorPropertyName = "MainTile";
+    [Tooltip("Dauer des Hochfahrens von 0 auf 1 in Sekunden.")]
+    public float generatorRampDuration = 2.0f;
+
     [Header("FMOD Events")]
-    //[Tooltip("FMOD Studio Event für Tile-Bewegung.")]
     [SerializeField] private EventReference tileMoveEvent;
     [Tooltip("FMOD Studio Event für Puzzle gelöst.")]
     [SerializeField] private EventReference puzzleSolveEvent;
-    public int shuffleMoves = 200;
 
     // interner Zustand
     private RectTransform[,] gridSlots; // aktuelle tile-Belegung (null = leer)
@@ -87,8 +96,11 @@ public class RiddlePuzzle : MonoBehaviour
         {
             if (t == null) continue;
             var sizeFitter = t.GetComponent<LayoutElement>();
-            if (sizeFitter != null) sizeFitter.preferredWidth = cellSize.x;
-            if (sizeFitter != null) sizeFitter.preferredHeight = cellSize.y;
+            if (sizeFitter != null)
+            {
+                sizeFitter.preferredWidth = cellSize.x;
+                sizeFitter.preferredHeight = cellSize.y;
+            }
             t.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, cellSize.x);
             t.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, cellSize.y);
 
@@ -180,13 +192,11 @@ public class RiddlePuzzle : MonoBehaviour
         empty = from;
 
         // FMOD Event abspielen
-       
-        
-            FMODUnity.RuntimeManager.PlayOneShot(tileMoveEvent);
-        
+        FMODUnity.RuntimeManager.PlayOneShot(tileMoveEvent);
 
         // Optional: Pr�fe Sieg
-        // if (IsSolved()) OnSolved();
+        if (IsSolved())
+            OnSolved();
 
         return true;
     }
@@ -239,16 +249,17 @@ public class RiddlePuzzle : MonoBehaviour
 
     private void OnSolved()
     {
-        
-        
-            FMODUnity.RuntimeManager.PlayOneShot(puzzleSolveEvent);
-        
-
-        
+        FMODUnity.RuntimeManager.PlayOneShot(puzzleSolveEvent);
         Debug.Log("[RiddlePuzzle] Puzzle gelöst!");
-        
+
+        // Material-Property von 0 nach 1 hochfahren
+        //StartCoroutine(RampGeneratorProperty());
+
         if (IsCorrectQuestActive())
+        {
             GameEvents.OnMinigameCompleted?.Invoke(GeneratorSolved);
+            StartCoroutine(RampGeneratorProperty());
+        }
     }
 
     private bool IsCorrectQuestActive()
@@ -259,10 +270,67 @@ public class RiddlePuzzle : MonoBehaviour
         if (storyManager == null) return false;
         if (string.IsNullOrWhiteSpace(requiredQuestIdOrName)) return false;
 
-        // StoryManager.GetCurrentMissionIdOrName() hast du vorher ergänzt
         string currentId = storyManager.GetCurrentMissionIdOrName();
         if (string.IsNullOrEmpty(currentId)) return false;
 
         return string.Equals(currentId, requiredQuestIdOrName, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private IEnumerator RampGeneratorProperty()
+    {
+        Material mat = generatorMaterialOverride;
+        if (mat == null && generatorRenderer != null)
+            mat = generatorRenderer.material;
+
+        if (mat == null)
+        {
+            Debug.LogWarning("[RiddlePuzzle] Kein Generator-Material zugewiesen.");
+            yield break;
+        }
+
+        if (string.IsNullOrWhiteSpace(generatorPropertyName))
+        {
+            Debug.LogWarning("[RiddlePuzzle] generatorPropertyName ist leer.");
+            yield break;
+        }
+
+        // 1. Versuche den angegebenen Namen
+        string prop = generatorPropertyName;
+
+        // 2. Falls nicht vorhanden und kein Unterstrich, versuche _Name (ShaderGraph-Standard)
+        if (!mat.HasProperty(prop) && !prop.StartsWith("_"))
+        {
+            string alt = "_" + prop;
+            if (mat.HasProperty(alt))
+            {
+                Debug.Log($"[RiddlePuzzle] Property '{prop}' nicht gefunden, verwende '{alt}' stattdessen.");
+                prop = alt;
+            }
+        }
+
+        // 3. Wenn immer noch nicht vorhanden -> abbrechen
+        if (!mat.HasProperty(prop))
+        {
+            Debug.LogWarning($"[RiddlePuzzle] Material '{mat.name}' hat keine Property '{generatorPropertyName}' (oder '_{generatorPropertyName}').");
+            yield break;
+        }
+
+        float duration = Mathf.Max(0.01f, generatorRampDuration);
+        float t = 0f;
+        float start = 0f;
+        float end = 1f;
+
+        mat.SetFloat(prop, start);
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float k = Mathf.Clamp01(t / duration);
+            float value = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, k));
+            mat.SetFloat(prop, value);
+            yield return null;
+        }
+
+        mat.SetFloat(prop, end);
     }
 }
