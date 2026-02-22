@@ -19182,7 +19182,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1780219331}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1780219330}
   m_SourcePrefab: {fileID: 100100000, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
 --- !u!43 &307202493
 Mesh:
@@ -22874,6 +22880,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
+--- !u!1 &362681684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+  m_PrefabInstance: {fileID: 1721476758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &363095264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57903,6 +57914,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ef048f6c821c0641b7e8a0256968bba, type: 3}
+--- !u!1 &938839938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+  m_PrefabInstance: {fileID: 307168961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &940159872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60295,7 +60311,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486006474}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486006473}
   m_SourcePrefab: {fileID: 100100000, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
 --- !u!1001 &976717972
 PrefabInstance:
@@ -61691,6 +61713,84 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
   m_PrefabInstance: {fileID: 1721476758}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1012920573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362681684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
+--- !u!114 &1012920574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362681684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc044d43cfd0465eb3e0247f681bc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetQuestProgress: 9
+  hasMetQuestConditions: 0
+  onQuestConditionsMet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 538197708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  generatorPlayEvent:
+    Guid:
+      Data1: 725111623
+      Data2: 1167296119
+      Data3: -658164037
+      Data4: -1971643049
+    Path: event:/Environment/generator/Gen. Small
+  use3D: 1
+  attachToGameObject: 1
+  attachRigidbody: {fileID: 1496260639}
+  positionOffset: {x: 0, y: 0, z: 0}
+  volume: 1
+  pitch: 1
+  allowFadeOutOnStop: 0
+  occlusionEnabled: 1
+  occlusionSource: {fileID: 1012920573}
+  useOcclusionSourceSettings: 1
+  occlusionParamName: 
+  occlusionFadeParamName: 
+  materialParamName: 
+  materialParamValue: 0
 --- !u!1001 &1017049222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92368,6 +92468,89 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1486006472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 859f76ef3f31cbb4c901b2fdb96cab65, type: 3}
+  m_PrefabInstance: {fileID: 974830574}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1486006473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486006472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
+--- !u!114 &1486006474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486006472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc044d43cfd0465eb3e0247f681bc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetQuestProgress: 9
+  hasMetQuestConditions: 0
+  onQuestConditionsMet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 538197708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  generatorPlayEvent:
+    Guid:
+      Data1: -1137254649
+      Data2: 1257756172
+      Data3: -691216995
+      Data4: 1528063875
+    Path: event:/Environment/generator/Gen. Big
+  use3D: 1
+  attachToGameObject: 1
+  attachRigidbody: {fileID: 1496260639}
+  positionOffset: {x: 0, y: 0, z: 0}
+  volume: 1
+  pitch: 1
+  allowFadeOutOnStop: 0
+  occlusionEnabled: 1
+  occlusionSource: {fileID: 1486006473}
+  useOcclusionSourceSettings: 1
+  occlusionParamName: 
+  occlusionFadeParamName: 
+  materialParamName: 
+  materialParamValue: 0
 --- !u!4 &1486178354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4eea54d1f0a27a14b8fb0f50c0c9cd7c, type: 3}
@@ -93322,7 +93505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.009
+      value: -55.33
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -93330,7 +93513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.938
+      value: -54.1
       objectReference: {fileID: 0}
     - target: {fileID: 3563102181187335677, guid: 9abbc0938ccb68c449dda0be44f4456e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -106031,7 +106214,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1012920574}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1012920573}
   m_SourcePrefab: {fileID: 100100000, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
 --- !u!1 &1723443275
 GameObject:
@@ -110344,6 +110533,84 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cbc2526607ccc2f4c9f8439521bd1c91, type: 3}
   m_PrefabInstance: {fileID: 307168961}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780219330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938839938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa66221af23748468b4d74017e223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 10
+  playerTransform: {fileID: 1033079300}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  FMODEvent: 
+  paramDistanceMax: 20
+  FMODParam: AudioOclussion
+  NonOcclusionTag: 
+  FMODParamFade: 
+  paramValToOne: 1
+  fmodMaterialParameter: 
+  selectedMaterial: 0
+  scaledValDepth: 0
+  Obstruction: 0
+  Event: 
+--- !u!114 &1780219331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938839938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc044d43cfd0465eb3e0247f681bc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetQuestProgress: 9
+  hasMetQuestConditions: 0
+  onQuestConditionsMet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 538197708}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  generatorPlayEvent:
+    Guid:
+      Data1: 725111623
+      Data2: 1167296119
+      Data3: -658164037
+      Data4: -1971643049
+    Path: event:/Environment/generator/Gen. Small
+  use3D: 1
+  attachToGameObject: 1
+  attachRigidbody: {fileID: 1496260639}
+  positionOffset: {x: 0, y: 0, z: 0}
+  volume: 1
+  pitch: 1
+  allowFadeOutOnStop: 0
+  occlusionEnabled: 1
+  occlusionSource: {fileID: 1780219330}
+  useOcclusionSourceSettings: 1
+  occlusionParamName: 
+  occlusionFadeParamName: 
+  materialParamName: 
+  materialParamValue: 0
 --- !u!1001 &1781062620
 PrefabInstance:
   m_ObjectHideFlags: 0
