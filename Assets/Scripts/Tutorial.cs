@@ -1,17 +1,22 @@
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    public Vector3 point1;
-    public Vector3 point2;
-    public Vector3 point3;
+    private Vector3 point1 = new Vector3(0, 0, -14.5f);
+    private Vector3 point2 = new Vector3(0, 0, -5f);
+    private Vector3 point3 = new Vector3 (25.5f, 0, -5);
+    private Vector3 point4 = new Vector3(25.5f, 0, -14);
 
     private bool cp1;
     private bool cp2;
     private bool cp3;
 
-    private float timer;
+    public Animator animator;
+
+    public float timer;
+    private float Firstspeed = 1;
     private float speed = 3;
 
     void Start()
@@ -23,16 +28,18 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
+        transform.position = Vector3.MoveTowards(transform.position, point3, speed * Time.deltaTime);
+
         timer += Time.deltaTime;
-        if (timer > 0)
+        if (timer > 5)
         {
             Checkpoint1();
         }
-        if (timer > 4.4)
+        if (timer > 9.4)
         {
             Checkpoint2();
         }
-        if (timer > 13.7)
+        if (timer > 18.7)
         {
             Checkpoint3();
         }
@@ -42,15 +49,19 @@ public class Tutorial : MonoBehaviour
     {
         if (cp1 == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, point1, speed * Time.deltaTime);
+            Debug.Log("Going to point 2");
+            transform.position = Vector3.MoveTowards(transform.position, point2, speed * Time.deltaTime);
+            
             cp2 = true;
         }
     }
     public void Checkpoint2()
     {
+        Debug.Log("Going to Point 3");
         if (cp2 == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, point2, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, point3, speed * Time.deltaTime);
+            //transform.rotation = quaternion.Euler(0, 90, 0);
             cp1 = false;
             cp3 = true;
         }
@@ -58,8 +69,9 @@ public class Tutorial : MonoBehaviour
     public void Checkpoint3()
     {
         if (cp3 == true)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, point3, speed * Time.deltaTime);
+        {           
+            transform.position = Vector3.MoveTowards(transform.position, point4, speed * Time.deltaTime);
+            //transform.rotation = quaternion.Euler(0, 180, 0);
             cp2 = false;
         }
     }
