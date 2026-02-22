@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
+
 
 public class ElectricFlow : MonoBehaviour
 {
     public GameObject WiresHolder;
     public GameObject[] Wires;
 
-    public int CorrectWires = 0;
+    private int CorrectWires;
 
     [SerializeField] int TotalWires = 0;
 
@@ -24,14 +24,15 @@ public class ElectricFlow : MonoBehaviour
     }
 
     public void Correct()
-    {      
+    {
         CorrectWires += 1;
         if (CorrectWires == TotalWires)
         {
-            Debug.Log("All Correct");
+            
+            
             GameEvents.OnMinigameCompleted?.Invoke("FoundCircuit");
             introDoor.SetMinigameSolved(true);
-
+            //Ending 
         }
     }
 

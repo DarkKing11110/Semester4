@@ -1,24 +1,24 @@
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using FMODUnity;
+
 
 public class Wires : MonoBehaviour, IPointerDownHandler
 {
     float[] rotations = { 0, 90, 180, 270 };
 
     public float[] CorrectRotations;
-    public bool isPlaced = false;
+    bool isPlaced = false;
     [SerializeField] GameObject FlowObject;
     public ElectricFlow flow;
 
     int NumberofCorrectRotations = 1;
 
-    void Awake()
-    {
-        flow = FlowObject.GetComponent<ElectricFlow>();
-    }
     void Start()
     {
+        flow = FlowObject.GetComponent<ElectricFlow>();
+
         NumberofCorrectRotations = CorrectRotations.Length;
         int rand = Random.Range(0, rotations.Length);
         transform.eulerAngles = new Vector3(0, 0, rotations[rand]);
@@ -43,8 +43,8 @@ public class Wires : MonoBehaviour, IPointerDownHandler
 
    public void OnPointerDown(PointerEventData eventData)
     {
-        transform.Rotate(0, 0, 90);
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+        transform.Rotate(new Vector3(0, 0, 90));
+        RuntimeManager.PlayOneShot("event:/Environment/Minigames/Tile Spin");
         if (NumberofCorrectRotations > 1)
         {
             if (transform.eulerAngles.z == CorrectRotations[0] || transform.eulerAngles.z == CorrectRotations[1] && isPlaced == false)
