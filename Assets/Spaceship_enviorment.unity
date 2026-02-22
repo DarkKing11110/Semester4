@@ -92790,20 +92790,6 @@ MonoBehaviour:
   generatorMaterialOverride: {fileID: 2100000, guid: 54324597b22cef342847332f58956296, type: 2}
   generatorPropertyName: MainTile
   generatorRampDuration: 2.54
-  tileMoveEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  puzzleSolveEvent:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!114 &1489541740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134756,6 +134742,46 @@ PrefabInstance:
     - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: slideDistance
       value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: event:/Environment/Doors/Door Open3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: event:/Environment/Doors/Doorclose3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: -108577245
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 1334177646
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 1442521496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 659727607
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: -240082409
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 1293561618
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: -1149303160
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: -585735281
       objectReference: {fileID: 0}
     - target: {fileID: 3071050766910008435, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_LocalPosition.x
