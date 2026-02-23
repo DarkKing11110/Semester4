@@ -41,7 +41,11 @@ public class RiddlePuzzle : MonoBehaviour
     [Tooltip("Dauer des Hochfahrens von 0 auf 1 in Sekunden.")]
     public float generatorRampDuration = 2.0f;
 
-    
+    [Header("FMOD Events")]
+    [SerializeField] private EventReference tileMoveEvent;
+    [Tooltip("FMOD Studio Event für Puzzle gelöst.")]
+    [SerializeField] private EventReference puzzleSolveEvent;
+
     // interner Zustand
     private RectTransform[,] gridSlots; // aktuelle tile-Belegung (null = leer)
     private Vector2Int empty;           // Koordinate des leeren Feldes
@@ -188,7 +192,7 @@ public class RiddlePuzzle : MonoBehaviour
         empty = from;
 
         // FMOD Event abspielen
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Environment/Minigames/Tile Spin");
+        FMODUnity.RuntimeManager.PlayOneShot(tileMoveEvent);
 
         // Optional: Pr�fe Sieg
         if (IsSolved())
@@ -245,7 +249,7 @@ public class RiddlePuzzle : MonoBehaviour
 
     private void OnSolved()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Environment/Minigames/Tile Puzzle Solve");
+        FMODUnity.RuntimeManager.PlayOneShot(puzzleSolveEvent);
         Debug.Log("[RiddlePuzzle] Puzzle gelöst!");
 
         // Material-Property von 0 nach 1 hochfahren
