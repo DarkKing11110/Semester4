@@ -132,7 +132,7 @@ MonoBehaviour:
   slideDistance: 2
   moveSpeed: 3
   startOpened: 0
-  openKey: E
+  openKey: 
   playerTag: Player
   enemyTag: Enemy
   allowedEntities: []
@@ -147,6 +147,34 @@ MonoBehaviour:
   editorForcePersist: 0
   resetClosedPosition: 0
   _isOpen: 0
+  doorOpenEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  doorCloseEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  use3D: 1
+  attachToGameObject: 1
+  attachRigidbody: {fileID: 0}
+  positionOffset: {x: 0, y: 0, z: 0}
+  volume: 1
+  pitch: 1
+  allowFadeOutOnStop: 0
+  occlusionEnabled: 0
+  occlusionSource: {fileID: 0}
+  useOcclusionSourceSettings: 1
+  occlusionParamName: 
+  occlusionFadeParamName: 
+  materialParamName: 
+  materialParamValue: 0
 --- !u!4 &3494833520264175524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4ebb58f6abc6e744ea62aa8226a60d45, type: 3}
