@@ -13,6 +13,7 @@ public class Tutorial : MonoBehaviour
 
     public ElectricFlow flow;
     public GameObject TutorialElliot;
+    public GameObject MainEnemy;
 
     private bool Entered = false;
 
@@ -55,6 +56,10 @@ public class Tutorial : MonoBehaviour
             if (timer > 18.7)
             {
                 Checkpoint3();
+            }
+            if (timer > 23)
+            {
+                Checkpoint4();
             }
         }       
     }
@@ -108,6 +113,12 @@ public class Tutorial : MonoBehaviour
             MeshAgent.destination = point4;
             cp2 = false;
         }
+    }
+    public void Checkpoint4()
+    {
+        MainEnemy.SetActive(true);
+        MeshAgent.destination = point3;
+        TutorialElliot.SetActive(false);
     }
 
 }

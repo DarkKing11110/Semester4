@@ -3433,6 +3433,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 510894691178551962, guid: 0b6fadd7db9f1644398bf467f8702290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1586481405}
+    - targetCorrespondingSourceObject: {fileID: 510894691178551962, guid: 0b6fadd7db9f1644398bf467f8702290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1586481406}
   m_SourcePrefab: {fileID: 100100000, guid: 0b6fadd7db9f1644398bf467f8702290, type: 3}
 --- !u!1 &52830574
 GameObject:
@@ -25032,6 +25035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flow: {fileID: 1967806965}
   TutorialElliot: {fileID: 887355613}
+  MainEnemy: {fileID: 1825030729}
   Animator: {fileID: 0}
   MeshAgent: {fileID: 0}
   StoryManager: {fileID: 502949644}
@@ -25707,6 +25711,7 @@ Transform:
   - {fileID: 506234233}
   - {fileID: 255223614}
   - {fileID: 1393283261}
+  - {fileID: 577040576}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &392136925 stripped
@@ -35278,15 +35283,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.838676
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2589455
+      value: 2.253734
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 58.427345
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 4816492637087891196, guid: 0559c32dd0c195e449ba227f12e67a15, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38122,8 +38127,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577040575}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -74, y: 0, z: -59}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -83.39478, y: -5.5570674, z: -66.0955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38174,7 +38179,7 @@ Transform:
   - {fileID: 2128355845}
   - {fileID: 369391951}
   - {fileID: 1778600614}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 388679199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &578622925 stripped
 Transform:
@@ -49700,6 +49705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flow: {fileID: 0}
   TutorialElliot: {fileID: 0}
+  MainEnemy: {fileID: 0}
   Animator: {fileID: 0}
   MeshAgent: {fileID: 0}
   StoryManager: {fileID: 0}
@@ -105081,6 +105087,23 @@ MonoBehaviour:
       Data4: -1727200107
     Path: event:/UI/Terminal Close
   allowFadeOutOnStop: 1
+--- !u!114 &1586481406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586481404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4e39f8d33e98c49b980df2b420172e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WiresHolder: {fileID: 418108550}
+  Wires: []
+  Completed: 0
+  TotalWires: 0
+  introDoor: {fileID: 0}
 --- !u!4 &1587104986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
@@ -120628,7 +120651,7 @@ MonoBehaviour:
   isWalking: 0
   isAttacking: 0
   isRunning: 0
-  range: 450
+  range: 45
   GroundLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -143222,7 +143245,6 @@ SceneRoots:
   - {fileID: 319170141}
   - {fileID: 322530589}
   - {fileID: 1614894711}
-  - {fileID: 577040576}
   - {fileID: 2138148265}
   - {fileID: 895560044}
   - {fileID: 719670311}

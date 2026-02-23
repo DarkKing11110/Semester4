@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  - enabled: 1
+  - enabled: 0
     path: Assets/MainMenu.unity
     guid: 09353430c86ab214ca5d99245d69716c
+  - enabled: 1
+    path: Assets/StartingMenu.unity
+    guid: 235e9ecf39bec74469b37b5206e3a13a
   - enabled: 1
     path: Assets/Spaceship_enviorment.unity
     guid: ab052f77ffd65b847b0ea45b455a0bfe

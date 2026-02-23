@@ -24,7 +24,7 @@ public class Interactables : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        if (Input.GetKey(KeyCode.E) && Panel != null && !Panel.activeSelf)
+        if (Input.GetKey(KeyCode.E) && Panel != null && !Panel.activeSelf && other.gameObject.CompareTag("Player"))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
