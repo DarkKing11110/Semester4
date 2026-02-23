@@ -23,27 +23,6 @@ public class EndingScene : MonoBehaviour
         Elliotanimator = GetComponentInChildren<Animator>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            {
-                Kai.SetActive(true);
-                Elliot.SetActive(true);
-
-                Timer += Time.deltaTime;
-
-                if (Timer > 3f)
-                {
-                    doorfunction._isOpen = true;
-                    if (Timer > 5)
-                    {
-
-                    }
-                }
-            }
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         //if (storyManager.currentStepIndex == 17)

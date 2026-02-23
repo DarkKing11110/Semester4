@@ -8,31 +8,41 @@ public class AudioManager : MonoBehaviour
     [Range(0, 1)]
     public float MasterVolume = 1;
     [Range(0, 1)]
-    public float MusicVolume = 1;
+    public float SFXVolume = 1;
+    [Range(0, 1)]
+    public float VOVolume = 1;
     [Range(0, 1)]
     public float AmbienceVolume = 1;
     [Range(0, 1)]
-    public float DialogueVolume = 1;
+    public float EnvironmentVolume = 1;
+    [Range(0, 1)]
+    public float UIVolume = 1;
 
     private Bus MasterBus;
-    private Bus MusicBus;
+    private Bus SFXBus;
+    private Bus VOBus;
     private Bus AmbienceBus;
-    private Bus Dialoguebus;
+    private Bus EnvironmentBus;
+    private Bus UIBus;
 
     public static AudioManager instance { get; private set; }
     private void Awake()
     {
         MasterBus = RuntimeManager.GetBus("bus:/");
-        MusicBus = RuntimeManager.GetBus("bus:/");
-        AmbienceBus = RuntimeManager.GetBus("bus:/");
-        Dialoguebus = RuntimeManager.GetBus("bus:/");
+        SFXBus = RuntimeManager.GetBus("bus:/SFX");
+        VOBus = RuntimeManager.GetBus("bus:/VO-Player");
+        AmbienceBus = RuntimeManager.GetBus("bus:/Ambience");
+        EnvironmentBus = RuntimeManager.GetBus("bus:/Environment");
+        UIBus = RuntimeManager.GetBus("bus:/UI");
     }
 
     private void Update()
     {
         MasterBus.setVolume(MasterVolume);
-        MusicBus.setVolume(MusicVolume);
+        SFXBus.setVolume(SFXVolume);
+        VOBus.setVolume(VOVolume);
         AmbienceBus.setVolume(AmbienceVolume);
-        Dialoguebus.setVolume(DialogueVolume);
+        EnvironmentBus.setVolume(EnvironmentVolume);
+        UIBus.setVolume(UIVolume);
     }
 }

@@ -1,6 +1,8 @@
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Tutorial : MonoBehaviour
 {
@@ -9,11 +11,19 @@ public class Tutorial : MonoBehaviour
     private Vector3 point3 = new Vector3 (25.5f, 0, -5);
     private Vector3 point4 = new Vector3(25.5f, 0, -14);
 
+    public ElectricFlow flow;
+    public GameObject TutorialElliot;
+
+    private bool Entered = false;
+
     private bool cp1;
     private bool cp2;
     private bool cp3;
 
-    public Animator animator;
+    public Animator Animator;
+    public NavMeshAgent MeshAgent;
+
+    public StoryManager StoryManager;
 
     public float timer;
     private float Firstspeed = 1;
@@ -28,21 +38,45 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, point3, speed * Time.deltaTime);
+        if (Entered == true)
+        {
+            MeshAgent = GetComponentInChildren<NavMeshAgent>();
+            Animator = GetComponentInChildren<Animator>();
+            TutorialElliot.SetActive(true);
+            timer += Time.deltaTime;
+            if (timer > 5)
+            {
+                Checkpoint1();
+            }
+            if (timer > 9.4)
+            {
+                Checkpoint2();
+            }
+            if (timer > 18.7)
+            {
+                Checkpoint3();
+            }
+        }       
+    }
 
-        timer += Time.deltaTime;
-        if (timer > 5)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (flow.Completed == true)
         {
-            Checkpoint1();
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Entered = true;
+            }
         }
-        if (timer > 9.4)
-        {
-            Checkpoint2();
-        }
-        if (timer > 18.7)
-        {
-            Checkpoint3();
-        }
+            
+        
+    }
+
+    public void OpenDoor()
+    {
+        MeshAgent.isStopped = false;
+        MeshAgent.speed = Firstspeed;
+        MeshAgent.destination = point1;
     }
 
     public void Checkpoint1()
@@ -50,8 +84,8 @@ public class Tutorial : MonoBehaviour
         if (cp1 == true)
         {
             Debug.Log("Going to point 2");
-            transform.position = Vector3.MoveTowards(transform.position, point2, speed * Time.deltaTime);
-            
+            MeshAgent.speed = speed;
+            MeshAgent.destination = point2;
             cp2 = true;
         }
     }
@@ -60,8 +94,8 @@ public class Tutorial : MonoBehaviour
         Debug.Log("Going to Point 3");
         if (cp2 == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, point3, speed * Time.deltaTime);
-            //transform.rotation = quaternion.Euler(0, 90, 0);
+            MeshAgent.speed = speed;
+            MeshAgent.destination = point3;
             cp1 = false;
             cp3 = true;
         }
@@ -69,9 +103,9 @@ public class Tutorial : MonoBehaviour
     public void Checkpoint3()
     {
         if (cp3 == true)
-        {           
-            transform.position = Vector3.MoveTowards(transform.position, point4, speed * Time.deltaTime);
-            //transform.rotation = quaternion.Euler(0, 180, 0);
+        {
+            MeshAgent.speed = speed;
+            MeshAgent.destination = point4;
             cp2 = false;
         }
     }

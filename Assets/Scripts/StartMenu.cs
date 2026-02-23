@@ -11,7 +11,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1); //Number to be changed
+        SceneManager.LoadScene(1); 
         StartPanel.SetActive(false);
         SettingsPanel.SetActive(false);
         CreditsPanel.SetActive(false);

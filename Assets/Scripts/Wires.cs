@@ -9,7 +9,7 @@ public class Wires : MonoBehaviour, IPointerDownHandler
     float[] rotations = { 0, 90, 180, 270 };
 
     public float[] CorrectRotations;
-    bool isPlaced = false;
+    public bool isPlaced = false;
     [SerializeField] GameObject FlowObject;
     public ElectricFlow flow;
 
@@ -44,6 +44,7 @@ public class Wires : MonoBehaviour, IPointerDownHandler
    public void OnPointerDown(PointerEventData eventData)
     {
         transform.Rotate(new Vector3(0, 0, 90));
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Tile Spin");
         if (NumberofCorrectRotations > 1)
         {
