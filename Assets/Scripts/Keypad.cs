@@ -30,6 +30,7 @@ public class Keypad : MonoBehaviour
     [SerializeField] TMP_Text ShowPin;
     [SerializeField] TMP_Text ErrorMessage;
     [SerializeField] TMP_Text AccessGrantedMessage;
+    [SerializeField] TMP_Text Pin;
 
     void Start()
     {
@@ -42,6 +43,8 @@ public class Keypad : MonoBehaviour
         RealPin += Digit2;
         RealPin += Digit3;
         RealPin += Digit4;
+
+        Pin.text = RealPin;
     }
 
     public void Buttonone()
@@ -49,6 +52,8 @@ public class Keypad : MonoBehaviour
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 1;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
 
     public void Buttontwo()
@@ -56,54 +61,72 @@ public class Keypad : MonoBehaviour
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 2;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonthree()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 3;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonfour()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 4;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonfive()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 5;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonsix()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 6;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonseven()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 7;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttoneight()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 8;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonnine()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 9;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonzero()
     {
         RuntimeManager.PlayOneShot("event:/Environment/Minigames/Keypad click");
         TypedPin = TypedPin + 0;
         ShowPin.text = TypedPin;
+        ErrorMessage.text = "     ";
+        AccessGrantedMessage.text = "   ";
     }
     public void Buttonclear()
     {
