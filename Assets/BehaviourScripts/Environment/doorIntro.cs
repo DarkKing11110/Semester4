@@ -111,7 +111,7 @@ public class doorIntro : MonoBehaviour
         if (root == null) return;
         if (!IsEntityAuthorized(root)) return;
 
-        if (kind == DoorIntroTriggerRelay.TriggerKind.Intro)
+        if (kind == DoorIntroTriggerRelay.TriggerKind.Intro && minigameSolved == true)
         {
             // Swap-Area freischalten, sobald Intro-Area betreten wurde (einmalig)
             ActivateSwapAreaIfNeeded();

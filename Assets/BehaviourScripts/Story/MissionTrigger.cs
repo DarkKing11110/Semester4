@@ -3,7 +3,7 @@ using UnityEngine;
 public class MissionTrigger : MonoBehaviour
 {
     [Tooltip("Tag des Spielers, der den Missionstrigger auslösen darf.")]
-    public string playerTag = "Player";
+    public string playerTag;
 
     [Tooltip("Einmalig auslösen (true) oder bei jedem Eintritt (false).")]
     public bool triggerOnce = true;
@@ -36,7 +36,7 @@ public class MissionTrigger : MonoBehaviour
         if (triggerOnce && triggered) return;
 
         var root = other.attachedRigidbody ? other.attachedRigidbody.gameObject : other.gameObject;
-        if (!string.IsNullOrWhiteSpace(playerTag) && !root.CompareTag(playerTag) && storyManager.CurrentStepIndex == MissionIndex) return;
+        if (!string.IsNullOrWhiteSpace(playerTag) && !root.CompareTag(playerTag) || storyManager.CurrentStepIndex != MissionIndex) return;
 
         // Missionsfortschritt auslösen
         AdvanceMission();

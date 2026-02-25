@@ -68,7 +68,7 @@ public class MissionPanelTrigger : MonoBehaviour
 
         // Falls dein StoryStepData eine eigene ID/Eigenschaft hat, hier entsprechend vergleichen.
         // Fallback: vergleiche gegen den ScriptableObject-Namen.
-        var currentIdOrName = storyManager.GetCurrentMissionIdOrName();
+        var currentIdOrName = storyManager.GetCurrentId();
         if (string.IsNullOrWhiteSpace(expectedQuestIdOrName)) return false;
 
         return string.Equals(currentIdOrName, expectedQuestIdOrName, System.StringComparison.OrdinalIgnoreCase);

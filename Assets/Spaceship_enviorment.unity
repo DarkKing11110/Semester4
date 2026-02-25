@@ -18560,7 +18560,7 @@ MonoBehaviour:
   ignoreFirstEnable: 0
   runOnlyOnce: 1
   storyManager: {fileID: 502949644}
-  expectedQuestIdOrName: 6
+  expectedQuestIdOrName: openMap
   Condition: openMap
   onPanelActivatedMatchingQuest:
     m_PersistentCalls:
@@ -26022,7 +26022,7 @@ MonoBehaviour:
   allowedTags: []
   requireEntityInRange: 1
   autoReactMode: 3
-  triggerArea: {fileID: 0}
+  triggerArea: {fileID: 1599298003}
   secondDoorTransform: {fileID: 2125707410}
   showGizmos: 1
   editorForceOpen: 0
@@ -37275,11 +37275,11 @@ MonoBehaviour:
   allowedTags: []
   introStartEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 134370497
+      Data2: 1155242889
+      Data3: -1532658780
+      Data4: 1663962702
+    Path: event:/Environment/Doors/MonsterOpenDoor
 --- !u!1001 &560751516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86962,7 +86962,7 @@ Transform:
   m_GameObject: {fileID: 1309400150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.89, y: 0, z: -2.73}
+  m_LocalPosition: {x: 26.89, y: 0, z: -13.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105495,6 +105495,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
   m_PrefabInstance: {fileID: 1597696023}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1599298001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1599298002}
+  - component: {fileID: 1599298003}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1599298002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599298001}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.87, y: 0.2830124, z: -4.3849716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2081042297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1599298003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599298001}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2, z: 2.7600002}
+  m_Center: {x: 0, y: 0.5, z: 4.22}
 --- !u!1001 &1602685435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136036,7 +136089,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 57c4e2a7b6fd50c44baf40f219e7f4e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1599298002}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7370088671883258724, guid: 57c4e2a7b6fd50c44baf40f219e7f4e2, type: 3}
       insertIndex: -1

@@ -65,4 +65,14 @@ public class StoryManager : MonoBehaviour
         // Passe die folgende Zeile an deine Felder im StoryStepData an:
         return data.name; // ScriptableObject-Name als Fallback
     }
+
+    public string GetCurrentId()
+    {
+        var data = CurrentStepData;
+        if (data == null) return null;
+
+        // Falls StoryStepData z. B. ein Feld 'stepName' oder 'id' hat, hier bevorzugt zurückgeben.
+        // Passe die folgende Zeile an deine Felder im StoryStepData an:
+        return data.stepID; // ScriptableObject-Name als Fallback
+    }
 }
