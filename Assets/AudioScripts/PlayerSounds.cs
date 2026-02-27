@@ -38,6 +38,11 @@ public class PlayerSounds: MonoBehaviour
   
             breathing.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
 
+        {
+            //  Assign 3D attributes
+            currentVoice.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        }
+
         if (storyManager == null)
             return;
 
@@ -186,11 +191,7 @@ public class PlayerSounds: MonoBehaviour
             Debug.LogError("[VOICE] Failed to create instance.");
             return;
         }
-
-        //  Assign 3D attributes
-        currentVoice.set3DAttributes(
-            FMODUnity.RuntimeUtils.To3DAttributes(transform.position)
-        );
+    
 
         Debug.Log("[VOICE] 3D attributes set at position: " + transform.position);
 
