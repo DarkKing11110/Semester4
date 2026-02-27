@@ -1,3 +1,5 @@
+using FMODUnity;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +10,14 @@ public class StartMenu : MonoBehaviour
     [SerializeField] GameObject StartPanel;
     [SerializeField] GameObject SettingsPanel;
     [SerializeField] GameObject CreditsPanel;
+    [SerializeField] TMP_Text Nest;
+    private string color = "Black";
+
+    private void Start()
+    {
+        StartPanel.SetActive(true);
+        Nest.text = ("<color=" + color + ">N.E.S.T</color>"  );
+    }
 
     public void StartGame()
     {
@@ -45,4 +55,13 @@ public class StartMenu : MonoBehaviour
     {
 
     }
+    public void HoverSound()
+    {
+        RuntimeManager.PlayOneShot("event:/UI/Hover SFX");
+    }
+    public void ClickSound()
+    {
+        RuntimeManager.PlayOneShot("event:/UI/Select SFX");
+    }
 }
+
