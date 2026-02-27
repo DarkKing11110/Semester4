@@ -7,7 +7,7 @@ public class StoryManager : MonoBehaviour
 
     // Aktueller Step-Index öffentlich lesbar
     public int CurrentStepIndex => currentStepIndex;
-
+   
     // Aktuelle Step-Daten (ScriptableObject) öffentlich lesbar
     public StoryStepData CurrentStepData => 
         (currentStepIndex >= 0 && currentStepIndex < storySteps.Length) ? storySteps[currentStepIndex] : null;
@@ -20,7 +20,7 @@ public class StoryManager : MonoBehaviour
 
     int currentStepIndex = 0;
     StoryStep currentStep;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

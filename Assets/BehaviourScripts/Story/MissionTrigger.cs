@@ -28,7 +28,7 @@ public class MissionTrigger : MonoBehaviour
     private void Start()
     {
         // Fallback, falls nicht gesetzt: erste Instanz suchen
-        if (storyManager == null) storyManager = FindObjectOfType<StoryManager>();
+        if (storyManager == null) storyManager = FindFirstObjectByType<StoryManager>();
     }
 
     private void OnTriggerEnter(Collider other)

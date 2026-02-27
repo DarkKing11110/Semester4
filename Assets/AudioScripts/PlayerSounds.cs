@@ -13,6 +13,9 @@ public class PlayerSounds: MonoBehaviour
     [SerializeField] private FMODUnity.EventReference _breathing;
     private FMOD.Studio.EventInstance breathing;
 
+   
+
+
     private void Awake()
     {
         if (!_breathing.IsNull)
@@ -26,13 +29,23 @@ public class PlayerSounds: MonoBehaviour
         {
             footsteps = FMODUnity.RuntimeManager.CreateInstance(_footsteps);
         }
+
+        storyManager = FindFirstObjectByType<StoryManager>();
     }
 
     private void Update()
     {
   
             breathing.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-        
+
+        if (storyManager == null)
+            return;
+
+        if (storyManager.CurrentStepIndex != lastStepIndex)
+        {
+            lastStepIndex = storyManager.CurrentStepIndex;
+            HandleStoryStep(lastStepIndex);
+        }
     }
 
     public void PlayFootsteps()
@@ -119,6 +132,72 @@ public class PlayerSounds: MonoBehaviour
         Walk = 0,
         Run = 1,
         Crouch = 2
+    }
+
+
+
+    private StoryManager storyManager;
+    private int lastStepIndex = -1;
+
+    [System.Serializable]
+    public class StepVoiceMapping
+    {
+        public int stepIndex;
+        public FMODUnity.EventReference voiceEvent;
+    }
+
+    [SerializeField] private List<StepVoiceMapping> stepVoices;
+
+    private void HandleStoryStep(int index)
+    {
+        foreach (var mapping in stepVoices)
+        {
+            if (mapping.stepIndex == index)
+            {
+                PlayStoryVoice(mapping.voiceEvent);
+                return;
+            }
+        }
+    }
+
+    private FMOD.Studio.EventInstance currentVoice;
+
+    public void PlayStoryVoice(FMODUnity.EventReference voiceEvent)
+    {
+        if (voiceEvent.IsNull)
+        {
+            Debug.LogError("[VOICE] Voice event is NULL.");
+            return;
+        }
+
+        Debug.Log("[VOICE] Attempting to play: " + voiceEvent.Path);
+
+        // Stop previous voice if active
+        if (currentVoice.isValid())
+        {
+            Debug.Log("[VOICE] Stopping previous voice.");
+            currentVoice.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+        currentVoice = FMODUnity.RuntimeManager.CreateInstance(voiceEvent);
+
+        if (!currentVoice.isValid())
+        {
+            Debug.LogError("[VOICE] Failed to create instance.");
+            return;
+        }
+
+        //  Assign 3D attributes
+        currentVoice.set3DAttributes(
+            FMODUnity.RuntimeUtils.To3DAttributes(transform.position)
+        );
+
+        Debug.Log("[VOICE] 3D attributes set at position: " + transform.position);
+
+        currentVoice.start();
+        currentVoice.release();
+
+        Debug.Log("[VOICE] Voice started successfully.");
     }
 }
 
