@@ -182,6 +182,15 @@ public class EnemyMovement : MonoBehaviour
         enemySounds.PlayFootsteps();
     }
 
+    private void PlayAttackHit1()
+    {
+        enemySounds.PlayAttackHit1();
+    }
+
+    private void PlayAttackHit2()
+    {
+        enemySounds.PlayAttackHit2();
+    }
     void UpdateBreathing()
     {
         if (isRunning)

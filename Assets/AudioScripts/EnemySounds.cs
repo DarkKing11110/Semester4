@@ -20,8 +20,9 @@ public class EnemySounds : MonoBehaviour
     [SerializeField] Transform listenerTransform;
 
     [SerializeField] private EventReference _attackHit1;
+    private FMOD.Studio.EventInstance attackhit1;
     [SerializeField] private EventReference _attackHit2;
-
+    private FMOD.Studio.EventInstance attackhit2;
 
     float occlusionSmoothed;
 
@@ -78,12 +79,20 @@ public class EnemySounds : MonoBehaviour
     {
 
         Debug.Log("AttackHit1 triggered");
-        RuntimeManager.PlayOneShotAttached(_attackHit1, gameObject);
+        if (attackhit1.isValid())
+        {
+            attackhit1.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+            attackhit1.start();
+        }
     }
 
     public void PlayAttackHit2()
     {
-        RuntimeManager.PlayOneShotAttached(_attackHit2, gameObject);
+        if (attackhit2.isValid())
+        {
+            attackhit2.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+            attackhit2.start();
+        }
     }
 
 
