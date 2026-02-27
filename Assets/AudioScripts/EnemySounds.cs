@@ -76,6 +76,8 @@ public class EnemySounds : MonoBehaviour
 
     public void PlayAttackHit1()
     {
+
+        Debug.Log("AttackHit1 triggered");
         RuntimeManager.PlayOneShotAttached(_attackHit1, gameObject);
     }
 
