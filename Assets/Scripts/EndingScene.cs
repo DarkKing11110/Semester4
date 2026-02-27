@@ -1,10 +1,14 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndingScene : MonoBehaviour
 {
     [SerializeField] GameObject Elliot;
     [SerializeField] GameObject Kai;
+
+    [SerializeField] Camera MainCamera;
+    [SerializeField] Camera EndingCamera;
 
     public GameObject Door;
 
@@ -16,6 +20,8 @@ public class EndingScene : MonoBehaviour
     public Animator Kaianimator;
     public Animator Elliotanimator;
     public float Timer;
+    public int index;
+    private bool timerstart = false;
 
     private void Start()
     {
@@ -23,25 +29,31 @@ public class EndingScene : MonoBehaviour
         Elliotanimator = GetComponentInChildren<Animator>();
     }
 
+    private void Update()
+    {
+        index = storyManager.CurrentStepIndex;
+        if (timerstart == true)
+        {
+            Timer += Time.deltaTime;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        //if (storyManager.currentStepIndex == 17)
-        if (Input.GetKey(KeyCode.E))
+        if (storyManager.CurrentStepIndex == 16)
         {
+            MainCamera.enabled = false;
+            timerstart = true;
+            if (Timer > 2.5)
             {
                 Kai.SetActive(true);
                 Elliot.SetActive(true);
-
-
-                Timer += Time.deltaTime;
-
-                if (Timer > 3f)
+                if (Timer < 3)
                 {
-                    doorfunction.editorForceOpen = true;
-                    if (Timer > 5)
-                    {
-
-                    }
+                    EndingCamera.enabled = true;
+                }
+                if (Timer > 5)
+                {
+                    SceneManager.LoadScene(2);
                 }
             }
         }

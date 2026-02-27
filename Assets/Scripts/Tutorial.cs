@@ -88,7 +88,6 @@ public class Tutorial : MonoBehaviour
     {
         if (cp1 == true)
         {
-            Debug.Log("Going to point 2");
             MeshAgent.speed = speed;
             MeshAgent.destination = point2;
             cp2 = true;
@@ -96,7 +95,6 @@ public class Tutorial : MonoBehaviour
     }
     public void Checkpoint2()
     {
-        Debug.Log("Going to Point 3");
         if (cp2 == true)
         {
             MeshAgent.speed = speed;
@@ -118,7 +116,7 @@ public class Tutorial : MonoBehaviour
     {
         MainEnemy.SetActive(true);
         MeshAgent.destination = point3;
-        TutorialElliot.SetActive(false);
+        Destroy(TutorialElliot);
     }
 
 }
