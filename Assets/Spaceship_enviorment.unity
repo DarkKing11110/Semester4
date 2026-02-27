@@ -2213,7 +2213,7 @@ MonoBehaviour:
       Data3: 862871424
       Data4: -288695249
     Path: event:/SFX/SFX_Player/Player_Footsteps
-  footstepCooldown: 0.5
+  footstepCooldown: 0.3
   _breathing:
     Guid:
       Data1: 1686359468
@@ -2221,6 +2221,63 @@ MonoBehaviour:
       Data3: 859841707
       Data4: 91986368
     Path: event:/VO_Player/VO_Player_SFX/Player_Breathing
+  stepVoices:
+  - stepIndex: 2
+    voiceEvent:
+      Guid:
+        Data1: 201177377
+        Data2: 1226396136
+        Data3: 182326151
+        Data4: 1774851571
+      Path: event:/VO_Player/VO_Player_Story/Chapter 1/1-01
+  - stepIndex: 5
+    voiceEvent:
+      Guid:
+        Data1: 1350405977
+        Data2: 1220383685
+        Data3: -939170421
+        Data4: 223096846
+      Path: event:/VO_Player/VO_Player_Story/Chapter 2/2-01
+  - stepIndex: 7
+    voiceEvent:
+      Guid:
+        Data1: -1684341564
+        Data2: 1141271526
+        Data3: -62303594
+        Data4: -903355352
+      Path: event:/VO_Player/VO_Player_Story/Chapter 2/2-02
+  - stepIndex: 8
+    voiceEvent:
+      Guid:
+        Data1: 1251652396
+        Data2: 1332831230
+        Data3: -116992343
+        Data4: 965352691
+      Path: event:/VO_Player/VO_Player_Story/Chapter 4/4-01
+  - stepIndex: 13
+    voiceEvent:
+      Guid:
+        Data1: 1205430061
+        Data2: 1294441715
+        Data3: 119126451
+        Data4: 218884832
+      Path: event:/VO_Player/VO_Player_Story/Chapter 7/7-02
+  - stepIndex: 15
+    voiceEvent:
+      Guid:
+        Data1: -2066544884
+        Data2: 1150507590
+        Data3: 40296886
+        Data4: 1201215751
+      Path: event:/VO_Player/VO_Player_Story/Chapter 9/9-02
+  - stepIndex: 17
+    voiceEvent:
+      Guid:
+        Data1: 363997175
+        Data2: 1261923241
+        Data3: -1989971534
+        Data4: 219034869
+      Path: event:/VO_Player/VO_Player_Story/Chapter 10/10-01
 --- !u!4 &33700038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 978323731f9f4c14c913b9ed2dc06315, type: 3}
@@ -6669,6 +6726,7 @@ MonoBehaviour:
   m_Script: {fileID: 1206762433}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &117557628
 Transform:
   m_ObjectHideFlags: 19
@@ -7180,6 +7238,7 @@ MonoBehaviour:
   m_Script: {fileID: 1740846863}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &133139941
 Transform:
   m_ObjectHideFlags: 19
@@ -49264,6 +49323,7 @@ MonoBehaviour:
   m_Script: {fileID: 2111360093}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &719670311
 Transform:
   m_ObjectHideFlags: 19
@@ -49820,6 +49880,7 @@ MonoBehaviour:
       Data3: 859841707
       Data4: 91986368
     Path: event:/VO_Player/VO_Player_SFX/Player_Breathing
+  stepVoices: []
 --- !u!1001 &737393735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59334,6 +59395,7 @@ MonoBehaviour:
   m_Script: {fileID: 1176713211}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &895560044
 Transform:
   m_ObjectHideFlags: 19
