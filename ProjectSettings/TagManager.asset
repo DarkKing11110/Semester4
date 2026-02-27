@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Security_Camera
   - Enemy
+  - RespawnPoint
+  - DeathMenuPanel
+  - WinScreenPanel
   layers:
   - Default
   - TransparentFX

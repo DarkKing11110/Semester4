@@ -181,7 +181,7 @@ public class PlayerBehaviour : MonoBehaviour
         HandleSprint();
         HandleCrouch();       // Crouch (Toggle) + Collider-Handling
         Move();
-        Attack();
+        //Attack();
         HandleMouseLook();
         RegenerateStamina();
         HandleAnimations();   // zentral wie der Sprint-Handler
@@ -464,22 +464,22 @@ public class PlayerBehaviour : MonoBehaviour
         cameraTransform.rotation = camRot;
     }
 
-    void Attack()
-    {
-        if (Input.GetMouseButtonDown(1)) // Rechtsklick
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
-            {
-                EnemyBehaviour enemy = hit.collider.GetComponent<EnemyBehaviour>();
-                if (enemy != null)
-                {
-                    // Animation wird im Handler gesteuert; hier nur Gameplay
-                    enemy.TakeDamage(attackDamage);
-                }
-            }
-        }
-    }
+    //void Attack()
+    //{
+    //    if (Input.GetMouseButtonDown(1)) // Rechtsklick
+    //    {
+    //        RaycastHit hit;
+    //        if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange))
+    //        {
+    //            EnemyBehaviour enemy = hit.collider.GetComponent<EnemyBehaviour>();
+    //            if (enemy != null)
+    //            {
+    //                // Animation wird im Handler gesteuert; hier nur Gameplay
+    //                enemy.TakeDamage(attackDamage);
+    //            }
+    //        }
+    //    }
+    //}
 
     // Zentraler Animations-Handler (ohne Hashes, ohne Timer)
     void HandleAnimations()

@@ -36410,7 +36410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2140515410}
-  Panel: {fileID: 0}
+  Panel: {fileID: 1489541736}
   terminalOpenEvent:
     Guid:
       Data1: 0
@@ -88177,6 +88177,37 @@ Light:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &1315582976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1315582977}
+  m_Layer: 0
+  m_Name: Respawn
+  m_TagString: RespawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1315582977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315582976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.117295265, y: 0, z: -31.237286}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1315645492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2b074c36e22811b45b1bb1cfbac0710d, type: 3}
@@ -91945,7 +91976,7 @@ GameObject:
   - component: {fileID: 1357636382}
   m_Layer: 0
   m_Name: DeathPanel
-  m_TagString: Untagged
+  m_TagString: DeathMenuPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144122,6 +144153,46 @@ PrefabInstance:
       propertyPath: slideDistance
       value: 0.49
       objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorOpenEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050821549862705471, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
+      propertyPath: doorCloseEvent.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3071050766910008435, guid: 83e193676c8f0a545a9fcac5023bb2d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -144643,3 +144714,4 @@ SceneRoots:
   - {fileID: 1196373351}
   - {fileID: 1357636382}
   - {fileID: 2022387102}
+  - {fileID: 1315582977}
