@@ -2797,6 +2797,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Keypad2: {fileID: 1196373353}
+--- !u!65 &44370739
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44370731}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.005105703, y: 0.008687058, z: 0.009011371}
+  m_Center: {x: -0.0021028505, y: 0, z: -0.0000000029301344}
 --- !u!1 &45559783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6729,6 +6750,7 @@ MonoBehaviour:
   m_Script: {fileID: 1206762433}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &117557628
 Transform:
   m_ObjectHideFlags: 19
@@ -7240,6 +7262,7 @@ MonoBehaviour:
   m_Script: {fileID: 1740846863}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &133139941
 Transform:
   m_ObjectHideFlags: 19
@@ -49345,6 +49368,7 @@ MonoBehaviour:
   m_Script: {fileID: 2111360093}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &719670311
 Transform:
   m_ObjectHideFlags: 19
@@ -59354,6 +59378,7 @@ MonoBehaviour:
   m_Script: {fileID: 1176713211}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries: []
 --- !u!4 &895560044
 Transform:
   m_ObjectHideFlags: 19
@@ -100578,11 +100603,11 @@ MonoBehaviour:
   cellSpacing: {x: 4, y: 4}
   gridPadding: {x: 8, y: 8}
   gridSize: 4
-  shuffleOnStart: 1
-  shuffleMoves: 200
+  shuffleOnStart: 0
+  shuffleMoves: 0
   GeneratorSolved: solvedGenerator
   storyManager: {fileID: 502949644}
-  requiredQuestIdOrName: 8
+  requiredQuestIdOrName: solvedGenerator
   generatorRenderer: {fileID: 0}
   generatorMaterialOverride: {fileID: 2100000, guid: 54324597b22cef342847332f58956296, type: 2}
   generatorPropertyName: MainTile
@@ -111795,6 +111820,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5874ffe9c3215ec49b2217bec69575ae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 44370735}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5874ffe9c3215ec49b2217bec69575ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 44370739}
   m_SourcePrefab: {fileID: 100100000, guid: 5874ffe9c3215ec49b2217bec69575ae, type: 3}
 --- !u!1001 &1674457391
 PrefabInstance:

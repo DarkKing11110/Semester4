@@ -141,16 +141,27 @@ public class RiddlePuzzle : MonoBehaviour
     }
 
     // Positioniert ein Tile visuell in Zelle (x,y)
+    // Positioniert ein Tile visuell in Zelle (x,y)
     private void SetTilePosition(RectTransform tile, Vector2Int cell)
     {
         if (tile == null) return;
-        // Panel ist typischerweise mit Pivot .5/.5; wir nutzen lokale Position mit Ankern auf Mittelpivot
-        Vector2 origin = new Vector2(-gridPanel.rect.width * 0.5f, -gridPanel.rect.height * 0.5f);
-        float px = origin.x + gridPadding.x + cell.x * (cellSize.x + cellSpacing.x) + cellSize.x * 0.5f;
-        float py = origin.y + gridPadding.y + cell.y * (cellSize.y + cellSpacing.y) + cellSize.y * 0.5f;
+
+        // Wir interpretieren cell.y = 0 als OBERSTE Zeile.
+        var panelRect = gridPanel.rect;
+        float width = panelRect.width;
+        float height = panelRect.height;
+
+        // Linke obere Ecke des Panels relativ zum Pivot (0.5 / 0.5)
+        Vector2 topLeft = new Vector2(-width * 0.5f, height * 0.5f);
+
+        // X wie gehabt von links nach rechts
+        float px = topLeft.x + gridPadding.x + cell.x * (cellSize.x + cellSpacing.x) + cellSize.x * 0.5f;
+
+        // Y von oben nach unten zählen (deshalb Minus)
+        float py = topLeft.y - gridPadding.y - cell.y * (cellSize.y + cellSpacing.y) - cellSize.y * 0.5f;
+
         tile.localPosition = new Vector3(px, py, 0f);
     }
-
     // Zufälliges, stets lösbares Shuffle: führe legale Moves des leeren Feldes aus
     private void ShuffleSolvable(int moves)
     {
@@ -270,7 +281,7 @@ public class RiddlePuzzle : MonoBehaviour
         if (storyManager == null) return false;
         if (string.IsNullOrWhiteSpace(requiredQuestIdOrName)) return false;
 
-        string currentId = storyManager.GetCurrentMissionIdOrName();
+        string currentId = storyManager.GetCurrentId();
         if (string.IsNullOrEmpty(currentId)) return false;
 
         return string.Equals(currentId, requiredQuestIdOrName, StringComparison.OrdinalIgnoreCase);
