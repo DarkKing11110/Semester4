@@ -175,8 +175,6 @@ public class PlayerSounds: MonoBehaviour
             return;
         }
 
-        Debug.Log("[VOICE] Attempting to play: " + voiceEvent.Path);
-
         // Stop previous voice if active
         if (currentVoice.isValid())
         {

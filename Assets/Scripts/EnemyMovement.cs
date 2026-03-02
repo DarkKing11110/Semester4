@@ -2,11 +2,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Android;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {
     public Transform Player;
+
+    [SerializeField] PlayerBehaviour playerbehaviour;
 
     [Header("Enemy Values")]
     public float EnemySpeed;
@@ -26,6 +29,9 @@ public class EnemyMovement : MonoBehaviour
     public bool isWalking;
     public bool isAttacking;
     public bool isRunning;
+
+    [SerializeField] GameObject DeathPanel;
+    private float DeathTimer;
 
     [SerializeField] float range;
 
@@ -145,14 +151,25 @@ public class EnemyMovement : MonoBehaviour
 
     public void AttackPlayer()
     {
+        Debug.Log("Attacking");
+        DeathTimer += Time.deltaTime;
         isWalking = false;
         isRunning = false;
         isAttacking = true;
+
+        //playerbehaviour.enabled = false;
 
         //attack and player loses 1 heart. we havent decided how many hearts b4 player dies
         animator.SetBool("isWalking", isWalking);
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isAttacking", isAttacking);
+
+        if (DeathTimer > 3f)
+        {
+            SceneManager.LoadScene(4);
+
+        }
+
     }
     private bool CanSeePlayer()
     {
@@ -198,7 +215,18 @@ public class EnemyMovement : MonoBehaviour
         else
            enemySounds.SetBreathState(EnemySounds.MonsterBreathState.Walking);
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
+
+
 
 public enum EnemyMovementType
 {

@@ -25,4 +25,9 @@ public class EndingButtons : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
